@@ -1,0 +1,3 @@
+require 'shortcake'
+
+task 'build'

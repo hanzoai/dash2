@@ -1,0 +1,7 @@
+node_modules
+/.cake_task_cache
+npm-debug.log
+
+*.bak
+*.orig
+*.coverprofile
