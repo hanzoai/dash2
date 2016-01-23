@@ -1,3 +1,3 @@
 test:
   override:
-    - nvm use 5.0 && ./runtest
+    - nvm use 5.0
