@@ -127,7 +127,6 @@ incomplete depending on module, the core Ecommerce modules are priority.
 - Carts
 - Collections
 - Coupons
-- Dashboard
 - Discounts
 - Email
 - Forms
