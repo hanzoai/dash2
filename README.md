@@ -119,39 +119,43 @@ Overview of dashboard architecture and APIs used.
 Each module expected to be in the dashboard. Some functionality may be
 incomplete depending on module, the core Ecommerce modules are priority.
 
-- Advertising
-- Advice
+### Planned
 - Analytics
 - Apps
-- Campaign
 - Carts
 - Collections
 - Coupons
 - Discounts
 - Email
 - Forms
-- Insights
 - Integrations
 - Log
-- Native Analytics
 - Orders
 - Payments
 - Planner
 - Plans
-- Product Recommendations
 - Products
 - Referrals
 - Reporting
 - Search
-- Segment
 - Settings
 - Sites
-- Social
 - Store
 - Subscriptions
 - Teams
 - Transactions
 - Users
+
+### Future
+- Advertising
+- Advice
+- Campaign
+- Content
+- Insights
+- Native Analytics
+- Product Recommendations
+- Segment
+- Social
 
 ## Analytics
 - Snippets install guide
