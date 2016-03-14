@@ -141,7 +141,7 @@ Overview of dashboard architecture and APIs used.
 - Easy way to add new functionality without adding a dashboard
 - Support some sort of basic help/readme markdown
 - Auto Completeable/Command discovery mechanism
-- Also supported in Hanzo CLI tool
+- Also supported in Hanzo CLI tool and Slack integration
 
 # Modules
 Each module expected to be in the dashboard. Some functionality may be
