@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "description": "Hanzo's main website.",
   "private": true,
-  "devDependencies": {
-    "cake-publish": "0.1.1",
+  "dependencies": {
+    "cake-publish": "0.1.4",
     "cake-test": "0.1.0",
-    "cake-version": "0.1.3",
+    "cake-version": "0.1.9",
     "coffee-script": "1.10.0",
-    "shortcake": "1.1.11"
+    "shortcake": "1.1.18"
   }
 }
