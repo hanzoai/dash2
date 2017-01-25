@@ -4,10 +4,10 @@
   "description": "Hanzo's main website.",
   "private": true,
   "dependencies": {
-    "cake-publish": "0.1.4",
+    "cake-publish": "0.1.5",
     "cake-test": "0.1.0",
     "cake-version": "0.1.9",
-    "coffee-script": "1.10.0",
+    "coffee-script": "1.12.3",
     "shortcake": "1.1.18"
   }
 }
