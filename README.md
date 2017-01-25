@@ -1,4 +1,6 @@
 # Dash
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/hanzo-io/dash.hanzo.io.svg?token=9ee250ee5ffb50a0f5d2cb6c7d72f1935d840ac187d157e0e0df745ca21da676)](https://greenkeeper.io/)
 Hanzo's dashboard is designed for use by developers, support members and
 executives of a given organization. Ideally all marketing and most of the
 support operations can be performed via it.
