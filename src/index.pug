@@ -1,0 +1,30 @@
+html
+  head
+    meta(charset='utf-8')
+    title Hanzo Dashboard
+    link(href='/css/app.css',rel='stylesheet')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.min.css', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
+  body
+    #page-dashboard.page
+      daisho-main
+        header
+          img.logo(src='//static.hanzo.io/backend/img/logo.svg')
+          .name hanzo
+          #org-switcher
+            select-control.input(select-options='{ orgs }', lookup='activeOrg')
+
+
+        #menu
+          daisho-menu
+
+        #page
+
+    #page-login.page
+      .content
+        .title
+          h1 Login
+        daisho-login.section
+
+  script(src='/js/app.js')
+

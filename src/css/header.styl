@@ -1,0 +1,26 @@
+$headerHeight = 60px
+$headerElementHeight = 32px
+$headerSpacing = (60px - $headerElementHeight) / 2
+
+header
+  background: linear-gradient(to bottom,#2fd4a5 0%,#22d4a8 100%)
+  display: table
+  color: $textColor2
+  width: 100%
+
+  #org-switcher
+    float: right
+    width: 160px
+    margin: $headerSpacing $elementHSpacing
+
+  .logo
+    height: $headerElementHeight
+    width: $headerElementHeight
+    margin: $headerSpacing
+    float: left
+
+  .name
+    font-size: 19px
+    margin: $headerSpacing 0
+    float: left
+

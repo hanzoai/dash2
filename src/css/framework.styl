@@ -1,0 +1,26 @@
+.page
+  width: 100vw
+  height: 100vh
+  position: absolute
+  left: 0
+  top: 0
+  font-size: $fontSize
+  color: $textColor1
+
+  .content
+    border: $borderWidth solid $borderColor2
+    background-color: $backgroundColor1
+
+    & > *
+      display: block
+      overflow: auto
+      padding $elementVSpacing $elementHSpacing
+      border-bottom: $borderWidth solid $borderColor2
+
+      &:last-child
+        border-bottom: 0
+
+    .title
+      color: $textColor1
+      background-color: $backgroundColor2
+
