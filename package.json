@@ -34,7 +34,6 @@
   "dependencies": {
     "akasha": "0.0.4",
     "daisho": "git+ssh://git@github.com/hanzo-io/daisho.git#daisho2",
-    "debounce": "1.0.0",
     "hanzo-home": "git+ssh://git@github.com/hanzo-core/hanzo-home.git",
     "jquery": "3.1.1",
     "pug": "2.0.0-beta11",
