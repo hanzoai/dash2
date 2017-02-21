@@ -10,21 +10,21 @@ data = refer
   activeOrg:    akasha.get 'activeOrg'
   account:      akasha.get 'account'
 
-modules =
-  lol: class Lol
-    constructor: (ps, ms)->
-      ps.register 'lol',
-        ->
-          console.log 'enter lol'
-        ->
-          console.log 'start lol'
-        ->
-          console.log 'end lol'
+modules = require './modules'
+  # lol: class Lol
+  #   constructor: (daisho, ps, ms)->
+  #     ps.register 'lol',
+  #       ->
+  #         console.log 'enter lol'
+  #       ->
+  #         console.log 'start lol'
+  #       ->
+  #         console.log 'end lol'
 
-      ms.register 'Home', ->
-        ps.show 'lol'
+  #     ms.register 'Home', ->
+  #       ps.show 'lol'
 
-      console.log 'registered lol'
+  #     console.log 'registered lol'
 
 daisho = new Daisho 'https://api-staging.hanzo.io', modules, data, true
 

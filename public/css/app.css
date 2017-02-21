@@ -155,29 +155,6 @@ h1{
   color:#666;
   background-color:#eee;
 }
-header{
-  background:-webkit-linear-gradient(top, #2fd4a5 0%, #22d4a8 100%);
-  background:linear-gradient(to bottom, #2fd4a5 0%, #22d4a8 100%);
-  display:table;
-  color:#fff;
-  width:100%;
-}
-header #org-switcher{
-  float:right;
-  width:160px;
-  margin:14px 40px;
-}
-header .logo{
-  height:32px;
-  width:32px;
-  margin:14px;
-  float:left;
-}
-header .name{
-  font-size:19px;
-  margin:14px 0;
-  float:left;
-}
 .selectize-input{
   background-color:transparent !important;
   font-weight:bold !important;
@@ -296,6 +273,51 @@ button[type=submit]{
   background-color:#2fd4a5;
   border-color:#2fd4a5;
   color:#fff;
+}
+header{
+  background:-webkit-linear-gradient(top, #2fd4a5 0%, #22d4a8 100%);
+  background:linear-gradient(to bottom, #2fd4a5 0%, #22d4a8 100%);
+  display:table;
+  color:#fff;
+  width:100%;
+}
+header #org-switcher{
+  float:right;
+  width:160px;
+  margin:14px 40px;
+}
+header .logo{
+  height:32px;
+  width:32px;
+  margin:14px;
+  float:left;
+}
+header .name{
+  font-size:19px;
+  margin:14px 0;
+  float:left;
+}
+#menu{
+  width:200px;
+  background-color:#333;
+  padding:20px 40px;
+  color:#fff;
+  height:calc(100vh - 60px);
+  float:left;
+}
+#menu ul{
+  margin-bottom:0;
+}
+#menu ul li{
+  cursor:pointer;
+  list-style-type:none;
+  height:2em;
+  line-height:2em;
+}
+#page{
+  background-color:#eee;
+  width:calc(100vw - 200px);
+  float:left;
 }
 #page-login{
   background:-webkit-radial-gradient(52% 142%, #595959 50%, #393939 100%);
