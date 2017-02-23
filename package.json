@@ -38,6 +38,6 @@
     "jquery": "3.1.1",
     "pug": "2.0.0-beta11",
     "referential": "0.4.6",
-    "requisite": "1.19.2"
+    "requisite": "1.19.4"
   }
 }
