@@ -40,7 +40,6 @@ compileCoffee = ->
     sourceMapURL:      (path.basename dst) + '.map'
     compilers:
       styl: (opts, cb) ->
-        console.log 'yes i will compile stylus as requisite'
         stylus       = require 'stylus'
         postcss      = require 'poststylus'
         autoprefixer = require 'autoprefixer'
@@ -89,7 +88,10 @@ compileCoffee = ->
 
   true
 
-compileStylus = (src, dst) ->
+compileStylus = () ->
+  src = 'src/css/app.styl'
+  dst = 'public/css/app.css'
+
   stylus       = require 'stylus'
   postcss      = require 'poststylus'
   autoprefixer = require 'autoprefixer'

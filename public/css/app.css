@@ -139,14 +139,14 @@ h1{
   color:#666;
 }
 .page .content{
-  border:2px solid #999;
+  border:1px solid #999;
   background-color:#fff;
 }
 .page .content > *{
   display:block;
   overflow:auto;
   padding:20px 40px;
-  border-bottom:2px solid #999;
+  border-bottom:1px solid #999;
 }
 .page .content > *:last-child{
   border-bottom:0;
@@ -254,7 +254,7 @@ input::-webkit-input-placeholder{
 }
 .error-message,
 .error{
-  color:#f00;
+  color:#ee6055;
 }
 .button,
 button{
@@ -325,6 +325,12 @@ header .name{
 #page > *{
   margin:40px 0;
   display:block;
+}
+.good{
+  color:#25ced1;
+}
+.bad{
+  color:#ee6055;
 }
 #page-login{
   background:-webkit-radial-gradient(52% 142%, #595959 50%, #393939 100%);
