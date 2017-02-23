@@ -317,7 +317,14 @@ header .name{
 #page{
   background-color:#eee;
   width:calc(100vw - 200px);
+  height:calc(100vh - 60px);
   float:left;
+  padding:0 40px;
+  overflow:auto;
+}
+#page > *{
+  margin:40px 0;
+  display:block;
 }
 #page-login{
   background:-webkit-radial-gradient(52% 142%, #595959 50%, #393939 100%);

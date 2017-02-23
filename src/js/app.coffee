@@ -26,7 +26,7 @@ modules = require './modules'
 
   #     console.log 'registered lol'
 
-daisho = new Daisho 'https://api-staging.hanzo.io', modules, data, true
+daisho = new Daisho 'https://api.hanzo.io', modules, data, true
 
 m.on Daisho.Events.LoginSuccess, ->
   akasha.set 'orgs', data.get 'orgs'
@@ -41,6 +41,10 @@ m.on Daisho.Events.LoginSuccess, ->
       daisho.update()
     catch err
       console.log err.stack
+
+m.on Daisho.Events.Logout, ->
+  akasha.remove 'orgs'
+  akasha.remove 'account'
 
 m.on Daisho.Events.Change, (name, val)->
   if name == 'activeOrg'

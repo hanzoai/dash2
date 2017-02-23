@@ -38,6 +38,44 @@ compileCoffee = ->
     entry:             src
     externalSourceMap: true
     sourceMapURL:      (path.basename dst) + '.map'
+    compilers:
+      styl: (opts, cb) ->
+        console.log 'yes i will compile stylus as requisite'
+        stylus       = require 'stylus'
+        postcss      = require 'poststylus'
+        autoprefixer = require 'autoprefixer'
+        comments     = require 'postcss-discard-comments'
+        lost         = require 'lost-stylus'
+        rupture      = require 'rupture'
+        CleanCSS     = require 'clean-css'
+
+        style = (stylus opts.source)
+          .set 'filename', opts.filename
+          .set 'paths', [
+            __dirname + '/src/css'
+            __dirname + '/node_modules'
+          ]
+          .set 'include css', true
+          .set 'sourcemap',
+            basePath:   ''
+            sourceRoot: '../'
+          .use lost()
+          .use rupture()
+          .use postcss [
+            autoprefixer browsers: '> 1%'
+            'lost'
+            'rucksack-css'
+            'css-mqpacker'
+            comments removeAll: true
+          ]
+
+        style.render (err, css) ->
+          return cb err if err?
+          source = JSON.stringify css
+
+          cb null, """
+          module.exports = #{source};
+          """
 
   if process.env.PRODUCTION
     opts.minify   = true
@@ -51,7 +89,7 @@ compileCoffee = ->
 
   true
 
-compileStylus = ->
+compileStylus = (src, dst) ->
   stylus       = require 'stylus'
   postcss      = require 'poststylus'
   autoprefixer = require 'autoprefixer'
@@ -59,9 +97,6 @@ compileStylus = ->
   lost         = require 'lost-stylus'
   rupture      = require 'rupture'
   CleanCSS     = require 'clean-css'
-
-  src = 'src/css/app.styl'
-  dst = 'public/css/app.css'
 
   style = stylus fs.readFileSync src, 'utf8'
     .set 'filename', src
