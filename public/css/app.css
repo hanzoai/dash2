@@ -332,6 +332,17 @@ header .name{
 .bad{
   color:#ee6055;
 }
+daisho-ui-counter{
+  display:block;
+  padding:0 20px;
+  text-align:center;
+}
+daisho-ui-counter .display .number{
+  font-size:2em;
+}
+daisho-ui-counter .display .label{
+  font-size:0.75em;
+}
 #page-login{
   background:-webkit-radial-gradient(52% 142%, #595959 50%, #393939 100%);
   background:radial-gradient(52% 142%, #595959 50%, #393939 100%);
