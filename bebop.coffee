@@ -76,9 +76,9 @@ compileCoffee = ->
           module.exports = #{source};
           """
 
-  if process.env.PRODUCTION
-    opts.minify   = true
-    opts.minifier = 'esmangle'
+  # if process.env.PRODUCTION
+  #   opts.minify   = true
+  #   opts.minifier = 'esmangle'
 
   requisite.bundle opts, (err, bundle) ->
     return console.error err if err?
@@ -88,7 +88,7 @@ compileCoffee = ->
 
   true
 
-compileStylus = () ->
+compileStylus = ->
   src = 'src/css/app.styl'
   dst = 'public/css/app.css'
 
@@ -122,17 +122,17 @@ compileStylus = () ->
 
   style.render (err, css) ->
     return console.error err if err
-    if process.env.PRODUCTION
-      minifier = new CleanCSS
-        aggressiveMerging: false
-        semanticMerging:   false
-      minified = minifier.minify css
-      writeFile dst, minified.styles
-    else
-      sourceMapURL = (path.basename dst) + '.map'
-      css = css + "/*# sourceMappingURL=#{sourceMapURL} */"
-      writeFile dst, css
-      writeFile dst + '.map', JSON.stringify style.sourcemap
+    # if process.env.PRODUCTION
+    #   minifier = new CleanCSS
+    #     aggressiveMerging: false
+    #     semanticMerging:   false
+    #   minified = minifier.minify css
+    #   writeFile dst, minified.styles
+    # else
+    sourceMapURL = (path.basename dst) + '.map'
+    css = css + "/*# sourceMappingURL=#{sourceMapURL} */"
+    writeFile dst, css
+    writeFile dst + '.map', JSON.stringify style.sourcemap
   true
 
 module.exports =
