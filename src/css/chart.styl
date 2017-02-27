@@ -1,0 +1,17 @@
+@keyframes chart-point-pulse {
+  0% { stroke-width: 1px }
+  25% { stroke-width: 10px }
+  50% { stroke-width: 12px }
+  25% { stroke-width: 10px }
+  0% { stroke-width: 1px }
+}
+
+daisho-graphics-chart
+  .point
+    cursor: pointer
+    transition: all $transitionFast ease-in-out
+    &:hover
+      stroke-opacity: .5
+      animation: chart-point-pulse 3s ease-out
+      animation-iteration-count: infinite
+      transition: all $transitionFast ease-in-out
