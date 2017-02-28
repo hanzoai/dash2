@@ -10,7 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "6.5.1",
-    "bebop": "1.11.3",
+    "bebop": "1.11.5",
     "cake-publish": "0.1.5",
     "cake-test": "0.1.0",
     "cake-version": "0.1.9",
