@@ -2,13 +2,17 @@
 html{
   box-sizing:border-box;
 }
+
 *,
 :after,
 :before{
   box-sizing:inherit;
+}
+*{
   margin:0;
   padding:0;
 }
+
 h1,
 figure,
 fieldset{
@@ -17,12 +21,6 @@ fieldset{
 
 fieldset{
   padding:0;
-}
-body:after{
-  display:table;
-  clear:both;
-
-  content:'';
 }
 audio,
 embed,
@@ -39,16 +37,14 @@ table{
 
   text-align:center;
 
-  color:#fff;
-  background:#333;
-
-  line-height:1.5;
+  color:white;
+  background:#333333;
 }
 
 .browserupgrade a{
   text-decoration:none;
 
-  color:#1e90ff;
+  color:dodgerblue;
 
   font-weight:bold;
 }
@@ -58,7 +54,7 @@ table{
 }
 html{
   font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  line-height:1.5;
+  line-height:1.666;
 }
 
 h1,
@@ -67,56 +63,31 @@ h3,
 h4,
 h5,
 h6{
-  margin-bottom:16px;
-  margin-bottom:1rem;
-
-  line-height:1.25;
+  line-height:1.1;
 }
 
 h1{
-  font-size:36px;
   font-size:2.25rem;
 }
 
 h2{
-  font-size:32px;
   font-size:2rem;
 }
 
 h3{
-  font-size:28px;
   font-size:1.75rem;
 }
 
 h4{
-  font-size:24px;
   font-size:1.5rem;
 }
 
 h5{
-  font-size:20px;
   font-size:1.25rem;
 }
 
 h6{
-  font-size:16px;
   font-size:1rem;
-}
-
-p,
-blockquote,
-pre,
-address,
-dl,
-ol,
-ul,
-table{
-  margin-bottom:16px;
-  margin-bottom:1rem;
-}
-
-p:last-of-type{
-  margin-bottom:0;
 }
 table{
   width:100%;
