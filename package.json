@@ -29,7 +29,7 @@
     "rucksack-css": "0.8.6",
     "rupture": "0.6.2",
     "selectize": "0.12.4",
-    "shortcake": "1.1.18",
+    "shortcake": "1.1.19",
     "stylus": "0.54.5",
     "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   },
