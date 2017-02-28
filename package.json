@@ -30,7 +30,8 @@
     "rupture": "0.6.2",
     "selectize": "0.12.4",
     "shortcake": "1.1.18",
-    "stylus": "0.54.5"
+    "stylus": "0.54.5",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   },
   "dependencies": {
     "akasha": "0.0.4",
