@@ -3,7 +3,7 @@ refer   = require 'referential'
 $       = require 'jquery'
 akasha  = require 'akasha'
 
-m = Daisho.Mediator
+m = Daisho.mediator
 
 data = refer(akasha.get('data') || {})
 data.set 'orgs', (akasha.get('orgs') || [])
@@ -29,6 +29,7 @@ modules = require './modules'
   #     console.log 'registered lol'
 
 daisho = new Daisho 'https://api.hanzo.io', modules, data, settings, true
+# daisho = new Daisho 'https://api-staging.hanzo.io', modules, data, settings, true
 
 # login
 m.on Daisho.Events.LoginSuccess, ->

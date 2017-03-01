@@ -211,6 +211,7 @@ h4{
 input{
   outline:none;
   border:0;
+  background:transparent;
 }
 input:-moz-placeholder{
   color:#666;
@@ -272,6 +273,34 @@ header #org-switcher{
   float:right;
   width:160px;
   margin:14px 40px;
+}
+header #command-bar{
+  float:left;
+  max-width:300px;
+  width:100%;
+  margin:14px 40px;
+}
+header #command-bar .commands-found{
+  position:absolute;
+  max-width:300px;
+  width:100%;
+  background-color:#fff;
+  color:#666;
+  box-shadow:0 1px 3px rgba(0,0,0,0.1);
+  cursor:pointer;
+}
+header #command-bar .commands-found .command-found{
+  padding:0 8px;
+  height:2em;
+  padding:0 8px;
+  line-height:2em;
+}
+header #command-bar .commands-found .command-found:hover{
+  background-color:#2fd4a5;
+  color:#fff;
+}
+header #command-bar .commands-found .command-found > *{
+  display:inline-block;
 }
 header .logo{
   height:32px;
