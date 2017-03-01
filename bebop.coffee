@@ -2,6 +2,22 @@ fs       = require 'fs'
 path     = require 'path'
 debounce = require 'debounce'
 
+builtins      = require 'rollup-plugin-node-builtins'
+coffee        = require 'rollup-plugin-coffee-script'
+commonjs      = require 'rollup-plugin-commonjs'
+filesize      = require 'rollup-plugin-filesize'
+globals       = require 'rollup-plugin-node-globals'
+json          = require 'rollup-plugin-json'
+nodeResolve   = require 'rollup-plugin-node-resolve'
+pug           = require 'rollup-plugin-pug'
+rollup        = require 'rollup'
+stylus        = require 'rollup-plugin-stylus'
+
+postcss      = require 'poststylus'
+autoprefixer = require 'autoprefixer'
+comments     = require 'postcss-discard-comments'
+lost         = require 'lost-stylus'
+
 writeFile = (dst, content) ->
   fs.writeFile dst, content, 'utf8', (err) ->
     console.error err if err?
@@ -28,64 +44,51 @@ compilePug = (src, dst) ->
 
   true
 
-compileCoffee = ->
-  requisite  = require 'requisite'
+plugins = [
+  builtins()
+  globals()
+  coffee()
+  pug
+    pretty:                 true
+    compileDebug:           true
+    sourceMap:              false
+    inlineRuntimeFunctions: false
+    staticPattern:          /\S/
+  stylus
+    sourceMap: false
+    fn: (style) ->
+      style.use lost()
+      style.use postcss [
+        autoprefixer browsers: '> 1%'
+        'lost'
+        'css-mqpacker'
+        comments removeAll: true
+      ]
+  json()
+  nodeResolve
+    browser:    true
+    module:     true
+    jsnext:     true
+    extensions: ['.js', '.coffee', '.pug', '.styl']
+  commonjs
+    extensions: ['.js', '.coffee']
+    sourceMap:  false
+]
 
-  src = 'src/js/app.coffee'
-  dst = 'public/js/app.js'
+cache = null
 
-  opts =
-    entry:             src
-    externalSourceMap: true
-    sourceMapURL:      (path.basename dst) + '.map'
-    compilers:
-      styl: (opts, cb) ->
-        stylus       = require 'stylus'
-        postcss      = require 'poststylus'
-        autoprefixer = require 'autoprefixer'
-        comments     = require 'postcss-discard-comments'
-        lost         = require 'lost-stylus'
-        rupture      = require 'rupture'
-        CleanCSS     = require 'clean-css'
-
-        style = (stylus opts.source)
-          .set 'filename', opts.filename
-          .set 'paths', [
-            __dirname + '/src/css'
-            __dirname + '/node_modules'
-          ]
-          .set 'include css', true
-          .set 'sourcemap',
-            basePath:   ''
-            sourceRoot: '../'
-          .use lost()
-          .use rupture()
-          .use postcss [
-            autoprefixer browsers: '> 1%'
-            'lost'
-            'rucksack-css'
-            'css-mqpacker'
-            comments removeAll: true
-          ]
-
-        style.render (err, css) ->
-          return cb err if err?
-          source = JSON.stringify css
-
-          cb null, """
-          module.exports = #{source};
-          """
-
-  # if process.env.PRODUCTION
-  #   opts.minify   = true
-  #   opts.minifier = 'esmangle'
-
-  requisite.bundle opts, (err, bundle) ->
-    return console.error err if err?
-    {code, map} = bundle.toString opts
-    writeFile dst, code
-    writeFile dst + '.map', map
-
+compileCoffee = (src, dst, cb) ->
+  rollup.rollup
+    cache:   cache
+    entry:   'src/js/app.coffee'
+    plugins:  plugins
+  .then (bundle) ->
+    cache = bundle
+    bundle.write
+      dest:       'public/js/app.js'
+      format:     'iife'
+      moduleName: 'app'
+    .then cb
   true
 
 compileStylus = ->
