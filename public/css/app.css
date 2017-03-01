@@ -325,14 +325,14 @@ daisho-graphics-counter{
   text-align:center;
 }
 daisho-graphics-counter .display.display{
-  padding:20px 40px 10px;
+  padding:20px 0 10px;
 }
 daisho-graphics-counter .display.display .number{
   font-size:2em;
 }
 daisho-graphics-counter .label.label{
   font-size:0.75em;
-  padding:10px 40px 20px;
+  padding:10px 0 20px;
 }
 daisho-graphics-chart .point{
   cursor:pointer;
