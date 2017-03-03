@@ -1,7 +1,7 @@
-moment = require 'moment-timezone'
-Daisho = require 'daisho'
+import moment from 'moment-timezone'
+import Daisho from 'daisho'
 
-module.exports =
+modules =
   Home: require 'hanzo-home'
   Note: class Note #require 'hanzo-note'
     constructor: (daisho, ps, ms, cs)->
@@ -26,3 +26,5 @@ module.exports =
           console.log '---NOTE REMOVE SUCCESS---'
         .catch (e)->
           console.log '---NOTE REMOVE FAIL---', e
+
+export default modules
