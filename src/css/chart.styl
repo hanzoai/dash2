@@ -6,12 +6,19 @@
   0% { stroke-width: 1px }
 }
 
-daisho-graphics-chart
-  .point
-    cursor: pointer
+// daisho-graphics-chart
+.point
+  cursor: pointer
+  transition: all $transitionFast ease-in-out
+  &:hover
+    stroke-opacity: .5
+    animation: chart-point-pulse 3s ease-out
+    animation-iteration-count: infinite
     transition: all $transitionFast ease-in-out
-    &:hover
-      stroke-opacity: .5
-      animation: chart-point-pulse 3s ease-out
-      animation-iteration-count: infinite
-      transition: all $transitionFast ease-in-out
+
+.point-notes
+  fill: $accentColor2
+
+  &:before
+    content: '!'
+    font-color: $textColor2

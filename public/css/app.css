@@ -2,17 +2,13 @@
 html{
   box-sizing:border-box;
 }
-
 *,
 :after,
 :before{
   box-sizing:inherit;
-}
-*{
   margin:0;
   padding:0;
 }
-
 h1,
 figure,
 fieldset{
@@ -21,6 +17,12 @@ fieldset{
 
 fieldset{
   padding:0;
+}
+body:after{
+  display:table;
+  clear:both;
+
+  content:'';
 }
 audio,
 embed,
@@ -37,14 +39,16 @@ table{
 
   text-align:center;
 
-  color:white;
-  background:#333333;
+  color:#fff;
+  background:#333;
+
+  line-height:1.5;
 }
 
 .browserupgrade a{
   text-decoration:none;
 
-  color:dodgerblue;
+  color:#1e90ff;
 
   font-weight:bold;
 }
@@ -54,7 +58,7 @@ table{
 }
 html{
   font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  line-height:1.666;
+  line-height:1.5;
 }
 
 h1,
@@ -63,31 +67,56 @@ h3,
 h4,
 h5,
 h6{
-  line-height:1.1;
+  margin-bottom:16px;
+  margin-bottom:1rem;
+
+  line-height:1.25;
 }
 
 h1{
+  font-size:36px;
   font-size:2.25rem;
 }
 
 h2{
+  font-size:32px;
   font-size:2rem;
 }
 
 h3{
+  font-size:28px;
   font-size:1.75rem;
 }
 
 h4{
+  font-size:24px;
   font-size:1.5rem;
 }
 
 h5{
+  font-size:20px;
   font-size:1.25rem;
 }
 
 h6{
+  font-size:16px;
   font-size:1rem;
+}
+
+p,
+blockquote,
+pre,
+address,
+dl,
+ol,
+ul,
+table{
+  margin-bottom:16px;
+  margin-bottom:1rem;
+}
+
+p:last-of-type{
+  margin-bottom:0;
 }
 table{
   width:100%;
@@ -276,13 +305,19 @@ header #org-switcher{
 }
 header #command-bar{
   float:left;
-  max-width:300px;
+  max-width:800px;
   width:100%;
   margin:14px 40px;
 }
+header #command-bar:before{
+  content:'⚲';
+  -webkit-transform:rotate(45deg) translate(-4px, 10px);
+          transform:rotate(45deg) translate(-4px, 10px);
+  position:absolute;
+}
 header #command-bar .commands-found{
   position:absolute;
-  max-width:300px;
+  max-width:800px;
   width:100%;
   background-color:#fff;
   color:#666;
@@ -363,12 +398,12 @@ daisho-graphics-counter .label.label{
   font-size:0.75em;
   padding:10px 0 20px;
 }
-daisho-graphics-chart .point{
+.point{
   cursor:pointer;
   -webkit-transition:all 200ms ease-in-out;
   transition:all 200ms ease-in-out;
 }
-daisho-graphics-chart .point:hover{
+.point:hover{
   stroke-opacity:0.5;
   -webkit-animation:chart-point-pulse 3s ease-out;
           animation:chart-point-pulse 3s ease-out;
@@ -376,6 +411,13 @@ daisho-graphics-chart .point:hover{
           animation-iteration-count:infinite;
   -webkit-transition:all 200ms ease-in-out;
   transition:all 200ms ease-in-out;
+}
+.point-notes{
+  fill:#25ced1;
+}
+.point-notes:before{
+  content:'!';
+  font-color:#fff;
 }
 @-webkit-keyframes chart-point-pulse{
   0%{
@@ -428,6 +470,10 @@ daisho-graphics-chart .point:hover{
 }
 .tip .tip-group .tip-value{
   float:right;
+}
+.tip pre{
+  font-family:'Open Sans', Helvetica, Arial, sans-serif;
+  margin-bottom:0;
 }
 .tip:after{
   box-sizing:border-box;

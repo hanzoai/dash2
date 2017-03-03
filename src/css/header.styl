@@ -11,13 +11,18 @@ header
 
   #command-bar
     float:left
-    max-width: 300px
+    max-width: 800px
     width: 100%
     margin: $headerSpacing $elementHSpacing
 
+    &:before
+      content: '⚲'
+      transform: rotate(45deg) translate(-4px, 10px)
+      position: absolute
+
     .commands-found
       position: absolute
-      max-width: 300px
+      max-width: 800px
       width: 100%
       background-color: #fff
       color: $textColor1

@@ -5,11 +5,12 @@ module.exports =
   Home: require 'hanzo-home'
   Note: class Note #require 'hanzo-note'
     constructor: (daisho, ps, ms, cs)->
-      cs.register 'note.add', '<message> <timestamp>',  (message, time)->
+      cs.register 'note.add', '<message> <optional timestamp>',  (message, time)->
         opts =
           message:  message
           time:     moment(time).format Daisho.util.time.rfc3339
           source:   'dashboard'
+          enabled:  true
 
         daisho.client.note.create(opts).then ->
           console.log '---NOTE SUCCESS---'
