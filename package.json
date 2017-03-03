@@ -38,9 +38,9 @@
     "rucksack-css": "0.9.1",
     "rupture": "0.6.2",
     "selectize": "0.12.4",
-    "shortcake": "1.1.19",
+    "shortcake": "1.2.5",
     "stylus": "0.54.5",
-    "uglify-js": "2.8.1"
+    "uglify-js": "2.8.5"
   },
   "dependencies": {
     "akasha": "0.0.4",
@@ -48,6 +48,8 @@
     "debounce": "1.0.0",
     "hanzo-home": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git",
     "jquery": "3.1.1",
-    "referential": "0.5.4"
+    "referential": "0.5.4",
+    "moment": "2.17.1",
+    "moment-timezone": "0.5.11"
   }
 }

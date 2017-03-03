@@ -8,7 +8,7 @@ modules = [
   Home
 ]
 
-m = Daisho.Mediator
+m = Daisho.mediator
 
 data = refer(akasha.get('data') || {})
 data.set 'orgs', (akasha.get('orgs') || [])
@@ -18,6 +18,7 @@ data.set 'account', (akasha.get('account') || {})
 settings = refer(akasha.get('settings') || {})
 
 daisho = new Daisho 'https://api.hanzo.io', modules, data, settings, true
+# daisho = new Daisho 'https://api-staging.hanzo.io', modules, data, settings, true
 
 # login
 m.on Daisho.Events.LoginSuccess, ->

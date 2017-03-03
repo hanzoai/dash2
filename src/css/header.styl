@@ -9,6 +9,39 @@ header
     width: 160px
     margin: $headerSpacing $elementHSpacing
 
+  #command-bar
+    float:left
+    max-width: 800px
+    width: 100%
+    margin: $headerSpacing $elementHSpacing
+
+    &:before
+      content: '⚲'
+      transform: rotate(45deg) translate(-4px, 10px)
+      position: absolute
+
+    .commands-found
+      position: absolute
+      max-width: 800px
+      width: 100%
+      background-color: #fff
+      color: $textColor1
+      box-shadow: 0 1px 3px rgba(0,0,0,.1)
+      cursor: pointer
+
+      .command-found
+        padding: 0 8px
+        height: $elementHeight
+        padding: 0 $inputHPadding
+        line-height: $elementHeight
+
+        &:hover
+          background-color: $selectActiveBackgroundColor1
+          color: $selectActiveColor1
+
+        & > *
+          display: inline-block
+
   .logo
     height: $headerElementHeight
     width: $headerElementHeight
