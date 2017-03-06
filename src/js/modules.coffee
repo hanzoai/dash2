@@ -3,7 +3,7 @@ Daisho = require 'daisho'
 
 module.exports =
   Home: require 'hanzo-home'
-  Note: class Note #require 'hanzo-note'
+  Note: class Note
     constructor: (daisho, ps, ms, cs)->
       cs.register 'note.add', '<message> <optional timestamp>',  (message, time)->
         opts =
@@ -27,7 +27,7 @@ module.exports =
         .catch (e)->
           console.log '---NOTE REMOVE FAIL---', e
 
-  Fake: class Fake #require 'hanzo-note'
+  Fake: class Fake
     constructor: (daisho, ps, ms, cs)->
       ms.register 'Analytics', ->
         window.location.href = 'https://dash.hanzo.io/#analytics'
