@@ -44,6 +44,7 @@ compilePug = (src, dst) ->
 
   true
 
+<<<<<<< HEAD
 plugins = [
   builtins()
   globals()
@@ -90,6 +91,26 @@ compileCoffee = (src, dst, cb) ->
       moduleName: 'app'
     .then cb
   true
+=======
+compileCoffee = do ->
+  handroll = require 'handroll'
+
+  entry = 'src/js/app.coffee'
+  dest  = 'public/js/app.js'
+  cache = null
+
+  (filename) ->
+    bundle = handroll.bundle
+      cache: cache
+      entry: entry
+    .then (bundle) ->
+      bundle.write
+        dest:   dest
+        format: 'iief'
+    .catch (err) ->
+      console.error err
+    true
+>>>>>>> Switch to handroll.
 
 compileStylus = ->
   src = 'src/css/app.styl'
