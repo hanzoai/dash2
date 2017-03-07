@@ -2,22 +2,6 @@ fs       = require 'fs'
 path     = require 'path'
 debounce = require 'debounce'
 
-builtins      = require 'rollup-plugin-node-builtins'
-coffee        = require 'rollup-plugin-coffee-script'
-commonjs      = require 'rollup-plugin-commonjs'
-filesize      = require 'rollup-plugin-filesize'
-globals       = require 'rollup-plugin-node-globals'
-json          = require 'rollup-plugin-json'
-nodeResolve   = require 'rollup-plugin-node-resolve'
-pug           = require 'rollup-plugin-pug'
-rollup        = require 'rollup'
-stylus        = require 'rollup-plugin-stylus'
-
-postcss      = require 'poststylus'
-autoprefixer = require 'autoprefixer'
-comments     = require 'postcss-discard-comments'
-lost         = require 'lost-stylus'
-
 writeFile = (dst, content) ->
   fs.writeFile dst, content, 'utf8', (err) ->
     console.error err if err?
@@ -29,9 +13,9 @@ compilePug = (src, dst) ->
   pug = require 'pug'
 
   opts =
-    basedir:      __dirname + '/src'
-    pretty:       true
-    production:   if process.env.PRODUCTION then true else false
+    basedir:    __dirname + '/src'
+    pretty:     true
+    production: if process.env.PRODUCTION then true else false
 
   for k,v of require './settings'
     opts[k] = v
@@ -44,73 +28,23 @@ compilePug = (src, dst) ->
 
   true
 
-<<<<<<< HEAD
-plugins = [
-  builtins()
-  globals()
-  coffee()
-  pug
-    pretty:                 true
-    compileDebug:           true
-    sourceMap:              false
-    inlineRuntimeFunctions: false
-    staticPattern:          /\S/
-  stylus
-    sourceMap: false
-    fn: (style) ->
-      style.use lost()
-      style.use postcss [
-        autoprefixer browsers: '> 1%'
-        'lost'
-        'css-mqpacker'
-        comments removeAll: true
-      ]
-  json()
-  nodeResolve
-    browser:    true
-    module:     true
-    jsnext:     true
-    extensions: ['.js', '.coffee', '.pug', '.styl']
-  commonjs
-    extensions: ['.js', '.coffee']
-    sourceMap:  false
-]
-
-cache = null
-
-compileCoffee = (src, dst, cb) ->
-  rollup.rollup
-    cache:   cache
-    entry:   'src/js/app.coffee'
-    plugins:  plugins
-  .then (bundle) ->
-    cache = bundle
-    bundle.write
-      dest:       'public/js/app.js'
-      format:     'iife'
-      moduleName: 'app'
-    .then cb
-  true
-=======
 compileCoffee = do ->
   handroll = require 'handroll'
 
   entry = 'src/js/app.coffee'
   dest  = 'public/js/app.js'
-  cache = null
 
   (filename) ->
     bundle = handroll.bundle
-      cache: cache
-      entry: entry
+      entry:    entry
+      commonjs: true
     .then (bundle) ->
       bundle.write
         dest:   dest
-        format: 'iief'
+        format: 'iife'
     .catch (err) ->
       console.error err
     true
->>>>>>> Switch to handroll.
 
 compileStylus = ->
   src = 'src/css/app.styl'

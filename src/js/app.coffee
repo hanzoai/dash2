@@ -1,4 +1,3 @@
-import $      from 'jquery'
 import Daisho from 'daisho'
 import Home   from 'hanzo-home'
 import akasha from 'akasha'
@@ -60,3 +59,5 @@ if data.get('orgs').length > 0
 else
   daisho.mount Daisho.Views.Login.tag,
     data: data
+
+export default daisho
