@@ -28,24 +28,25 @@ compilePug = (src, dst) ->
 
   true
 
-compileCoffee = do ->
+compileCoffee = ->
   handroll = require 'handroll'
+  analyzer = require 'rollup-analyzer'
+
   entry = 'src/js/app.coffee'
   dest  = 'public/js/app.js'
 
-  (filename) ->
-    bundle = handroll.bundle
-      entry:    entry
-      commonjs: true
-    .then (bundle) ->
-      bundle.write
-        dest:   dest
-        format: 'iife'
-      analyzer.init limit: 5
-      analyzer.formatted(bundle.bundle).then console.log
-    .catch (err) ->
-      console.error err
-    true
+  bundle = handroll.bundle
+    entry:    entry
+    commonjs: true
+  .then (bundle) ->
+    bundle.write
+      dest:   dest
+      format: 'iife'
+    analyzer.init limit: 5
+    analyzer.formatted(bundle.bundle).then console.log
+  .catch (err) ->
+    console.error err
+  true
 
 compileStylus = ->
   src = 'src/css/app.styl'
