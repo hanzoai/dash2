@@ -1,7 +1,11 @@
-Daisho  = require 'daisho'
-refer   = require 'referential'
-$       = require 'jquery'
-akasha  = require 'akasha'
+import Daisho from 'daisho'
+import Home   from 'hanzo-home'
+import akasha from 'akasha'
+import refer  from 'referential'
+
+modules = [
+  Home
+]
 
 m = Daisho.mediator
 
@@ -11,22 +15,6 @@ data.set 'activeOrg', (akasha.get('activeOrg') || 0)
 data.set 'account', (akasha.get('account') || {})
 
 settings = refer(akasha.get('settings') || {})
-
-modules = require './modules'
-  # lol: class Lol
-  #   constructor: (daisho, ps, ms)->
-  #     ps.register 'lol',
-  #       ->
-  #         console.log 'enter lol'
-  #       ->
-  #         console.log 'start lol'
-  #       ->
-  #         console.log 'end lol'
-
-  #     ms.register 'Home', ->
-  #       ps.show 'lol'
-
-  #     console.log 'registered lol'
 
 daisho = new Daisho 'https://api.hanzo.io', modules, data, settings, true
 # daisho = new Daisho 'https://api-staging.hanzo.io', modules, data, settings, true
@@ -71,3 +59,5 @@ if data.get('orgs').length > 0
 else
   daisho.mount Daisho.Views.Login.tag,
     data: data
+
+export default daisho

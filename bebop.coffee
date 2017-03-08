@@ -13,9 +13,9 @@ compilePug = (src, dst) ->
   pug = require 'pug'
 
   opts =
-    basedir:      __dirname + '/src'
-    pretty:       true
-    production:   if process.env.PRODUCTION then true else false
+    basedir:    __dirname + '/src'
+    pretty:     true
+    production: if process.env.PRODUCTION then true else false
 
   for k,v of require './settings'
     opts[k] = v
@@ -30,19 +30,19 @@ compilePug = (src, dst) ->
 
 compileCoffee = do ->
   handroll = require 'handroll'
-
   entry = 'src/js/app.coffee'
   dest  = 'public/js/app.js'
-  cache = null
 
   (filename) ->
     bundle = handroll.bundle
-      cache: cache
-      entry: entry
+      entry:    entry
+      commonjs: true
     .then (bundle) ->
       bundle.write
         dest:   dest
-        format: 'iief'
+        format: 'iife'
+      analyzer.init limit: 5
+      analyzer.formatted(bundle.bundle).then console.log
     .catch (err) ->
       console.error err
     true
@@ -100,5 +100,5 @@ module.exports =
 
   compilers:
     pug:    compilePug
-    coffee: debounce compileCoffee, 10
-    styl:   debounce compileStylus, 10
+    coffee: debounce compileCoffee, 10, true
+    styl:   debounce compileStylus, 10, true

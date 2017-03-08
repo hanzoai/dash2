@@ -1,8 +1,9 @@
-moment = require 'moment-timezone'
-Daisho = require 'daisho'
+import moment from 'moment'
+import Daisho from 'daisho'
+import Home   from 'hanzo-home'
 
-module.exports =
-  Home: require 'hanzo-home'
+export default modules =
+  Home: Home
   Note: class Note
     constructor: (daisho, ps, ms, cs)->
       cs.register 'note.add', '<message> <optional timestamp>',  (message, time)->
