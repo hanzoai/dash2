@@ -102,5 +102,5 @@ module.exports =
 
   compilers:
     pug:    compilePug
-    coffee: debounce compileCoffee, 10, true
-    styl:   debounce compileStylus, 10, true
+    coffee: debounce compileCoffee, 50, true
+    styl:   debounce compileStylus, 50, true
