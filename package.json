@@ -42,5 +42,6 @@
     "moment": "2.17.1",
     "moment-timezone": "0.5.11",
     "referential": "0.5.9"
-  }
+  },
+  "repository": "ssh://github.com/hanzo-io/dash2"
 }
