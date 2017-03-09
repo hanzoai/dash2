@@ -1,6 +1,16 @@
 fs       = require 'fs'
 path     = require 'path'
-debounce = require 'debounce'
+
+debounce = (fn, wait = 100) ->
+  last = (new Date)
+  ->
+    now = new Date
+
+    # Return if we haven't waited long enough
+    return if (now - last) < wait
+
+    last = now
+    fn.apply null, arguments
 
 writeFile = (dst, content) ->
   fs.writeFile dst, content, 'utf8', (err) ->
@@ -28,22 +38,32 @@ compilePug = (src, dst) ->
 
   true
 
-compileCoffee = ->
+compileCoffee = do ->
   handroll = require 'handroll'
 
   entry = 'src/js/app.coffee'
   dest  = 'public/js/app.js'
 
-  handroll.bundle
-    entry:    entry
-    commonjs: true
-  .then (bundle) ->
+  bundle = null
+
+  compile = ->
     bundle.write
-      dest:   dest
-      format: 'iife'
-  .catch (err) ->
-    console.error err
-  true
+      dest:     dest
+      format:   'iife'
+
+  (src, dst) ->
+    unless bundle?
+      handroll.bundle
+        entry:    entry
+        commonjs: true
+      .then (b) ->
+        bundle = b
+        compile()
+      .catch (err) ->
+        console.error err
+      return
+    compile()
+    true
 
 compileStylus = ->
   src = 'src/css/app.styl'
@@ -98,5 +118,5 @@ module.exports =
 
   compilers:
     pug:    compilePug
-    coffee: debounce compileCoffee, 10, true
-    styl:   debounce compileStylus, 10, true
+    coffee: debounce compileCoffee
+    styl:   debounce compileStylus
