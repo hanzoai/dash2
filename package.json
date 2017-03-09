@@ -1,13 +1,8 @@
 {
-  "name": "hanzo-dash",
-  "version": "0.1.0",
-  "description": "Standalone Dashboard for Hanzo",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "David Tai",
-  "license": "MIT",
+  "name": "dash",
+  "version": "2.0.0-alpha",
+  "description": "Hanzo dashboard",
+  "author": "Hanzo, Inc <hi@hanzo.io> (http://hanzo.io)",
   "devDependencies": {
     "autoprefixer": "6.7.6",
     "bebop": "1.11.5",
@@ -44,5 +39,6 @@
     "moment-timezone": "0.5.11",
     "referential": "0.5.9"
   },
-  "repository": "ssh://github.com/hanzo-io/dash2"
+  "repository": "ssh://github.com/hanzo-io/dash2",
+  "private": true
 }

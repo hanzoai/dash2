@@ -36,8 +36,8 @@ compileCoffee = ->
   dest  = 'public/js/app.js'
 
   bundle = handroll.bundle
-    entry:     entry
-    commonjs:  true
+    entry:    entry
+    commonjs: true
     # sourceMap: false
   .then (bundle) ->
     bundle.write
