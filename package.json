@@ -32,7 +32,7 @@
     "selectize": "0.12.4",
     "shortcake": "1.2.5",
     "stylus": "0.54.5",
-    "uglify-js": "2.8.7"
+    "uglify-js": "2.8.10"
   },
   "dependencies": {
     "akasha": "0.0.9",
