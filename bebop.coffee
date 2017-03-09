@@ -30,20 +30,21 @@ compilePug = (src, dst) ->
 
 compileCoffee = ->
   handroll = require 'handroll'
-  analyzer = require 'rollup-analyzer'
+  # analyzer = require 'rollup-analyzer'
 
   entry = 'src/js/app.coffee'
   dest  = 'public/js/app.js'
 
   bundle = handroll.bundle
-    entry:    entry
-    commonjs: true
+    entry:     entry
+    commonjs:  true
+    # sourceMap: false
   .then (bundle) ->
     bundle.write
       dest:   dest
       format: 'iife'
-    analyzer.init limit: 5
-    analyzer.formatted(bundle.bundle).then console.log
+    # analyzer.init limit: 5
+    # analyzer.formatted(bundle.bundle).then console.log
   .catch (err) ->
     console.error err
   true
