@@ -16,8 +16,12 @@ data.set 'account', (akasha.get('account') || {})
 
 settings = refer(akasha.get('settings') || {})
 
-daisho = new Daisho 'https://api.hanzo.io', modules, data, settings, true
+dash = new Daisho 'https://api.hanzo.io', modules, data, settings, true
 # daisho = new Daisho 'https://api-staging.hanzo.io', modules, data, settings, true
+
+dash.Daisho = Daisho
+dash.akasha = akasha
+dash.m      = m
 
 # login
 m.on Daisho.Events.LoginSuccess, ->
@@ -28,15 +32,15 @@ m.on Daisho.Events.LoginSuccess, ->
   akasha.set 'data', data.get()
   akasha.set 'settings', settings.get()
 
-  daisho.mount Daisho.Views.Main.tag,
+  dash.mount Daisho.Views.Main.tag,
     data: data
 
   # hide login and try and start
   requestAnimationFrame ->
     try
       $('#page-login').hide()
-      daisho.start()
-      daisho.update()
+      dash.start()
+      dash.update()
     catch err
       console.log err.stack
 
@@ -57,7 +61,7 @@ m.on Daisho.Events.Change, (name, val)->
 if data.get('orgs').length > 0
   m.trigger Daisho.Events.LoginSuccess
 else
-  daisho.mount Daisho.Views.Login.tag,
+  dash.mount Daisho.Views.Login.tag,
     data: data
 
-export default daisho
+export default dash
