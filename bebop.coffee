@@ -45,6 +45,7 @@ compileCoffee = do ->
   dest  = 'public/js/app.js'
 
   bundle = null
+  cache  = null
 
   compile = ->
     bundle.write
@@ -54,6 +55,7 @@ compileCoffee = do ->
   (src, dst) ->
     unless bundle?
       handroll.bundle
+        cache:    null
         entry:    entry
         commonjs: true
       .then (b) ->
