@@ -7,6 +7,7 @@ use 'cake-publish',
     remote:  'origin'
     refspec: 'master:master'
   npm: false
+use 'cake-yarn'
 
 task 'build:pre', '', ->
   exec '''
