@@ -710,9 +710,9 @@ create-hmac@^1.1.0, create-hmac@^1.1.2:
     create-hash "^1.1.0"
     inherits "^2.0.1"
 
-crowdcontrol@2.1.11:
-  version "2.1.11"
-  resolved "https://registry.yarnpkg.com/crowdcontrol/-/crowdcontrol-2.1.11.tgz#d7670a5223355aa9d54a9604ae6e99d119dbe663"
+crowdcontrol@2.1.12:
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/crowdcontrol/-/crowdcontrol-2.1.12.tgz#b6d240548667098a08fcfa99db2b7545b161809b"
   dependencies:
     broken "0.1.10"
     es-is "3.2.1"
@@ -937,13 +937,13 @@ daisho@1.2.2:
     riot "3.3.2"
     riot-observable "3.0.0"
 
-daisho@1.2.8:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/daisho/-/daisho-1.2.8.tgz#94c37f48c3bed0e7a25fc5af7de51eb225358f34"
+daisho@1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/daisho/-/daisho-1.2.9.tgz#be7587d7d51730caf5772ec825cfd50152d5d528"
   dependencies:
     akasha "0.0.13"
     broken "0.1.10"
-    crowdcontrol "2.1.11"
+    crowdcontrol "2.1.12"
     d3-array "1.1.0"
     d3-axis "1.0.5"
     d3-interpolate "1.1.3"
