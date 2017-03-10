@@ -937,9 +937,9 @@ daisho@1.2.2:
     riot "3.3.2"
     riot-observable "3.0.0"
 
-daisho@1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/daisho/-/daisho-1.2.6.tgz#4cd9cd22cd26ee04705b0cf68adae4fd2d2dd412"
+daisho@1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/daisho/-/daisho-1.2.7.tgz#40cc8f939400e6ffa93dffda9eb7cd6d4fd2e980"
   dependencies:
     akasha "0.0.13"
     broken "0.1.10"
@@ -953,7 +953,7 @@ daisho@1.2.6:
     d3-tip "0.8.0-alpha.1"
     d3-transition "1.0.3"
     es-raf "3.3.1"
-    es-selectize "0.12.6"
+    es-selectize "0.12.7"
     es-tween "0.1.0"
     hanzo.js "2.3.5"
     moment-timezone "0.5.11"
@@ -1141,6 +1141,13 @@ es-raf@3.3.1:
 es-selectize@0.12.6:
   version "0.12.6"
   resolved "https://registry.yarnpkg.com/es-selectize/-/es-selectize-0.12.6.tgz#465f9a404e9ee25245f4c29de5b6720d465b8251"
+  dependencies:
+    es-microplugin "0.0.3"
+    es-sifter "0.5.2"
+
+es-selectize@0.12.7:
+  version "0.12.7"
+  resolved "https://registry.yarnpkg.com/es-selectize/-/es-selectize-0.12.7.tgz#5327e806a96aa2089a9de8daea8fd2fcca39e40d"
   dependencies:
     es-microplugin "0.0.3"
     es-sifter "0.5.2"
