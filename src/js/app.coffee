@@ -32,8 +32,7 @@ m.on Daisho.Events.LoginSuccess, ->
   akasha.set 'data', data.get()
   akasha.set 'settings', settings.get()
 
-  dash.mount Daisho.Views.Main::tag,
-    data: data
+  dash.mount Daisho.Views.Main::tag, data: data
 
   # hide login and try and start
   requestAnimationFrame ->
@@ -61,7 +60,6 @@ m.on Daisho.Events.Change, (name, val)->
 if data.get('orgs').length > 0
   m.trigger Daisho.Events.LoginSuccess
 else
-  dash.mount Daisho.Views.Login::tag,
-    data: data
+  dash.mount Daisho.Views.Login::tag, data: data
 
 export default dash

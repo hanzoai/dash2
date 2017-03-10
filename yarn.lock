@@ -47,6 +47,13 @@ akasha@0.0.12:
     es-cookies "2.1.11"
     es-md5 "2.7.2"
 
+akasha@0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/akasha/-/akasha-0.0.13.tgz#3a74d8d10837aaf52bac2dc1f123cd7b528ac8ea"
+  dependencies:
+    es-cookies "2.1.11"
+    es-md5 "2.7.2"
+
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/align-text/-/align-text-0.1.4.tgz#0cd90a561093f35d0a99256c22b7069433fad117"
@@ -313,6 +320,10 @@ braces@^1.8.2:
     expand-range "^1.8.1"
     preserve "^0.2.0"
     repeat-element "^1.1.2"
+
+broken@0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/broken/-/broken-0.1.10.tgz#900f2a89c282efe68868c35f791ba9ffac7d5780"
 
 broken@0.1.9, broken@^0.1.1:
   version "0.1.9"
@@ -699,6 +710,17 @@ create-hmac@^1.1.0, create-hmac@^1.1.2:
     create-hash "^1.1.0"
     inherits "^2.0.1"
 
+crowdcontrol@2.1.10:
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/crowdcontrol/-/crowdcontrol-2.1.10.tgz#f72e557997b1abdaf1af63817fe302eaf4330870"
+  dependencies:
+    broken "0.1.10"
+    es-is "3.2.1"
+    es-object-assign "4.1.3"
+    referential "0.5.10"
+    riot "3.3.2"
+    riot-observable "3.0.0"
+
 crowdcontrol@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/crowdcontrol/-/crowdcontrol-2.1.2.tgz#26fa670d9ac77808ff84409fc6fac61f33d2ffa1"
@@ -912,6 +934,31 @@ daisho@1.2.2:
     hanzo.js "2.3.4"
     moment-timezone "0.5.11"
     randomcolor "0.4.4"
+    riot "3.3.2"
+    riot-observable "3.0.0"
+
+daisho@1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/daisho/-/daisho-1.2.6.tgz#4cd9cd22cd26ee04705b0cf68adae4fd2d2dd412"
+  dependencies:
+    akasha "0.0.13"
+    broken "0.1.10"
+    crowdcontrol "2.1.10"
+    d3-array "1.1.0"
+    d3-axis "1.0.5"
+    d3-interpolate "1.1.3"
+    d3-selection "1.0.4"
+    d3-shape "1.0.5"
+    d3-svg-legend "2.21.0"
+    d3-tip "0.8.0-alpha.1"
+    d3-transition "1.0.3"
+    es-raf "3.3.1"
+    es-selectize "0.12.6"
+    es-tween "0.1.0"
+    hanzo.js "2.3.5"
+    moment-timezone "0.5.11"
+    randomcolor "0.4.4"
+    referential "0.5.10"
     riot "3.3.2"
     riot-observable "3.0.0"
 
@@ -1544,9 +1591,9 @@ handroll@0.4.5:
     rollup-plugin-stylup "1.2.7"
     rupture "0.6.2"
 
-handroll@0.6.3:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/handroll/-/handroll-0.6.3.tgz#697a1347bccda8e2719063aeff07d515dd4ad92a"
+handroll@0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/handroll/-/handroll-0.6.4.tgz#d42723d782691af77c3e6668672944fd5558075d"
   dependencies:
     autoprefixer "6.7.6"
     chalk "1.1.3"
@@ -1606,6 +1653,15 @@ hanzo.js@2.3.4:
     es-xhr-promise "1.2.7"
     request "2.80.0"
 
+hanzo.js@2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/hanzo.js/-/hanzo.js-2.3.5.tgz#61b4d56efcff2aee410429ad333b02c0226c5c9c"
+  dependencies:
+    broken "0.1.10"
+    es-cookies "2.1.11"
+    es-xhr-promise "1.2.7"
+    request "2.81.0"
+
 har-schema@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/har-schema/-/har-schema-1.0.5.tgz#d263135f43307c02c602afc8fe95970c0151369e"
@@ -1619,7 +1675,7 @@ har-validator@~2.0.6:
     is-my-json-valid "^2.12.4"
     pinkie-promise "^2.0.0"
 
-har-validator@~4.2.0:
+har-validator@~4.2.0, har-validator@~4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/har-validator/-/har-validator-4.2.1.tgz#33481d0f1bbff600dd203d75812a6a5fba002e2a"
   dependencies:
@@ -2910,6 +2966,10 @@ qs@~6.3.0:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.2.tgz#e75bd5f6e268122a2a0e0bda630b2550c166502c"
 
+qs@~6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
+
 randomatic@^1.1.3:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-1.1.6.tgz#110dcabff397e9dcff7c0789ccc0a49adf1ec5bb"
@@ -3143,6 +3203,33 @@ request@2.80.0, request@^2.79.0:
     stringstream "~0.0.4"
     tough-cookie "~2.3.0"
     tunnel-agent "~0.4.1"
+    uuid "^3.0.0"
+
+request@2.81.0:
+  version "2.81.0"
+  resolved "https://registry.yarnpkg.com/request/-/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
+  dependencies:
+    aws-sign2 "~0.6.0"
+    aws4 "^1.2.1"
+    caseless "~0.12.0"
+    combined-stream "~1.0.5"
+    extend "~3.0.0"
+    forever-agent "~0.6.1"
+    form-data "~2.1.1"
+    har-validator "~4.2.1"
+    hawk "~3.1.3"
+    http-signature "~1.1.0"
+    is-typedarray "~1.0.0"
+    isstream "~0.1.2"
+    json-stringify-safe "~5.0.1"
+    mime-types "~2.1.7"
+    oauth-sign "~0.8.1"
+    performance-now "^0.2.0"
+    qs "~6.4.0"
+    safe-buffer "^5.0.1"
+    stringstream "~0.0.4"
+    tough-cookie "~2.3.0"
+    tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
 resolve-url@^0.2.1:
@@ -3385,6 +3472,10 @@ rucksack-css@0.9.1:
 rupture@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/rupture/-/rupture-0.6.2.tgz#ef4eee91711ff7af64e37f544cfc60a5c08319d3"
+
+safe-buffer@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
 sax@0.5.x:
   version "0.5.8"
@@ -3738,6 +3829,12 @@ tough-cookie@>=0.12.0, tough-cookie@~2.3.0:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.2.tgz#f081f76e4c85720e6c37a5faced737150d84072a"
   dependencies:
     punycode "^1.4.1"
+
+tunnel-agent@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
+  dependencies:
+    safe-buffer "^5.0.1"
 
 tunnel-agent@~0.4.0, tunnel-agent@~0.4.1:
   version "0.4.3"
