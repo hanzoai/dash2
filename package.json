@@ -30,13 +30,13 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
-    "akasha": "0.0.13",
-    "daisho": "1.2.9",
+    "akasha": "0.1.0",
+    "daisho": "1.2.10",
     "debounce": "1.0.0",
     "hanzo-home": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git",
     "moment": "2.17.1",
     "moment-timezone": "0.5.11",
-    "referential": "0.5.10"
+    "referential": "0.5.12"
   },
   "repository": "ssh://github.com/hanzo-io/dash2",
   "private": true
