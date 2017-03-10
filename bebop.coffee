@@ -38,35 +38,6 @@ compilePug = (src, dst) ->
 
   true
 
-compileCoffee = do ->
-  handroll = require 'handroll'
-
-  entry = 'src/js/app.coffee'
-  dest  = 'public/js/app.js'
-
-  bundle = null
-  cache  = null
-
-  compile = ->
-    bundle.write
-      dest:     dest
-      format:   'iife'
-
-  (src, dst) ->
-    unless bundle?
-      handroll.bundle
-        cache:    null
-        entry:    entry
-        commonjs: true
-      .then (b) ->
-        bundle = b
-        compile()
-      .catch (err) ->
-        console.error err
-      return
-    compile()
-    true
-
 compileStylus = ->
   src = 'src/css/app.styl'
   dst = 'public/css/app.css'
@@ -119,6 +90,6 @@ module.exports =
   buildDir: __dirname + '/public'
 
   compilers:
-    pug:    compilePug
-    coffee: debounce compileCoffee
+    coffee: -> false
+    pug:    debounce compilePug
     styl:   debounce compileStylus
