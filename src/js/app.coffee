@@ -1,11 +1,7 @@
-import Daisho from 'daisho'
-import Home   from 'hanzo-home'
-import akasha from 'akasha'
-import refer  from 'referential'
-
-modules = [
-  Home
-]
+import Daisho   from 'daisho'
+import modules  from './modules'
+import akasha   from 'akasha'
+import refer    from 'referential'
 
 m = Daisho.mediator
 

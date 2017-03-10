@@ -326,6 +326,7 @@ header .name{
   color:#fff;
   height:calc(100vh - 60px);
   float:left;
+  overflow-y:auto;
 }
 #menu ul{
   margin-bottom:0;
