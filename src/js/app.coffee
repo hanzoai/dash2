@@ -36,7 +36,7 @@ m.on Daisho.Events.LoginSuccess, ->
     try
       $('#page-login').hide()
       dash.start()
-      dash.update()
+      dash.scheduleUpdate()
     catch err
       console.log err.stack
 
