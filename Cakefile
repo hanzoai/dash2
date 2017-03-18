@@ -1,36 +1,29 @@
 require 'shortcake'
 
-use 'cake-test'
-use 'cake-version'
+use 'cake-bundle'
+use 'cake-linked'
+use 'cake-outdated'
 use 'cake-publish',
   deploy:
     remote:  'origin'
     refspec: 'master:master'
   npm: false
+use 'cake-test'
+use 'cake-version'
 use 'cake-yarn'
 
 task 'build', 'build project', ['build:static', 'build:js']
 
-task 'build:js', 'build js', ['install'], do ->
-  handroll = require 'handroll'
+task 'build:js', 'build js',   ['yarn:install'], ->
+  return if (running 'build')
 
-  bundle = null
-
-  compile = (b) ->
-    bundle = b
-    bundle.write()
-
-  ->
-    return compile bundle if bundle?
-
-    handroll.bundle
-      entry:    'src/js/app.coffee'
-      dest:     'public/js/app.js'
-      format:   'web'
-      commonjs: true
-    .then compile
-    .catch (err) ->
-      console.error err
+  bundle.write
+    dest:     'public/js/app.js'
+    entry:    'src/js/app.coffee'
+    format:   'web'
+    commonjs: true
+  .catch (err) ->
+    console.error err
 
 task 'build:static', 'build static assets', ->
   exec '''

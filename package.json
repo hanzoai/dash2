@@ -6,6 +6,9 @@
   "devDependencies": {
     "autoprefixer": "6.7.6",
     "bebop": "1.11.5",
+    "cake-bundle": "0.1.2",
+    "cake-linked": "0.1.0",
+    "cake-outdated": "0.1.8",
     "cake-publish": "0.1.5",
     "cake-test": "0.1.0",
     "cake-version": "0.1.9",
