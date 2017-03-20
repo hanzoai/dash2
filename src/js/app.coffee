@@ -14,7 +14,7 @@ data.set 'account', (akasha.get('account') || {})
 settings = refer(akasha.get('settings') || {})
 
 dash = new Daisho 'https://api.hanzo.io', modules, data, settings, true
-# daisho = new Daisho 'https://api-staging.hanzo.io', modules, data, settings, true
+# dash = new Daisho 'https://api-staging.hanzo.io', modules, data, settings, true
 
 dash.Daisho = Daisho
 dash.akasha = akasha

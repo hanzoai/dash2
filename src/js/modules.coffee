@@ -1,9 +1,12 @@
 import moment from 'moment'
 import Daisho from 'daisho'
 import Home   from 'hanzo-home'
+import Orders from 'hanzo-orders'
 
 export default modules =
   Home: Home
+  Orders: Orders
+
   Note: class Note
     constructor: (daisho, ps, ms, cs)->
       cs.register 'note.add', '<message> <optional timestamp>',  (message, time)->
@@ -63,8 +66,6 @@ export default modules =
 
       ms.register 'Payments', ->
         window.location.href = 'https://dash.hanzo.io/#payments'
-      ms.register 'Orders', ->
-        window.location.href = 'https://dash.hanzo.io/#orders'
       ms.register 'Returns', ->
         window.location.href = 'https://dash.hanzo.io/#returns'
       ms.register 'Disputes', ->
