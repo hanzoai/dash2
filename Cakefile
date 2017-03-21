@@ -19,9 +19,9 @@ task 'build:js', 'build js',   ['yarn:install'], ->
   return if (running 'build')
 
   bundle.write
-    cache:    false
-    dest:     'public/js/app.js'
     entry:    'src/js/app.coffee'
+    dest:     'public/js/app.js'
+    cache:    false
     format:   'web'
     commonjs: true
     external: false
