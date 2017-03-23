@@ -25,6 +25,9 @@ task 'build:js', 'build js',   ['yarn:install'], ->
     format:   'web'
     commonjs: true
     external: false
+    compilers:
+      coffee:
+        version: 1
   .catch (err) ->
     console.error err
 
