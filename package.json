@@ -6,14 +6,14 @@
   "devDependencies": {
     "autoprefixer": "6.7.7",
     "bebop": "1.11.5",
-    "cake-bundle": "0.2.2",
+    "cake-bundle": "0.2.9",
     "cake-linked": "0.1.0",
-    "cake-outdated": "0.1.13",
-    "cake-publish": "0.1.5",
+    "cake-outdated": "0.1.15",
+    "cake-publish": "0.1.10",
     "cake-test": "0.1.0",
     "cake-version": "0.1.11",
     "cake-yarn": "0.1.1",
-    "clean-css": "4.0.9",
+    "clean-css": "4.0.10",
     "coffee-script": "1.12.4",
     "css-mqpacker": "5.0.1",
     "esmangle": "1.0.1",
@@ -32,7 +32,7 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
-    "akasha": "0.1.0",
+    "akasha": "0.1.1",
     "daisho": "1.2.13",
     "debounce": "1.0.0",
     "hanzo-home": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git",
