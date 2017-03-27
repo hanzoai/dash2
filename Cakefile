@@ -5,7 +5,6 @@ use 'cake-linked'
 use 'cake-outdated'
 use 'cake-test'
 use 'cake-version'
-use 'cake-yarn'
 
 use 'cake-publish',
   deploy:
@@ -15,7 +14,7 @@ use 'cake-publish',
 
 task 'build', 'build project', ['build:static', 'build:js']
 
-task 'build:js', 'build js',   ['yarn:install'], ->
+task 'build:js', 'build js', ->
   return if (running 'build')
 
   bundle.write
