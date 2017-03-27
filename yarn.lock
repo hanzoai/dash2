@@ -55,7 +55,7 @@ ajv@^4.9.1:
     co "^4.6.0"
     json-stable-stringify "^1.0.1"
 
-akasha@0.1.1:
+akasha@0.1.1, akasha@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/akasha/-/akasha-0.1.1.tgz#eaff1c133b230f7bd9617d99a3f74383af993c6d"
   dependencies:
@@ -233,7 +233,7 @@ atob@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.0.3.tgz#19c7a760473774468f20b2d2d03372ad7d4cbf5d"
 
-autoprefixer@6.7.7, autoprefixer@^6.0.0:
+autoprefixer@6.7.7, autoprefixer@^6.0.0, autoprefixer@^6.7.7:
   version "6.7.7"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.7.7.tgz#1dbd1c835658e35ce3f9984099db00585c782014"
   dependencies:
@@ -282,7 +282,7 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bebop@1.11.5:
+bebop@^1.11.5:
   version "1.11.5"
   resolved "https://registry.yarnpkg.com/bebop/-/bebop-1.11.5.tgz#7fe3e21993385251b5cfc30251c5305e68ab09f4"
   dependencies:
@@ -406,7 +406,7 @@ braces@^1.8.2:
     preserve "^0.2.0"
     repeat-element "^1.1.2"
 
-broken@0.1.11:
+broken@0.1.11, broken@^0.1.11:
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/broken/-/broken-0.1.11.tgz#2612028ebef108286cfbf7e80b6f01b761df1a84"
 
@@ -508,13 +508,7 @@ builtins@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/builtins/-/builtins-1.0.3.tgz#cb94faeb61c8696451db36534e1422f94f0aee88"
 
-cake-bundle@0.2.11:
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/cake-bundle/-/cake-bundle-0.2.11.tgz#d36005dd448ba3f0b2b2e391b902803038ff9f3e"
-  dependencies:
-    handroll "0.12.10"
-
-cake-bundle@0.2.13:
+cake-bundle@^0.2.13:
   version "0.2.13"
   resolved "https://registry.yarnpkg.com/cake-bundle/-/cake-bundle-0.2.13.tgz#97f31a367498c7a797189114153bee3db6b15059"
   dependencies:
@@ -536,7 +530,7 @@ cake-coverage@0.1.3:
     coveralls "^2.11.4"
     istanbul "^0.4.1"
 
-cake-linked@0.1.0:
+cake-linked@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cake-linked/-/cake-linked-0.1.0.tgz#de40aea01e34181afd918ac7cd54e3b35031a7f7"
   dependencies:
@@ -550,7 +544,7 @@ cake-mocha@0.0.4:
     mocha "^2.3.4"
     postmortem "^0.2.4"
 
-cake-outdated@0.1.15:
+cake-outdated@^0.1.15:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/cake-outdated/-/cake-outdated-0.1.15.tgz#a95e197d82025f0aa641a70dbf47103c582ebf13"
   dependencies:
@@ -558,13 +552,13 @@ cake-outdated@0.1.15:
     npm4-check-updates "2.10.4"
     tmp "0.0.31"
 
-cake-publish@0.1.10:
+cake-publish@^0.1.10:
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/cake-publish/-/cake-publish-0.1.10.tgz#2d4863223fdb1af3e8cfed05ee723911b5a03d8b"
   dependencies:
     executive "1.2.5"
 
-cake-test@0.1.0:
+cake-test@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cake-test/-/cake-test-0.1.0.tgz#861db2eba5a7e075fdf4444055ea57b593035bff"
   dependencies:
@@ -572,14 +566,14 @@ cake-test@0.1.0:
     cake-coverage "0.1.3"
     cake-mocha "0.0.4"
 
-cake-version@0.1.11:
+cake-version@^0.1.11:
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/cake-version/-/cake-version-0.1.11.tgz#8e544cf817516588509632f89ee5637985bbdf1c"
   dependencies:
     executive "1.2.5"
     semver "5.3.0"
 
-cake-yarn@0.1.1:
+cake-yarn@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/cake-yarn/-/cake-yarn-0.1.1.tgz#01374850f98b505e57f9a59df493166bdbf5918c"
 
@@ -682,18 +676,18 @@ cipher-base@^1.0.0, cipher-base@^1.0.1:
   dependencies:
     inherits "^2.0.1"
 
-clean-css@4.0.10:
-  version "4.0.10"
-  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.0.10.tgz#6be448d6ba8c767654ebe11f158b97a887cb713f"
-  dependencies:
-    source-map "0.5.x"
-
 clean-css@^3.3.0:
   version "3.4.25"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-3.4.25.tgz#9e9a52d5c1e6bc5123e1b2783fa65fe958946ede"
   dependencies:
     commander "2.8.x"
     source-map "0.4.x"
+
+clean-css@^4.0.10:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.0.10.tgz#6be448d6ba8c767654ebe11f158b97a887cb713f"
+  dependencies:
+    source-map "0.5.x"
 
 cli-boxes@^1.0.0:
   version "1.0.0"
@@ -791,7 +785,7 @@ coffee-coverage@0.7.0:
     lodash "^3.7.0"
     pkginfo ">=0.2.3"
 
-coffee-script@1.12.4, coffee-script@>=1.6.2:
+coffee-script@>=1.6.2, coffee-script@^1.12.4:
   version "1.12.4"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.4.tgz#fe1bced97fe1fb3927b998f2b45616e0658be1ff"
 
@@ -1019,7 +1013,7 @@ crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
 
-css-mqpacker@5.0.1:
+css-mqpacker@5.0.1, css-mqpacker@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/css-mqpacker/-/css-mqpacker-5.0.1.tgz#6f2d62252623fd7c33a68e1b88dc1370c885921e"
   dependencies:
@@ -1171,7 +1165,7 @@ d@1:
   dependencies:
     es5-ext "^0.10.9"
 
-daisho@1.2.15:
+daisho@^1.2.15:
   version "1.2.15"
   resolved "https://registry.yarnpkg.com/daisho/-/daisho-1.2.15.tgz#14244b67b7d82c0a2ee6a8d53c0785b48de60c2f"
   dependencies:
@@ -1206,7 +1200,7 @@ date-now@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-1.0.1.tgz#bb7d086438debe4182a485fb3df3fbfb99d6153c"
 
-debounce@1.0.0:
+debounce@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.0.0.tgz#0948af513d2e4ce407916f8506a423d3f9cf72d8"
   dependencies:
@@ -1450,11 +1444,11 @@ es-now@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/es-now/-/es-now-2.1.0.tgz#e26974602ab0b9387d2d0d852f513fda138599d1"
 
-es-object-assign@4.1.3:
+es-object-assign@4.1.3, es-object-assign@^4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/es-object-assign/-/es-object-assign-4.1.3.tgz#849c579032945c607556bd26999fb265c0f04f7a"
 
-es-raf@3.3.1:
+es-raf@3.3.1, es-raf@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/es-raf/-/es-raf-3.3.1.tgz#ca89631dd5ad66aa250a1c6ed79c048aacb49718"
   dependencies:
@@ -1479,7 +1473,7 @@ es-sifter@0.5.2:
   optionalDependencies:
     microtime "^2.1.0"
 
-es-tween@0.1.0:
+es-tween@0.1.0, es-tween@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/es-tween/-/es-tween-0.1.0.tgz#9becbd605db291e90c22191809498bf515a301a3"
   dependencies:
@@ -1557,7 +1551,7 @@ escope@~1.0.1:
   dependencies:
     estraverse "^2.0.0"
 
-esmangle@1.0.1:
+esmangle@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/esmangle/-/esmangle-1.0.1.tgz#d9bb37b8f8eafbf4e6d4ed6b7aa2956abbd3c4c2"
   dependencies:
@@ -2082,35 +2076,6 @@ handlebars@^4.0.1:
   optionalDependencies:
     uglify-js "^2.6"
 
-handroll@0.12.10:
-  version "0.12.10"
-  resolved "https://registry.yarnpkg.com/handroll/-/handroll-0.12.10.tgz#bb540e4477ea5f50bcfa5ba4e10f64ab52b54aea"
-  dependencies:
-    autoprefixer "6.7.7"
-    chalk "1.1.3"
-    css-mqpacker "5.0.1"
-    filesize "3.5.6"
-    gzip-size "3.0.0"
-    lost "8.0.0"
-    lost-stylus "0.1.3"
-    magic-string "0.19.0"
-    postcss-discard-comments "2.0.4"
-    poststylus "0.2.3"
-    rollup "0.41.6"
-    rollup-plugin-commonjs "8.0.2"
-    rollup-plugin-es3 "1.0.3"
-    rollup-plugin-json "2.1.0"
-    rollup-plugin-legacy "1.0.0"
-    rollup-plugin-node-builtins "2.1.0"
-    rollup-plugin-node-globals "1.1.0"
-    rollup-plugin-node-resolve-magic "0.2.0"
-    rollup-plugin-pug "0.1.3"
-    rollup-plugin-sizes "0.3.0"
-    rollup-plugin-sourcemaps "0.4.1"
-    rollup-plugin-strip "1.1.1"
-    rupture "0.6.2"
-    uglify-js "git+https://github.com/mishoo/UglifyJS2.git#harmony"
-
 handroll@0.12.12:
   version "0.12.12"
   resolved "https://registry.yarnpkg.com/handroll/-/handroll-0.12.12.tgz#c602b1b4ce92516daa8e16491538109891c5f06d"
@@ -2143,47 +2108,47 @@ handroll@0.12.12:
 
 "hanzo-home@git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git":
   version "0.1.5"
-  resolved "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git#ec0cbd943385a1af60f6193478b874e3d43725d0"
+  resolved "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git#be9b2ddedce5553010305069595bcacbc6cf591c"
   dependencies:
-    akasha "0.1.1"
-    broken "0.1.11"
-    cake-bundle "0.2.11"
-    cake-outdated "0.1.15"
-    cake-publish "0.1.10"
-    cake-test "0.1.0"
-    cake-version "0.1.11"
-    coffee-script "1.12.4"
-    daisho "1.2.15"
-    es-object-assign "4.1.3"
-    es-raf "3.3.1"
-    es-tween "0.1.0"
-    moment "2.18.1"
-    moment-timezone "0.5.11"
-    numeral "2.0.6"
-    pug "2.0.0-beta11"
-    shortcake "1.2.5"
+    akasha "^0.1.1"
+    broken "^0.1.11"
+    cake-bundle "^0.2.13"
+    cake-outdated "^0.1.15"
+    cake-publish "^0.1.10"
+    cake-test "^0.1.0"
+    cake-version "^0.1.11"
+    coffee-script "^1.12.4"
+    daisho "^1.2.15"
+    es-object-assign "^4.1.3"
+    es-raf "^3.3.1"
+    es-tween "^0.1.0"
+    moment "^2.18.1"
+    moment-timezone "^0.5.11"
+    numeral "^2.0.6"
+    pug "^2.0.0-beta11"
+    shortcake "^1.2.5"
 
 "hanzo-orders@git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-orders.git":
   version "0.0.1"
-  resolved "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-orders.git#154a6daa0c17af3172d5a17d9d3209bd1c9d8cef"
+  resolved "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-orders.git#5888d9fd23220e6073349c76fff5c3e63c3279a7"
   dependencies:
-    akasha "0.1.1"
-    broken "0.1.11"
-    cake-bundle "0.2.11"
-    cake-outdated "0.1.15"
-    cake-publish "0.1.10"
-    cake-test "0.1.0"
-    cake-version "0.1.11"
-    coffee-script "1.12.4"
-    daisho "1.2.15"
-    es-object-assign "4.1.3"
-    es-raf "3.3.1"
-    es-tween "0.1.0"
-    moment "2.18.1"
-    moment-timezone "0.5.11"
-    numeral "2.0.6"
-    pug "2.0.0-beta11"
-    shortcake "1.2.5"
+    akasha "^0.1.1"
+    broken "^0.1.11"
+    cake-bundle "^0.2.13"
+    cake-outdated "^0.1.15"
+    cake-publish "^0.1.10"
+    cake-test "^0.1.0"
+    cake-version "^0.1.11"
+    coffee-script "^1.12.4"
+    daisho "^1.2.15"
+    es-object-assign "^4.1.3"
+    es-raf "^3.3.1"
+    es-tween "^0.1.0"
+    moment "^2.18.1"
+    moment-timezone "^0.5.11"
+    numeral "^2.0.6"
+    pug "^2.0.0-beta11"
+    shortcake "^1.2.5"
 
 hanzo.js@2.3.10:
   version "2.3.10"
@@ -2324,7 +2289,7 @@ idb-wrapper@^1.5.0:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/idb-wrapper/-/idb-wrapper-1.7.1.tgz#6a32670122e173a84ecc5cfa9668fa2ceb221b04"
 
-ie-love@0.0.3:
+ie-love@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/ie-love/-/ie-love-0.0.3.tgz#5dc6a0f8875caea76bf16ec2dac92bfaad813dce"
 
@@ -2971,11 +2936,11 @@ longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
-lost-stylus@0.1.3:
+lost-stylus@0.1.3, lost-stylus@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/lost-stylus/-/lost-stylus-0.1.3.tgz#d70001bf478aa43ddc400575694efa9270e15221"
 
-lost@8.0.0:
+lost@8.0.0, lost@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/lost/-/lost-8.0.0.tgz#7ab03254f1106b6940abb2045c0e38f821a73475"
   dependencies:
@@ -3164,13 +3129,13 @@ module-details-from-path@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/module-details-from-path/-/module-details-from-path-1.0.3.tgz#114c949673e2a8a35e9d35788527aa37b679da2b"
 
-moment-timezone@0.5.11:
+moment-timezone@0.5.11, moment-timezone@^0.5.11:
   version "0.5.11"
   resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.11.tgz#9b76c03d8ef514c7e4249a7bbce649eed39ef29f"
   dependencies:
     moment ">= 2.6.0"
 
-moment@2.18.1, "moment@>= 2.6.0":
+"moment@>= 2.6.0", moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -3621,7 +3586,7 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-numeral@2.0.6:
+numeral@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/numeral/-/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
 
@@ -3926,7 +3891,7 @@ postcss-color-rgba-fallback@^2.0.0:
     postcss-value-parser "^3.0.2"
     rgb-hex "^1.0.0"
 
-postcss-discard-comments@2.0.4:
+postcss-discard-comments@2.0.4, postcss-discard-comments@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/postcss-discard-comments/-/postcss-discard-comments-2.0.4.tgz#befe89fafd5b3dace5ccce51b76b81514be00e3d"
   dependencies:
@@ -4043,7 +4008,7 @@ postmortem@^0.2.4:
   dependencies:
     source-map-support "^0.4.0"
 
-poststylus@0.2.3:
+poststylus@0.2.3, poststylus@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/poststylus/-/poststylus-0.2.3.tgz#104a9176edf89ed5dc56355004f1d8107a8e51e9"
   dependencies:
@@ -4134,7 +4099,7 @@ pug-error@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/pug-error/-/pug-error-1.3.2.tgz#53ae7d9d29bb03cf564493a026109f54c47f5f26"
 
-pug-filters@^2.1.1:
+pug-filters@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/pug-filters/-/pug-filters-2.1.1.tgz#10ab2b6d7e5aeec99cad28a1e4c8085f823fc754"
   dependencies:
@@ -4146,22 +4111,22 @@ pug-filters@^2.1.1:
     resolve "^1.1.6"
     uglify-js "^2.6.1"
 
-pug-lexer@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/pug-lexer/-/pug-lexer-3.0.0.tgz#173b00a082e5684a60eb0deb5aae4e514a172e26"
+pug-lexer@^2.3.1:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/pug-lexer/-/pug-lexer-2.3.2.tgz#68b19d96ea5dc0e4a86148b01cb966c17815a614"
   dependencies:
     character-parser "^2.1.1"
     is-expression "^3.0.0"
     pug-error "^1.3.2"
 
-pug-linker@^2.0.2:
+pug-linker@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/pug-linker/-/pug-linker-2.0.2.tgz#1deca67d741fab46b028c1366f178fbaee620233"
   dependencies:
     pug-error "^1.3.2"
     pug-walk "^1.1.1"
 
-pug-load@^2.0.5:
+pug-load@^2.0.4:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/pug-load/-/pug-load-2.0.5.tgz#eaaf46ccace8aff7461e0fad1e2b67305514f2c6"
   dependencies:
@@ -4189,15 +4154,15 @@ pug-walk@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/pug-walk/-/pug-walk-1.1.1.tgz#b9976240d213692e6993fbc13ae1205c54052efe"
 
-pug@2.0.0-beta11, "pug@>=2.0.0-beta11 <3":
-  version "2.0.0-beta11"
-  resolved "https://registry.yarnpkg.com/pug/-/pug-2.0.0-beta11.tgz#15abe6af5004c7e2cf4613e4b27465c9546b5f01"
+"pug@>=2.0.0-beta11 <3", pug@^2.0.0-beta11:
+  version "2.0.0-beta9"
+  resolved "https://registry.yarnpkg.com/pug/-/pug-2.0.0-beta9.tgz#158ec6dbace5bb78f2b25e8825477d03ea6e14b0"
   dependencies:
     pug-code-gen "^1.1.1"
-    pug-filters "^2.1.1"
-    pug-lexer "^3.0.0"
-    pug-linker "^2.0.2"
-    pug-load "^2.0.5"
+    pug-filters "^2.1.0"
+    pug-lexer "^2.3.1"
+    pug-linker "^2.0.1"
+    pug-load "^2.0.4"
     pug-parser "^2.0.2"
     pug-runtime "^2.0.3"
     pug-strip-comments "^1.0.2"
@@ -4450,11 +4415,11 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-reeeset@0.0.8:
+reeeset@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/reeeset/-/reeeset-0.0.8.tgz#ece9089bd95abe1fed56ab7ad0ffe95f8b3beccc"
 
-referential@0.5.15:
+referential@0.5.15, referential@^0.5.15:
   version "0.5.15"
   resolved "https://registry.yarnpkg.com/referential/-/referential-0.5.15.tgz#53bd7f5f9332a620d8de894ac3bfb578ff7c0366"
   dependencies:
@@ -4704,7 +4669,7 @@ ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
 
-rollup-analyzer@1.0.1:
+rollup-analyzer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/rollup-analyzer/-/rollup-analyzer-1.0.1.tgz#0b587455539646c9d6d71d28f071b32e5d4de403"
 
@@ -4827,7 +4792,7 @@ rollup@^0.36.3:
   dependencies:
     source-map-support "^0.4.0"
 
-rucksack-css@0.9.1:
+rucksack-css@^0.9.1:
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/rucksack-css/-/rucksack-css-0.9.1.tgz#da7eba4c67bd05b00cbf4c834305c5fe55375de1"
   dependencies:
@@ -4864,7 +4829,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rupture@0.6.2:
+rupture@0.6.2, rupture@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/rupture/-/rupture-0.6.2.tgz#ef4eee91711ff7af64e37f544cfc60a5c08319d3"
 
@@ -4880,7 +4845,7 @@ sax@0.5.x:
   version "0.5.8"
   resolved "https://registry.yarnpkg.com/sax/-/sax-0.5.8.tgz#d472db228eb331c2506b0e8c15524adb939d12c1"
 
-selectize@0.12.4:
+selectize@^0.12.4:
   version "0.12.4"
   resolved "https://registry.yarnpkg.com/selectize/-/selectize-0.12.4.tgz#50c697526b609dea11da153cf7252b98948f4c0e"
   dependencies:
@@ -4990,7 +4955,7 @@ shelljs@^0.7.5:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-shortcake@1.2.5, shortcake@^1.1.9:
+shortcake@^1.1.9, shortcake@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/shortcake/-/shortcake-1.2.5.tgz#683a31ca3be3ea9693694da7925ca4514e7f194a"
   dependencies:
@@ -5342,7 +5307,7 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-stylus@0.54.5:
+stylus@^0.54.5:
   version "0.54.5"
   resolved "https://registry.yarnpkg.com/stylus/-/stylus-0.54.5.tgz#42b9560931ca7090ce8515a798ba9e6aa3d6dc79"
   dependencies:
