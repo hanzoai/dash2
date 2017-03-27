@@ -514,6 +514,12 @@ cake-bundle@0.2.11:
   dependencies:
     handroll "0.12.10"
 
+cake-bundle@0.2.12:
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/cake-bundle/-/cake-bundle-0.2.12.tgz#ba3c8b8667d366b6953c7158945cc9d6f9044a09"
+  dependencies:
+    handroll "0.12.11"
+
 cake-chai@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/cake-chai/-/cake-chai-0.1.1.tgz#bf7876d1cf722a5c5db9c1cfa8c27dedd92b6666"
@@ -1056,7 +1062,11 @@ d3-color@1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.0.3.tgz#bc7643fca8e53a8347e2fbdaffa236796b58509b"
 
-d3-dispatch@1, d3-dispatch@1.0.1:
+d3-dispatch@1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/d3-dispatch/-/d3-dispatch-1.0.3.tgz#46e1491eaa9b58c358fce5be4e8bed626e7871f8"
+
+d3-dispatch@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/d3-dispatch/-/d3-dispatch-1.0.1.tgz#4bd65a43cecff4318deb9df24552aa8bf281a840"
 
@@ -2105,6 +2115,36 @@ handroll@0.12.10:
     rupture "0.6.2"
     uglify-js "git+https://github.com/mishoo/UglifyJS2.git#harmony"
 
+handroll@0.12.11:
+  version "0.12.11"
+  resolved "https://registry.yarnpkg.com/handroll/-/handroll-0.12.11.tgz#bf5a7154ae2adc4decb68ac55bf2bc7d6215b735"
+  dependencies:
+    autoprefixer "6.7.7"
+    chalk "1.1.3"
+    css-mqpacker "5.0.1"
+    filesize "3.5.6"
+    gzip-size "3.0.0"
+    lost "8.0.0"
+    lost-stylus "0.1.3"
+    magic-string "0.19.0"
+    postcss-discard-comments "2.0.4"
+    poststylus "0.2.3"
+    rollup "0.41.6"
+    rollup-plugin-commonjs "8.0.2"
+    rollup-plugin-es3 "1.0.3"
+    rollup-plugin-json "2.1.0"
+    rollup-plugin-legacy "1.0.0"
+    rollup-plugin-node-builtins "2.1.0"
+    rollup-plugin-node-globals "1.1.0"
+    rollup-plugin-node-resolve-magic "0.2.0"
+    rollup-plugin-pug "0.1.3"
+    rollup-plugin-sizes "0.3.0"
+    rollup-plugin-sourcemaps "0.4.1"
+    rollup-plugin-strip "1.1.1"
+    rollup-plugin-stylup "1.3.3"
+    rupture "0.6.2"
+    uglify-js "git+https://github.com/mishoo/UglifyJS2.git#harmony"
+
 "hanzo-home@git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git":
   version "0.1.5"
   resolved "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git#ec0cbd943385a1af60f6193478b874e3d43725d0"
@@ -2315,11 +2355,11 @@ inflight@^1.0.4, inflight@~1.0.5, inflight@~1.0.6:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@2.0.1, inherits@^2.0.1, inherits@~2.0.1:
+inherits@2, inherits@2.0.1, inherits@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
 
-inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.3:
+inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
@@ -4760,6 +4800,10 @@ rollup-plugin-strip@1.1.1:
     estree-walker "^0.2.1"
     magic-string "^0.15.0"
     rollup-pluginutils "^1.3.1"
+
+rollup-plugin-stylup@1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-stylup/-/rollup-plugin-stylup-1.3.3.tgz#97ee49bc3ef3049294972176e047c0bb358e8fd6"
 
 rollup-pluginutils@^1.3.1, rollup-pluginutils@^1.5.0, rollup-pluginutils@^1.5.2:
   version "1.5.2"
