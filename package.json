@@ -6,12 +6,12 @@
   "devDependencies": {
     "autoprefixer": "6.7.7",
     "bebop": "1.11.5",
-    "cake-bundle": "0.2.16",
+    "cake-bundle": "0.2.17",
     "cake-linked": "0.1.0",
     "cake-outdated": "0.1.16",
     "cake-publish": "0.1.10",
     "cake-test": "0.1.0",
-    "cake-version": "0.1.11",
+    "cake-version": "0.1.14",
     "clean-css": "4.0.10",
     "coffee-script": "1.12.4",
     "css-mqpacker": "5.0.1",
@@ -27,7 +27,7 @@
     "rucksack-css": "0.9.1",
     "rupture": "0.6.2",
     "selectize": "0.12.4",
-    "shortcake": "1.2.5",
+    "shortcake": "1.2.7",
     "stylus": "0.54.5"
   },
   "dependencies": {
