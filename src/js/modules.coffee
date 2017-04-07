@@ -53,52 +53,52 @@ export default modules =
 
   Fake: class Fake
     constructor: (daisho, ps, ms, cs)->
-      ms.register 'Analytics', ->
-        window.location.href = 'https://dash.hanzo.io/#analytics'
-      ms.register 'Campaign', ->
-        window.location.href = 'https://dash.hanzo.io/#campaign'
-      ms.register 'Log', ->
-        window.location.href = 'https://dash.hanzo.io/#log'
+      # ms.register 'Analytics', ->
+      #   window.location.href = 'https://dash.hanzo.io/#analytics'
+      # ms.register 'Campaign', ->
+      #   window.location.href = 'https://dash.hanzo.io/#campaign'
+      # ms.register 'Log', ->
+      #   window.location.href = 'https://dash.hanzo.io/#log'
 
-      ms.register 'Content', ->
-        window.location.href = 'https://dash.hanzo.io/#log'
-      ms.register 'Messaging', ->
-        window.location.href = 'https://dash.hanzo.io/#messaging'
-      ms.register 'Social', ->
-        window.location.href = 'https://dash.hanzo.io/#log'
+      # ms.register 'Content', ->
+      #   window.location.href = 'https://dash.hanzo.io/#log'
+      # ms.register 'Messaging', ->
+      #   window.location.href = 'https://dash.hanzo.io/#messaging'
+      # ms.register 'Social', ->
+      #   window.location.href = 'https://dash.hanzo.io/#log'
 
-      ms.register 'Email', ->
-        window.location.href = 'https://dash.hanzo.io/#email'
+      # ms.register 'Email', ->
+      #   window.location.href = 'https://dash.hanzo.io/#email'
       ms.register 'Forms', ->
         window.location.href = 'https://dash.hanzo.io/#forms'
 
       ms.register 'Sites', ->
         window.location.href = 'https://dash.hanzo.io/#sites'
-
       ms.register 'Shops', ->
         window.location.href = 'https://dash.hanzo.io/#shops'
-      ms.register 'Bundles', ->
-        window.location.href = 'https://dash.hanzo.io/#bundles'
+
+      # ms.register 'Bundles', ->
+      #   window.location.href = 'https://dash.hanzo.io/#bundles'
       ms.register 'Products', ->
         window.location.href = 'https://dash.hanzo.io/#products'
       ms.register 'Variants', ->
         window.location.href = 'https://dash.hanzo.io/#variant'
 
-      ms.register 'Payments', ->
-        window.location.href = 'https://dash.hanzo.io/#payments'
-      ms.register 'Returns', ->
-        window.location.href = 'https://dash.hanzo.io/#returns'
-      ms.register 'Disputes', ->
-        window.location.href = 'https://dash.hanzo.io/#disputes'
+      # ms.register 'Payments', ->
+      #   window.location.href = 'https://dash.hanzo.io/#payments'
+      # ms.register 'Returns', ->
+      #   window.location.href = 'https://dash.hanzo.io/#returns'
+      # ms.register 'Disputes', ->
+      #   window.location.href = 'https://dash.hanzo.io/#disputes'
 
       ms.register 'Users', ->
         window.location.href = 'https://dash.hanzo.io/#users'
-      ms.register 'Subscribers', ->
-        window.location.href = 'https://dash.hanzo.io/#subscribers'
-      ms.register 'Ambassadors', ->
-        window.location.href = 'https://dash.hanzo.io/#ambassadors'
-      ms.register 'Referrals', ->
-        window.location.href = 'https://dash.hanzo.io/#referrals'
+      # ms.register 'Subscribers', ->
+      #   window.location.href = 'https://dash.hanzo.io/#subscribers'
+      # ms.register 'Ambassadors', ->
+      #   window.location.href = 'https://dash.hanzo.io/#ambassadors'
+      # ms.register 'Referrals', ->
+      #   window.location.href = 'https://dash.hanzo.io/#referrals'
 
       ms.register 'Organization', ->
         window.location.href = 'https://dash.hanzo.io/#organization'
