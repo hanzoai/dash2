@@ -2,10 +2,27 @@ import moment from 'moment'
 import Daisho from 'daisho'
 import Home   from 'hanzo-home'
 import Orders from 'hanzo-orders'
+import akasha  from 'akasha'
 
 export default modules =
   Home: Home
   Orders: Orders
+
+  VideoChat: class VideoChat
+    constructor: (daisho, ps, ms, cs)->
+      el = null
+
+      ps.register 'videoChat',
+        ->
+          activeOrg = akasha.get 'activeOrg'
+
+          el = document.createElement 'iframe'
+          el.setAttribute 'src', 'https://talky.io/' + activeOrg
+          return el
+        ->
+          return el
+        ->
+
 
   Note: class Note
     constructor: (daisho, ps, ms, cs)->
