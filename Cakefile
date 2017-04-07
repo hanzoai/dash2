@@ -24,6 +24,7 @@ task 'build:js', 'build js', ->
     format:   'web'
     commonjs: true
     external: false
+    sourceMap: false
     compilers:
       coffee:
         version: 1
