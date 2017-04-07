@@ -12,7 +12,7 @@ export default modules =
     constructor: (daisho, ps, ms, cs)->
       el = null
 
-      ps.register 'videoChat',
+      ps.register 'video-chat',
         ->
           activeOrg = akasha.get 'activeOrg'
 
@@ -22,6 +22,9 @@ export default modules =
         ->
           return el
         ->
+
+      ms.register 'Chat', ->
+        ps.show 'video-chat'
 
 
   Note: class Note
