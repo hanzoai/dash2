@@ -26,6 +26,10 @@
     "rollup-analyzer": "1.0.2",
     "rucksack-css": "0.9.1",
     "rupture": "0.6.2",
+    "sake-bundle": "0.4.2",
+    "sake-outdated": "0.1.18",
+    "sake-publish": "0.1.10",
+    "sake-version": "0.1.16",
     "selectize": "0.12.4",
     "shortcake": "1.2.8",
     "stylus": "0.54.5"
