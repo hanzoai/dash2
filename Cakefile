@@ -1,7 +1,5 @@
-require 'shortcake'
-
-use 'cake-linked'
-use 'cake-test'
+# use 'sake-linked'
+use 'sake-test'
 use 'sake-bundle'
 use 'sake-outdated'
 use 'sake-version'
@@ -41,7 +39,7 @@ task 'build:static', 'build static assets', ->
 task 'watch', 'watch for changes and rebuild project', ['watch:js', 'watch:static']
 
 task 'watch:js', 'watch js for changes and rebuild', ->
- build = (filename) ->
+  build = (filename) ->
     return if (running 'build')
     console.log filename, 'modified'
     invoke 'build:js'
