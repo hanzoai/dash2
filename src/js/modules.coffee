@@ -25,8 +25,9 @@ export default modules =
           return el
         ->
 
-      ms.register 'Chat', ->
-        ps.show 'video-chat'
+      ms.register 'Chat',
+        icon:   'icon-chat'
+        action: -> ps.show 'video-chat'
 
 
   Note: class Note
