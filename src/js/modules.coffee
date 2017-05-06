@@ -1,12 +1,14 @@
 import moment from 'moment'
-import Daisho from 'daisho'
-import Home   from 'hanzo-home'
-import Orders from 'hanzo-orders'
-import akasha  from 'akasha'
+import Daisho   from 'daisho'
+import Home     from 'hanzo-home'
+import Orders   from 'hanzo-orders'
+import Products from 'hanzo-products'
+import akasha   from 'akasha'
 
 export default modules =
   Home: Home
   Orders: Orders
+  Products: Products
 
   VideoChat: class VideoChat
     constructor: (daisho, ps, ms, cs)->
@@ -79,8 +81,8 @@ export default modules =
 
       # ms.register 'Bundles', ->
       #   window.location.href = 'https://dash.hanzo.io/#bundles'
-      ms.register 'Products', ->
-        window.location.href = 'https://dash.hanzo.io/#products'
+      # ms.register 'Products', ->
+      #   window.location.href = 'https://dash.hanzo.io/#products'
       ms.register 'Variants', ->
         window.location.href = 'https://dash.hanzo.io/#variant'
 
