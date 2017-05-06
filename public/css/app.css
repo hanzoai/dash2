@@ -263,7 +263,6 @@ button[type=submit]{
   color:#fff;
 }
 header{
-  background:-webkit-linear-gradient(top, #2fd4a5 0%, #22d4a8 100%);
   background:linear-gradient(to bottom, #2fd4a5 0%, #22d4a8 100%);
   display:table;
   color:#fff;
@@ -344,6 +343,7 @@ header .name{
   float:left;
   padding:0 40px;
   overflow:auto;
+  position:relative;
 }
 #page > *{
   margin:20px 0;
@@ -379,7 +379,6 @@ daisho-graphics-counter .label.label{
 }
 .point{
   cursor:pointer;
-  -webkit-transition:all 200ms ease-in-out;
   transition:all 200ms ease-in-out;
 }
 .point:hover{
@@ -388,7 +387,6 @@ daisho-graphics-counter .label.label{
           animation:chart-point-pulse 3s ease-out;
   -webkit-animation-iteration-count:infinite;
           animation-iteration-count:infinite;
-  -webkit-transition:all 200ms ease-in-out;
   transition:all 200ms ease-in-out;
 }
 .point-notes{
@@ -438,7 +436,6 @@ daisho-graphics-counter .label.label{
   opacity:0.8;
   font-size:0.75em;
   padding:5px 10px;
-  -webkit-transition:opacity 200ms ease-in;
   transition:opacity 200ms ease-in;
 }
 .tip .tip-group{
@@ -597,7 +594,6 @@ daisho-graphics-counter .label.label{
   padding-top:5px;
   top:-5px;
   left:4px;
-  -webkit-transition:width 0.2s;
   transition:width 0.2s;
   min-width:210px;
 }
@@ -794,7 +790,6 @@ daisho-graphics-counter .label.label{
   color:#4f565c;
 }
 #page-login{
-  background:-webkit-radial-gradient(52% 142%, #595959 50%, #393939 100%);
   background:radial-gradient(52% 142%, #595959 50%, #393939 100%);
 }
 #page-login .content{

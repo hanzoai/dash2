@@ -53,6 +53,9 @@ m.on Daisho.Events.Change, (name, val)->
   akasha.set 'data', data.get()
   akasha.set 'settings', settings.get()
 
+  # force webkit reflow
+  document.body.offsetHeight
+
 # bootstrap
 if data.get('orgs').length > 0
   m.trigger Daisho.Events.LoginSuccess
