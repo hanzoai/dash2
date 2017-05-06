@@ -1,16 +1,16 @@
 fs       = require 'fs'
 path     = require 'path'
 
-debounce = (fn, wait = 100) ->
-  last = (new Date)
+debounce = (fn, wait = 500) ->
+  last = (new Date) - wait
   ->
     now = new Date
 
     # Return if we haven't waited long enough
-    return if (now - last) < wait
+    return if wait > (now - last)
 
-    last = now
     fn.apply null, arguments
+    last = now
 
 writeFile = (dst, content) ->
   fs.writeFile dst, content, 'utf8', (err) ->
