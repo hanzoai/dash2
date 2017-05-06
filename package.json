@@ -31,7 +31,7 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
-    "akasha": "0.1.7",
+    "akasha": "0.1.8",
     "daisho": "1.2.28",
     "debounce": "1.0.2",
     "hanzo-home": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git",
