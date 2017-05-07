@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "akasha": "^0.1.8",
-    "daisho": "^1.2.30",
+    "daisho": "1.2.33",
     "hanzo-home": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git",
     "hanzo-orders": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-orders.git",
     "hanzo-products": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-products.git",
