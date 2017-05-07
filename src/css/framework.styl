@@ -7,11 +7,14 @@
   font-size: $fontSize
   color: $textColor1
 
+  .header
+    margin-bottom: 20px
+
   .content
     border: $elementBorderWidth solid $borderColor2
     background-color: $backgroundColor1
 
-    &:not(.vertical-divider) > *
+    & > *
       display: block
       overflow: auto
       padding $elementVSpacing $elementHSpacing
@@ -19,13 +22,6 @@
 
       &:last-child
         border-bottom: 0
-
-    &(.vertical-divider) > *
-
-      border-right: $elementBorderWidth solid $borderColor2
-
-      &:last-child
-        border-right: 0
 
     .title
       color: $textColor1
