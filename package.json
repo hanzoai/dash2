@@ -4,10 +4,10 @@
   "description": "Hanzo dashboard",
   "author": "Hanzo, Inc <hi@hanzo.io>",
   "devDependencies": {
-    "autoprefixer": "7.0.1",
+    "autoprefixer": "7.1.0",
     "bebop": "^1.12.5",
-    "clean-css": "4.1.0",
-    "coffee-script": "1.12.5",
+    "clean-css": "4.1.2",
+    "coffee-script": "1.12.6",
     "css-mqpacker": "6.0.0",
     "esmangle": "1.0.1",
     "ie-love": "0.0.3",
