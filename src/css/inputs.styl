@@ -2,5 +2,15 @@ textarea-control.input.input
   .placeholder.small
     top: -12px
 
-.input.input.input:last-child:first-child
-  margin-bottom: 0
+.input.input.input
+  &:last-child:first-child
+    margin-bottom: 0
+
+  .placeholder
+    color: $placeholderColor1
+
+    &:not(.small)
+      top: 8px
+
+  input:focus + .placeholder
+    top: -6px
