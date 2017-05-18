@@ -1,6 +1,9 @@
 .table
   display: table
   width: 100%
+  border: $elementBorderWidth solid $borderColor2
+  background-color: $backgroundColor1
+  padding: 0 ($elementHSpacing / 2)
 
 .table-header
   display: table-header-group
@@ -8,15 +11,43 @@
   & > *
     display: table-cell
     vertical-align: middle
+    padding: ($elementVSpacing / 2)
 
 .table-row
   display: table-row
+  transition: background-color $transitionFast ease-in-out
 
   & > *
     display: table-cell
     height: 96px
     vertical-align: middle
+    position: relative
+
+    &:first-child:before
+      content: ''
+      height: 100%
+      left: (-1 * $elementHSpacing / 2)
+      top: 0
+      width: ($elementHSpacing / 2)
+      position: absolute
+      transition: background-color $transitionFast ease-in-out
+
+    &:last-child:after
+      content: ''
+      height: 100%
+      right: (-1 * $elementHSpacing / 2)
+      top: 0
+      width: ($elementHSpacing / 2)
+      position: absolute
+      transition: background-color $transitionFast ease-in-out
 
   &:hover
     background-color: $backgroundColor2
+
+    & > *
+      &:first-child:before
+        background-color: #eee
+
+      &:last-child:after
+        background-color: #eee
 

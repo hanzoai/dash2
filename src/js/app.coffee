@@ -34,7 +34,7 @@ m.on Daisho.Events.LoginSuccess, ->
   # hide login and try and start
   requestAnimationFrame ->
     try
-      $('#page-login').hide()
+      $('#screen-login').hide()
       dash.start()
       dash.scheduleUpdate()
     catch err

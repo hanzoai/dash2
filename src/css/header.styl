@@ -1,8 +1,21 @@
 header
-  background: linear-gradient(to bottom,#2fd4a5 0%,#22d4a8 100%)
+  background: linear-gradient(to bottom, $accentColor1 0%, $accentColor1 100%)
   display: table
   color: $textColor2
   width: 100%
+
+  .input.input
+    input
+      color: $textColor2
+      border-color: $textColor2
+
+  .selectize-control
+    .selectize-input
+      color: $textColor2 !important
+      border-color: $textColor2 !important
+
+      &:after
+        border-color: $textColor2 transparent transparent !important
 
   #org-switcher
     float: right
@@ -24,7 +37,7 @@ header
       position: absolute
       max-width: 800px
       width: 100%
-      background-color: #fff
+      background-color: $backgroundColor1
       color: $textColor1
       box-shadow: 0 1px 3px rgba(0,0,0,.1)
       cursor: pointer
