@@ -1,0 +1,34 @@
+daisho-modal
+  position: fixed
+  top: -200vh
+  left: 0
+  width: 100%
+  height: 100%
+  text-align: center
+  opacity: 0
+  background-color: $backgroundColor3
+  z-index: 100
+  transition: opacity $transitionFast ease-in-out
+
+  &.show
+    opacity: .9
+    top: 0
+
+  .modal-content
+    left: 50%
+    position: absolute
+    top: 50%
+    transform: translate(-50%, -50%)
+    color: $textColor2
+
+    & > *
+      padding ($elementVSpacing / 2) ($elementHSpacing / 2)
+
+    button
+    .button
+      background-color: transparent
+      box-shadow: none
+      transition: color $transitionFast ease-in-out
+
+      &:hover
+        color: $accentColor2
