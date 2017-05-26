@@ -1,5 +1,5 @@
-textarea-control.input.input
-  .placeholder.small
+textbox.input.input
+  .placeholder
     top: -12px
 
 .input.input.input
@@ -7,10 +7,53 @@ textarea-control.input.input
     margin-bottom: 0
 
   .placeholder
+  .label
     color: $placeholderColor1
+    transition: all $transitionFast linear
 
     &:not(.small)
       top: 8px
 
   input:focus + .placeholder
+  input:hover + .placeholder
     top: -6px
+
+checkbox-control
+  margin-top: 8px
+
+switch
+  input
+    display: none
+
+  .switch
+    height: 1.5em
+    width: 2.5em
+    margin-top: .325em
+    margin-right: 8px
+    display: block
+    float: left
+    background-color: $backgroundColor2
+    box-shadow: inset 0 1px 3px $dropShadowColor1
+    transition: all $transitionFast ease-in-out
+    cursor: pointer
+
+    .switch-slider
+      width: 1.125em
+      height: 1.125em
+      position: relative
+      top: .1875em
+      left: .1875em
+      background-color: $backgroundColor1
+      box-shadow: 0 2px 5px $dropShadowColor1
+      transition: all $transitionFast ease-in-out
+
+  input:checked + .switch
+    background-color: $accentColor2
+
+    .switch-slider
+      left: 1.1875em
+
+  .label
+    display: block
+    float: left
+    margin-top: .25em

@@ -62,4 +62,19 @@ if data.get('orgs').length > 0
 else
   dash.mount Daisho.Views.Login::tag, data: data
 
+  requestAnimationFrame ->
+    $('#screen-login .content').css 'display', 'table'
+
+# TODO: Figure out what's randomly putting focus on the body
+$(document).on 'focus', '*', (e) ->
+  if e.target._focused
+    return true
+  e.target._focused = true
+  setTimeout ()->
+    $(e.target).focus()
+    setTimeout ()->
+      e.target._focused = false
+    , 100
+  , 100
+
 export default dash
