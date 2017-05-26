@@ -30,14 +30,14 @@
   },
   "dependencies": {
     "akasha": "^0.1.9",
-    "daisho": "1.2.49",
+    "daisho": "1.2.50",
     "el-controls": "1.1.6",
     "hanzo-home": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-home.git",
     "hanzo-orders": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-orders.git",
     "hanzo-products": "git+https://c38d7e07cf2dfe1eb799785c52a75e772a520928:x-oauth-basic@github.com/hanzo-core/hanzo-products.git",
     "moment": "2.18.1",
     "moment-timezone": "0.5.13",
-    "referential": "^0.5.22"
+    "referential": "^0.5.23"
   },
   "repository": "ssh://github.com/hanzo-io/dash2",
   "private": true
