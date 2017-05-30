@@ -1,0 +1,51 @@
+.filter
+  float: right
+  width: 0
+  position: relative
+  top: $elementHeight
+
+daisho-filter-facets
+  width: 400px
+  margin-top: 5px
+  display: block
+  left: -400px
+  position: absolute
+  background-color: $backgroundColor1
+  box-shadow: 0 2px 5px $dropShadowColor1
+  z-index: 100
+  max-height: 75vh
+  overflow: auto
+  height: 0
+  padding: 0 $elementHSpacing
+  transition: all $transitionFast ease-in-out
+
+  &.open
+    height: auto
+    padding $elementVSpacing $elementHSpacing
+
+  .filter-query
+    padding-bottom: $elementVSpacing
+    display: table
+    width: 100%
+
+    .input.input.input
+      margin-bottom: 10px
+
+    button
+    .button
+      width: 100% !important
+
+      &:not(:last-child)
+        margin-bottom: 10px
+
+  .filter-facet
+    width: 100%
+    display: table
+
+    .range-facet-label
+      margin-bottom: 10px
+
+  .range-facet
+    .input.input
+      column 1/2 2 ($elementVSpacing / 2)
+
