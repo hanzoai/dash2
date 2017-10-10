@@ -15,7 +15,7 @@
 
 .table-row
   display: table-row
-  transition: background-color $transitionFast ease-in-out
+  transition: all $transitionFast ease-in-out
 
   & > *
     display: table-cell
@@ -30,7 +30,7 @@
       top: 0
       width: ($elementHSpacing / 2)
       position: absolute
-      transition: background-color $transitionFast ease-in-out
+      transition: all $transitionFast ease-in-out
 
     &:last-child:after
       content: ''
@@ -39,15 +39,16 @@
       top: 0
       width: ($elementHSpacing / 2)
       position: absolute
-      transition: background-color $transitionFast ease-in-out
+      transition: all $transitionFast ease-in-out
 
   &:hover
-    background-color: $backgroundColor2
+    background-color: $accentColor1
+    color: $textColor2
 
     & > *
       &:first-child:before
-        background-color: #eee
+        background-color: $accentColor1
 
       &:last-child:after
-        background-color: #eee
+        background-color: $accentColor1
 

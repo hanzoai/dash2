@@ -1,14 +1,16 @@
-import moment from 'moment'
-import Daisho   from 'daisho'
-import Home     from 'hanzo-home'
-import Orders   from 'hanzo-orders'
-import Products from 'hanzo-products'
-import akasha   from 'akasha'
+import moment    from 'moment'
+import Daisho    from 'daisho'
+import Home      from 'hanzo-home'
+import Orders    from 'hanzo-orders'
+import Products  from 'hanzo-products'
+import Marketing from 'hanzo-marketing'
+import akasha    from 'akasha'
 
 export default modules =
   Home: Home
   Orders: Orders
   Products: Products
+  Marketing: Marketing
 
   VideoChat: class VideoChat
     constructor: (daisho, ps, ms, cs)->
