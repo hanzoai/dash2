@@ -1,6 +1,5 @@
 import Daisho  from 'daisho'
 import Promise from 'broken'
-import moment  from 'moment-timezone'
 import numeral from 'numeral'
 import { isRequired } from 'daisho/src/views/middleware'
 
@@ -8,9 +7,6 @@ import html1 from './templates/products.pug'
 import html2 from './templates/product.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
-
-rfc3339  =  Daisho.util.time.rfc3339
-yyyymmdd =  Daisho.util.time.yyyymmdd
 
 class HanzoProducts extends Daisho.Views.Dynamic
   tag: 'hanzo-products'
