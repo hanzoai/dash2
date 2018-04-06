@@ -1,4 +1,4 @@
-import Daisho  from 'daisho'
+import Daisho  from 'daisho/src/index'
 import akasha  from 'akasha'
 import refer   from 'referential'
 

@@ -1,4 +1,4 @@
-import Daisho  from 'daisho'
+import Daisho  from 'daisho/src'
 import Promise from 'broken'
 import moment  from 'moment-timezone'
 import numeral from 'numeral'
@@ -6,8 +6,8 @@ import numeral from 'numeral'
 import html from './templates/home.pug'
 import css  from './css/app.styl'
 
-rfc3339  =  Daisho.util.time.rfc3339
-yyyymmdd =  Daisho.util.time.yyyymmdd
+rfc3339  =  Daisho.utils.date.rfc3339
+yyyymmdd =  Daisho.utils.date.yyyymmdd
 
 class HanzoHome extends Daisho.Views.Dynamic
   tag: 'hanzo-home'

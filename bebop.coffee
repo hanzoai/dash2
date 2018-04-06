@@ -17,6 +17,8 @@ writeFile = (dst, content) ->
     console.error err if err?
 
 compilePug = (src, dst) ->
+  return if src.match /modules/
+
   filename = path.basename src
   return if filename.charAt(0) == '_'
 

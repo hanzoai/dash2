@@ -22,6 +22,6 @@
     .table-cell(onclick='{ parent.show("product", data.get("id")) }') { data.get('name') }
     .table-cell(onclick='{ parent.show("product", data.get("id")) }') { data.get('slug') }
     .table-cell(onclick='{ parent.show("product", data.get("id")) }') { data.get('sku') }
-    .table-cell(onclick='{ parent.show("product", data.get("id")) }') { util.currency.decimalFromCents(data.get('currency'), data.get('price')) }
-    .table-cell(onclick='{ parent.show("product", data.get("id")) }') { util.time.moment(data.get('createdAt')).format(util.time.yyyymmdd) }
-    .table-cell(onclick='{ parent.show("product", data.get("id")) }') { util.time.moment(data.get('updatedAt')).fromNow() }
+    .table-cell(onclick='{ parent.show("product", data.get("id")) }') { utils.currency.renderCurrency(data.get('currency'), data.get('price')) }
+    .table-cell(onclick='{ parent.show("product", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }
+    .table-cell(onclick='{ parent.show("product", data.get("id")) }') { utils.date.moment(data.get('updatedAt')).fromNow() }

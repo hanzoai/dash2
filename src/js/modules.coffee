@@ -1,8 +1,7 @@
-import moment    from 'moment'
-import Daisho    from 'daisho'
-import Home      from './hanzo-home'
+import Daisho    from 'daisho/src'
+import Home      from '../../modules/hanzo-home'
 # import Orders    from 'hanzo-orders'
-import Products  from './hanzo-products'
+import Products  from '../../modules/hanzo-products'
 # import Marketing from 'hanzo-marketing'
 import akasha    from 'akasha'
 
@@ -37,7 +36,7 @@ export default modules =
       cs.register 'note.add', '<message> <optional timestamp>',  (message, time)->
         opts =
           message:  message
-          time:     moment(time).format Daisho.util.time.rfc3339
+          time:     Daisho.utils.date.renderJSONDate time
           source:   'dashboard'
           enabled:  true
 

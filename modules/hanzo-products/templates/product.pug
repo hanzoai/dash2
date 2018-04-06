@@ -1,6 +1,6 @@
 .header.content
   div
-    text.input(lookup='name', placeholder='Name')
+    text.input(bind='name', label='Name')
     button.submit(onclick='{ showSave }') Save
     button(onclick='{ showReset }') Reset
 
@@ -11,10 +11,10 @@
     .form-section
       h4 Display
       .form-group.two-inputs
-        text.input(lookup='slug', placeholder='Slug')
-        text.input(lookup='sku',  placeholder='SKU')
+        text.input(bind='slug', label='Slug')
+        text.input(bind='sku',  label='SKU')
       .form-group
-        textbox.input(lookup='description', placeholder='Description')
+        textbox.input(bind='description', label='Description')
     .form-section
       h4 Images
       form-group.three-images
@@ -30,25 +30,25 @@
     .form-section
       h4 Price
       .form-group.two-inputs
-        currency.input(lookup='price',     placeholder='Price')
-        currency.input(lookup='listPrice', placeholder='Compare Price')
+        currency.input(bind='price',     label='Price')
+        currency.input(bind='listPrice', label='Compare Price')
       h4 Inventory
       .form-group.two-inputs
-        switch.input(lookup='available', label='In Stock')
-        switch.input(lookup='preorder',  label='In Preorder')
-        switch.input(lookup='hidden',    label='Hidden')
-        // text.input(lookup='quantity', placeholder='Quantity')
+        switch.input(bind='available', label='In Stock')
+        switch.input(bind='preorder',  label='In Preorder')
+        switch.input(bind='hidden',    label='Hidden')
+        // text.input(bind='quantity', label='Quantity')
     .form-section
       h4 Shipping
       .form-group.four-inputs.dimensions
-        numeric.input(lookup='dimensions.length',     placeholder='Length')
-        numeric.input(lookup='dimensions.width',      placeholder='Width')
-        numeric.input(lookup='dimensions.height',     placeholder='Height')
-        select-control.input(lookup='dimensionsUnit', placeholder='Unit', select-options='{ dimensionsUnits }')
+        numeric.input(bind='dimensions.length',     label='Length')
+        numeric.input(bind='dimensions.width',      label='Width')
+        numeric.input(bind='dimensions.height',     label='Height')
+        select-control.input(bind='dimensionsUnit', label='Unit', select-options='{ dimensionsUnits }')
       .form-group.quarter-quarter-half-inputs
-        numeric.input(lookup='weight', placeholder='Weight')
-        select-control.input(lookup='weightUnit', placeholder='Units', select-options='{ weightUnits }')
-        text.input(lookup='estimatedDelivery', placeholder='Estimated Delivery')
+        numeric.input(bind='weight', label='Weight')
+        select-control.input(bind='weightUnit', label='Units', select-options='{ weightUnits }')
+        text.input(bind='estimatedDelivery', label='Estimated Delivery')
 
 daisho-modal.reset(class='{ show: showResetModal }')
   .modal-title

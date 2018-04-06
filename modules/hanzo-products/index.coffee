@@ -1,4 +1,4 @@
-import Daisho  from 'daisho'
+import Daisho  from 'daisho/src'
 import Promise from 'broken'
 import numeral from 'numeral'
 import { isRequired } from 'daisho/src/views/middleware'
