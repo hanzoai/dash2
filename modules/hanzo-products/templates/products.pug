@@ -1,4 +1,4 @@
-.header.content
+.header.content.m-card
   div
     h2 { data.get('count') || 'No' } Products { data.get('count') ? '' : 'Found'  }
     div.filter
@@ -12,7 +12,7 @@
       class='{ open: openFilter }'
       onclick='{ toggleFilterMenu }') Filter
 
-.tables(if='{ data.get("count") }')
+.tables.m-card(if='{ data.get("count") }')
   daisho-table.table(
   table-columns='{ headers }'
   table-field='products')

@@ -1,31 +1,19 @@
-.screen
-  width: 100vw
-  height: 100vh
-  position: absolute
-  left: 0
-  top: 0
-  font-size: $fontSize
-  color: $textColor1
+@require 'el-controls/src/css/theme'
+@require 'buttons'
+@require 'inputs'
+@require 'header'
+@require 'layout'
+@require 'menu'
+@require 'main'
+@require 'misc'
+@require 'modal'
+@require 'form'
+@require 'filters'
+@require 'counter'
+@require 'chart'
+@require 'table'
+@require 'tooltip'
+@require 'date-range-picker'
 
-  .header
-    margin-bottom: 20px
-
-  .content
-    background-color: $backgroundColor1
-    box-shadow: 0 2px 5px $dropShadowColor1
-
-    & > *
-      display: block
-      overflow: visible
-      display: table
-      width: 100%
-      padding $elementVSpacing $elementHSpacing
-      border-bottom: $elementBorderWidth solid $borderColor2
-
-      &:last-child
-        border-bottom: 0
-
-    .title
-      color: $textColor1
-      background-color: $backgroundColor2
+@require 'screen-login'
 

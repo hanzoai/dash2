@@ -4,6 +4,7 @@
   background-color: $backgroundColor1
   padding: 0 ($elementHSpacing / 2)
   box-shadow: 0 2px 5px $dropShadowColor1
+  padding: $elementVSpacing 0
 
 .table-header
   display: table-header-group
@@ -12,6 +13,12 @@
     display: table-cell
     vertical-align: middle
     padding: ($elementVSpacing / 2)
+
+    &:first-child
+      padding-left: $elementHSpacing !important
+
+    &:last-child
+      padding-right: $elementHSpacing !important
 
 .table-row
   display: table-row
@@ -23,32 +30,12 @@
     vertical-align: middle
     position: relative
 
-    &:first-child:before
-      content: ''
-      height: 100%
-      left: (-1 * $elementHSpacing / 2)
-      top: 0
-      width: ($elementHSpacing / 2)
-      position: absolute
-      transition: all $transitionFast ease-in-out
+    &:first-child
+      padding-left: $elementHSpacing !important
 
-    &:last-child:after
-      content: ''
-      height: 100%
-      right: (-1 * $elementHSpacing / 2)
-      top: 0
-      width: ($elementHSpacing / 2)
-      position: absolute
-      transition: all $transitionFast ease-in-out
+    &:last-child
+      padding-right: $elementHSpacing !important
 
   &:hover
     background-color: $accentColor1
     color: $textColor2
-
-    & > *
-      &:first-child:before
-        background-color: $accentColor1
-
-      &:last-child:after
-        background-color: $accentColor1
-

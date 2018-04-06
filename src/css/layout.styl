@@ -1,0 +1,72 @@
+.screen
+  width: 100vw
+  height: 100vh
+  position: absolute
+  left: 0
+  top: 0
+  font-size: $fontSize
+  color: $textColor1
+
+  .header
+    margin-bottom: $spacing * 4
+    overflow: visible
+
+  .content
+    background-color: $backgroundColor1
+    box-shadow: 0 2px 5px $dropShadowColor1
+
+    & > *
+      display: block
+      overflow: visible
+      display: table
+      width: 100%
+      padding $elementVSpacing $elementHSpacing
+      border-bottom: $elementBorderWidth solid $borderColor2
+
+      &:last-child
+        border-bottom: 0
+
+    .title
+      color: $textColor1
+      background-color: $backgroundColor2
+
+.columns
+  display: box
+  display: flexbox
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+
+  &.flex-wrap
+  &.wrap
+    flex-wrap: wrap
+
+    & > *
+      flex: initial
+
+  & > *
+    flex: 1
+
+  +below($phoneWidth)
+    flex-direction: column
+
+.flex-rows
+.rows
+  display: box
+  display: flexbox
+  display: flex
+  flex-direction: columns
+  justify-content: flex-start
+  align-items: center
+
+  &.flex-wrap
+  &.wrap
+    flex-wrap: wrap
+
+    & > *
+      flex: initial
+
+  & > *
+    flex: 1
+

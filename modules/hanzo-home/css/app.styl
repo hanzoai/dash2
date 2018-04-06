@@ -1,3 +1,5 @@
+$spacing = .5rem
+
 hanzo-home
   daisho-graphics-chart
     display: table
@@ -6,30 +8,31 @@ hanzo-home
       padding: 0
       margin: 0
 
-  .counters
-    display: table
-    width: 100%
-
-  daisho-graphics-counter
-    display: table
-    column 1/4 4 20px
-    margin-bottom: 20px
-
   .header
-    margin-bottom: 20px
-
     & > *
       display: table
       width: 100%
-      padding: 10px 20px
+      padding: $spacing * 1.25 $spacing * 2.5
 
     h2
       line-height: 1.4em
       float: left
 
-  .counters
-    margin-bottom: 20px
-
   date-range-picker-control
     display: table
     float: right
+
+  .charts
+    margin: 0 0 $spacing * 4
+
+    & > *
+      width: 100%
+
+  .counters
+    margin: 0 $spacing * -2
+    align-items: flex-start
+
+    & > *
+      margin: 0 $spacing * 2
+
+
