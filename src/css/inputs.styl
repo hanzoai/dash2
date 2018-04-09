@@ -1,12 +1,5 @@
-textbox.input.input.input
-  .placeholder.placeholder.placeholder
-    top: -12px
-    font-size: 0.75em
-    line-height: 1em
-
 .input .placeholder
   color: $placeholderColor1
-  top: 8px
 
 .input.input.input
   &:last-child:first-child
@@ -16,17 +9,10 @@ textbox.input.input.input
     color: $placeholderColor1
     transition: all $transitionFast linear
 
-    &:not(.small)
-      top: 8px
+switch.input.input.input
+  display: flex
+  align-items: center
 
-  input:focus + .placeholder
-  input:hover + .placeholder
-    top: -6px
-
-checkbox-control
-  margin-top: 8px
-
-switch
   input
     display: none
 
@@ -58,7 +44,9 @@ switch
     .switch-slider
       left: 1.1875em
 
-  .label
+  .label.label.label.label
     display: block
-    float: left
-    margin-top: .25em
+    position: relative
+    top: 0
+    left: 0
+    font-size: 1rem

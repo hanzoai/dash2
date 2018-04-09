@@ -1,25 +1,33 @@
-.form-content
+.form-content.form-content.form-content
   background-color: $backgroundColor1
-  display: table
   width: 100%
-  margin-bottom: 20px
-  box-shadow: 0 2px 5px $dropShadowColor1
+  margin-bottom: $spacing * 4
 
   & > *
-    display: block
-    overflow: auto
     padding $elementVSpacing $elementHSpacing
 
   .form-title
     color: $textColor1
     // background-color: $backgroundColor2
     border-bottom: $elementBorderWidth solid $borderColor2
+    display: table
 
   .form-group
-    display: table
     width: 100%
 
   .form-section, .form-group
     h1, h2, h3, h4, h5, p
-      margin-bottom: 20px
+      margin: $spacing * 2 0 $spacing * 1
 
+  .m-card-body
+    margin: 0
+
+.columns
+  &.form-part
+  &.form-group
+  &.form-section
+    margin: 0 $spacing * -2 $spacing * 2
+    align-items: flex-start
+
+    & > *
+      margin: 0 $spacing * 2

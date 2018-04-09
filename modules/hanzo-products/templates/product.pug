@@ -1,53 +1,67 @@
-.header.content
+.header.m-card.content
   div
     text.input(bind='name', label='Name')
     button.submit(onclick='{ showSave }') Save
     button(onclick='{ showReset }') Reset
 
-.form-content.form-1
-  .form-title
+.form-content.m-card
+  .form-title.m-card-header
     h2 Product Information
-  .form-part
+  .form-part.m-card-body
     .form-section
-      h4 Display
-      .form-group.two-inputs
+      .form-group.columns
         text.input(bind='slug', label='Slug')
         text.input(bind='sku',  label='SKU')
-      .form-group
+      .form-group.columns
         textbox.input(bind='description', label='Description')
-    .form-section
-      h4 Images
-      form-group.three-images
-        // image-drop-control
-        img(src='/img/hero-prod.png')
-        img(src='/img/charging-case.png')
-        img.tractor-beam(src='/img/add-photo.png')
 
-.form-content.form-2
-  .form-title
-    h2 Pricing and Availability
-  .form-part
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Images
+  .form-part.m-card-body
     .form-section
-      h4 Price
-      .form-group.two-inputs
-        currency.input(bind='price',     label='Price')
-        currency.input(bind='listPrice', label='Compare Price')
-      h4 Inventory
-      .form-group.two-inputs
+      .form-group.columns.uploaded-images
+        // image-drop-control
+        .uploaded-image
+          img(src='/img/hero-prod.png')
+        .uploaded-image
+          img(src='/img/charging-case.png')
+        .uploaded-image
+          img.tractor-beam(src='/img/add-photo.png')
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Pricing
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        currency.input(bind='price',     label='Price',         currency='{ data.get("currency")}')
+        currency.input(bind='listPrice', label='Compare Price', currency='{ data.get("currency")}')
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Availability
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
         switch.input(bind='available', label='In Stock')
         switch.input(bind='preorder',  label='In Preorder')
         switch.input(bind='hidden',    label='Hidden')
-        // text.input(bind='quantity', label='Quantity')
+          // text.input(bind='quantity', label='Quantity')
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Shipping
+  .form-part.m-card-body
     .form-section
-      h4 Shipping
-      .form-group.four-inputs.dimensions
+      .form-group.columns.dimensions
         numeric.input(bind='dimensions.length',     label='Length')
         numeric.input(bind='dimensions.width',      label='Width')
         numeric.input(bind='dimensions.height',     label='Height')
-        select-control.input(bind='dimensionsUnit', label='Unit', select-options='{ dimensionsUnits }')
-      .form-group.quarter-quarter-half-inputs
+        selection.input(bind='dimensionsUnit', label='Unit', select-options='{ dimensionsUnits }')
+      .form-group.columns
         numeric.input(bind='weight', label='Weight')
-        select-control.input(bind='weightUnit', label='Units', select-options='{ weightUnits }')
+        selection.input(bind='weightUnit', label='Units', select-options='{ weightUnits }')
         text.input(bind='estimatedDelivery', label='Estimated Delivery')
 
 daisho-modal.reset(class='{ show: showResetModal }')
