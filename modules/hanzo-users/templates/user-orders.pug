@@ -1,0 +1,13 @@
+#{ 'yield' }(from='table-body')
+  p(if='{ !data.get(countField) }') No { name } Found
+  .tables(if='{ data.get(countField) }')
+    daisho-table.table(
+    table-columns='{ headers }'
+    table-field='{ resultsField }')
+      #{ 'yield' }
+        .table-cell(onclick='{ parent.show("order", data.get("id")) }') { data.get('number') }
+        .table-cell(onclick='{ parent.show("order", data.get("id")) }') {
+        utils.currency.renderCurrency(data.get('currency'), data.get('total')) } { data.get('currency').toUpperCase() }
+        .table-cell(onclick='{ parent.show("order", data.get("id")) }') { data.get('paymentStatus') }
+        .table-cell(onclick='{ parent.show("order", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }
+        .table-cell(onclick='{ parent.show("order", data.get("id")) }') { utils.date.moment(data.get('updatedAt')).fromNow() }

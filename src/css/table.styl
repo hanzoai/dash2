@@ -2,9 +2,17 @@
   display: table
   width: 100%
   background-color: $backgroundColor1
-  padding: 0 ($elementHSpacing / 2)
-  box-shadow: 0 2px 5px $dropShadowColor1
   padding: $elementVSpacing 0
+
+// borders
+.table-header
+.table-row
+  & > *
+    border-bottom: 1px solid rgba(0,0,0,0.12)
+
+  &:last-child
+    & > *
+      border-bottom: 0
 
 .table-header
   display: table-header-group
@@ -13,6 +21,7 @@
     display: table-cell
     vertical-align: middle
     padding: ($elementVSpacing / 2)
+    cursor: default
 
     &:first-child
       padding-left: $elementHSpacing !important
@@ -39,3 +48,16 @@
   &:hover
     background-color: $accentColor1
     color: $textColor2
+
+.table-load-more
+  margin-top:  2rem
+
+  button
+  .button
+    line-height: 4rem
+
+.table-row
+  cursor: pointer
+
+.table-cell
+  padding: $spacing * 2

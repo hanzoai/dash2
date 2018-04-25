@@ -45,16 +45,25 @@ m.on Daisho.Events.Logout, ->
   akasha.remove 'orgs'
   akasha.remove 'account'
 
+updateTimeoutID = null
+
 # whenever a field updates
 m.on Daisho.Events.Change, (name, val)->
   if name == 'activeOrg'
     akasha.set name, val
 
-  akasha.set 'data', data.get()
-  akasha.set 'settings', settings.get()
+  if updateTimeoutID
+    return
+  else
+    updateTimeoutID = requestAnimationFrame ->
+      akasha.set 'data', data.get()
+      akasha.set 'settings', settings.get()
 
-  # force webkit reflow
-  document.body.offsetHeight
+      # force webkit reflow
+      document.body.offsetHeight
+
+      updateTimeoutID = null
+    return
 
 # bootstrap
 if data.get('orgs').length > 0

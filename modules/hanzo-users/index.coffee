@@ -3,41 +3,47 @@ import Promise from 'broken'
 import numeral from 'numeral'
 import { isRequired } from 'daisho/src/views/middleware'
 
-import html1 from './templates/products.pug'
-import html2 from './templates/product.pug'
+import html1 from './templates/users.pug'
+import html2 from './templates/user.pug'
+import html3 from './templates/user-orders.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
 
-class HanzoProducts extends Daisho.Views.HanzoDynamicTable
-  tag: 'hanzo-products'
+class HanzoUsers extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-users'
   html: html1
   css:  css
 
-  name: 'Products'
+  name: 'Users'
 
+  configs:
+    'filter': []
+
+  initialized: false
+  loading: false
+
+  # a map of all the range facets that should use currency instead of numeric
+  facetCurrency:
+    price: true
+    listPrice: true
+    inventoryCost: true
+
+  # table header configuration
   headers: [
     # {
     #   name: 'Image'
     #   field: 'Slug'
     # },
     {
+      name: 'Email'
+      field: 'Email'
+    },
+    {
       name: 'Name'
-      field: 'Name'
+      field: 'FirstName'
     },
     {
-      name: 'Slug'
-      field: 'Slug'
-    },
-    {
-      name: 'SKU'
-      field: 'SKU'
-    },
-    {
-      name: 'Price'
-      field: 'Price'
-    },
-    {
-      name: 'Created On'
+      name: 'Registered On'
       field: 'CreatedAt'
     },
     {
@@ -46,19 +52,21 @@ class HanzoProducts extends Daisho.Views.HanzoDynamicTable
     }
   ]
 
+  openFilter: false
+
   init: ->
     super
 
   create: ()->
-    @services.page.show 'product', ''
+    @services.page.show 'user', ''
 
   list: (opts) ->
-    return @client.product.list opts
+    return @client.user.list opts
 
-HanzoProducts.register()
+HanzoUsers.register()
 
-class HanzoProduct extends Daisho.Views.Dynamic
-  tag: 'hanzo-product'
+class HanzoUser extends Daisho.Views.Dynamic
+  tag: 'hanzo-user'
   html: html2
   css:  css
   _dataStaleField:  'id'
@@ -86,10 +94,9 @@ class HanzoProduct extends Daisho.Views.Dynamic
     lb: 'lb'
 
   configs:
-    slug:        [isRequired]
-    name:        [isRequired]
-    price:       [isRequired]
-    listPrice:   [isRequired]
+    firstName:   [isRequired]
+    email:       [isRequired]
+    enabled:     [isRequired]
 
   init: ->
     super
@@ -118,7 +125,7 @@ class HanzoProduct extends Daisho.Views.Dynamic
       return true
 
     @loading = true
-    return @client.product.get(id).then (res)=>
+    return @client.user.get(id).then (res)=>
       @cancelModals()
       @loading = false
       @data.set res
@@ -190,7 +197,7 @@ class HanzoProduct extends Daisho.Views.Dynamic
       api = 'update'
 
     @loading = true
-    @client.product[api](data).then (res)=>
+    @client.user[api](data).then (res)=>
       @cancelModals()
       @loading = false
       @data.set res
@@ -200,16 +207,85 @@ class HanzoProduct extends Daisho.Views.Dynamic
       @loading = false
       @showMessage err
 
-HanzoProduct.register()
+HanzoUser.register()
 
-export default class Products
+class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-user-orders'
+  html: html3
+  css:  css
+
+  display: 100
+
+  name: 'Orders'
+
+  configs:
+    'filter': []
+
+  initialized: false
+  loading: false
+
+  # count field name
+  countField: 'orders.count'
+
+  # results field name
+  resultsField: 'orders.results'
+
+  # a map of all the range facets that should use currency instead of numeric
+  facetCurrency:
+    price: true
+    listPrice: true
+    inventoryCost: true
+
+  # table header configuration
+  headers: [
+    # {
+    #   name: 'Image'
+    #   field: 'Slug'
+    # },
+    {
+      name: 'Number'
+      field: 'Number'
+    },
+    {
+      name: 'Total'
+      field: 'Total'
+    },
+    {
+      name: 'Status'
+      field: 'PaymentStatus'
+    },
+    {
+      name: 'Created On'
+      field: 'CreatedAt'
+    },
+    {
+      name: 'Last Updated'
+      field: 'UpdatedAt'
+    }
+  ]
+
+  init: ->
+    super
+
+  doLoad: ->
+    return !!@data.get('id')
+
+  getFacetQuery: ->
+    return @data.get('id')
+
+  list: (opts) ->
+    return @client.order.list opts
+
+HanzoUserOrders.register()
+
+export default class Users
   constructor: (daisho, ps, ms, cs)->
     tag = null
     opts = {}
 
-    ps.register 'products',
+    ps.register 'users',
       ->
-        @el = el = document.createElement 'hanzo-products'
+        @el = el = document.createElement 'hanzo-users'
 
         tag = (daisho.mount el)[0]
         return el
@@ -218,10 +294,10 @@ export default class Products
         return @el
       ->
 
-    ps.register 'product',
+    ps.register 'user',
       (ps, id)->
         opts.id = id if id?
-        @el = el = document.createElement 'hanzo-product'
+        @el = el = document.createElement 'hanzo-user'
 
         tag = (daisho.mount el)[0]
         tag.data.set 'id', opts.id
@@ -233,5 +309,5 @@ export default class Products
         return @el
       ->
 
-    ms.register 'Products', ->
-      ps.show 'products'
+    ms.register 'Users', ->
+      ps.show 'users'

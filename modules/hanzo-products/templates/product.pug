@@ -1,33 +1,34 @@
-.header.m-card.content
-  div
-    text.input(bind='name', label='Name')
-    button.submit(onclick='{ showSave }') Save
-    button(onclick='{ showReset }') Reset
-
 .form-content.m-card
   .form-title.m-card-header
     h2 Product Information
   .form-part.m-card-body
     .form-section
       .form-group.columns
+        text.input(bind='name', label='Name')
+    .form-section
+      .form-group.columns
         text.input(bind='slug', label='Slug')
         text.input(bind='sku',  label='SKU')
       .form-group.columns
         textbox.input(bind='description', label='Description')
-
-.form-content.m-card
-  .form-title.m-card-header
-    h2 Images
   .form-part.m-card-body
-    .form-section
-      .form-group.columns.uploaded-images
-        // image-drop-control
-        .uploaded-image
-          img(src='/img/hero-prod.png')
-        .uploaded-image
-          img(src='/img/charging-case.png')
-        .uploaded-image
-          img.tractor-beam(src='/img/add-photo.png')
+    .form-section.columns
+      button.submit(onclick='{ showSave }') Save
+      button(onclick='{ showReset }') Reset
+
+// .form-content.m-card
+//   .form-title.m-card-header
+//     h2 Images
+//   .form-part.m-card-body
+//     .form-section
+//       .form-group.columns.uploaded-images
+//         // image-drop-control
+//         .uploaded-image
+//           img(src='/img/hero-prod.png')
+//         .uploaded-image
+//           img(src='/img/charging-case.png')
+//         .uploaded-image
+//           img.tractor-beam(src='/img/add-photo.png')
 
 .form-content.m-card
   .form-title.m-card-header
@@ -37,6 +38,10 @@
       .form-group.columns
         currency.input(bind='price',     label='Price',         currency='{ data.get("currency")}')
         currency.input(bind='listPrice', label='Compare Price', currency='{ data.get("currency")}')
+  .form-part.m-card-body
+    .form-section.columns
+      button.submit(onclick='{ showSave }') Save
+      button(onclick='{ showReset }') Reset
 
 .form-content.m-card
   .form-title.m-card-header
@@ -48,6 +53,10 @@
         switch.input(bind='preorder',  label='In Preorder')
         switch.input(bind='hidden',    label='Hidden')
           // text.input(bind='quantity', label='Quantity')
+  .form-part.m-card-body
+    .form-section.columns
+      button.submit(onclick='{ showSave }') Save
+      button(onclick='{ showReset }') Reset
 
 .form-content.m-card
   .form-title.m-card-header
@@ -63,6 +72,10 @@
         numeric.input(bind='weight', label='Weight')
         selection.input(bind='weightUnit', label='Units', select-options='{ weightUnits }')
         text.input(bind='estimatedDelivery', label='Estimated Delivery')
+  .form-part.m-card-body
+    .form-section.columns
+      button.submit(onclick='{ showSave }') Save
+      button(onclick='{ showReset }') Reset
 
 daisho-modal.reset(class='{ show: showResetModal }')
   .modal-title

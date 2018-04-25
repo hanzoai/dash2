@@ -1,13 +1,15 @@
 import Daisho    from 'daisho/src'
 import Home      from '../../modules/hanzo-home'
-# import Orders    from 'hanzo-orders'
+import Orders    from '../../modules/hanzo-orders'
 import Products  from '../../modules/hanzo-products'
+import Users     from '../../modules/hanzo-users'
 # import Marketing from 'hanzo-marketing'
 import akasha    from 'akasha'
 
 export default modules =
   Home: Home
-  # Orders: Orders
+  Users: Users
+  Orders: Orders
   Products: Products
   # Marketing: Marketing
 
@@ -29,7 +31,6 @@ export default modules =
       ms.register 'Chat',
         icon:   'icon-chat'
         action: -> ps.show 'video-chat'
-
 
   Note: class Note
     constructor: (daisho, ps, ms, cs)->
