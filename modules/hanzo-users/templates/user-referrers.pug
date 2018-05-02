@@ -1,0 +1,9 @@
+#{ 'yield' }(from='table-body')
+  p(if='{ !data.get(countField) }') No { name } Found
+  .tables(if='{ data.get(countField) }')
+    daisho-table.table(
+    table-columns='{ headers }'
+    table-field='{ resultsField }')
+      #{ 'yield' }
+        .table-cell(onclick='{ parent.show("referrer", data.get("id")) }') { data.get('id') }
+        .table-cell(onclick='{ parent.show("referrer", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }

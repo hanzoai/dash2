@@ -95,3 +95,5 @@ module.exports =
     coffee: -> false
     pug:    debounce compilePug
     styl:   debounce compileStylus
+
+  page404: 'public/index.html'

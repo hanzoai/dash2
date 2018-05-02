@@ -18,6 +18,17 @@
 
 .form-content.m-card
   .form-title.m-card-header
+    h2 User Information
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        copy.input(text='{ getResetPassword }', label='Password Appears Here')
+  .form-part.m-card-body
+    .form-section.columns
+      button.submit(onclick='{ showResetPassword }') Reset Password
+
+.form-content.m-card
+  .form-title.m-card-header
     h2 Affiliate Marketing
   .form-part.m-card-body
     .form-section
@@ -35,7 +46,17 @@
 .form-content.m-card
   .form-title.m-card-header
     h2 Orders
-  hanzo-user-orders.m-card-body
+  hanzo-user-orders.m-card-body.no-padding
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Referral Programs
+  hanzo-user-referrers.m-card-body.no-padding
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Referrals
+  hanzo-user-referrals.m-card-body.no-padding
 
 daisho-modal.reset(class='{ show: showResetModal }')
   .modal-title
@@ -57,4 +78,12 @@ daisho-modal.failed(class='{ show: showMessageModal }')
   .modal-title
     h4 { message }
   .modal-section
+    button(onclick='{ cancelModals }') Ok
+
+daisho-modal.failed(class='{ show: showResetPasswordModal }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to reset this user's password?
+    h4(if='{ loading }') Resetting Password...
+  .modal-section
+    button(onclick='{ resetPassword }') Yes
     button(onclick='{ cancelModals }') Ok

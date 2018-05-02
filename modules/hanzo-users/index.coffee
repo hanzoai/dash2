@@ -6,6 +6,8 @@ import { isRequired } from 'daisho/src/views/middleware'
 import html1 from './templates/users.pug'
 import html2 from './templates/user.pug'
 import html3 from './templates/user-orders.pug'
+import html4 from './templates/user-referrers.pug'
+import html5 from './templates/user-referrals.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
 
@@ -71,8 +73,10 @@ class HanzoUser extends Daisho.Views.Dynamic
   css:  css
   _dataStaleField:  'id'
   showResetModal: false
+  showResetPasswordModal: false
   showSaveModal: false
   showMessageModal: false
+  password: null
 
   loading: false
 
@@ -125,7 +129,7 @@ class HanzoUser extends Daisho.Views.Dynamic
       return true
 
     @loading = true
-    return @client.user.get(id).then (res)=>
+    return @client.user.get(id).then (res) =>
       @cancelModals()
       @loading = false
       @data.set res
@@ -137,6 +141,22 @@ class HanzoUser extends Daisho.Views.Dynamic
   reset: ()->
     @_refresh().then ()=>
       @showMessage 'Reset!'
+
+  resetPassword: ->
+    @loading = true
+    @scheduleUpdate()
+
+    @client.user.resetPassword(@data.get('id')).then (res) =>
+      @cancelModals()
+      @password = res.password
+      @loading = false
+      @scheduleUpdate()
+    .catch (err)=>
+      @loading = false
+      @showMessage err
+
+  getResetPassword: ->
+    return @password ? ''
 
   # save by using submit to validate inputs
   save: ()->
@@ -173,6 +193,12 @@ class HanzoUser extends Daisho.Views.Dynamic
     @showResetModal = true
     @scheduleUpdate()
 
+  # show the reset password
+  showResetPassword: ()->
+    @cancelModals()
+    @showResetPasswordModal = true
+    @scheduleUpdate()
+
   # show the save modal
   showSave: ()->
     @cancelModals()
@@ -183,6 +209,7 @@ class HanzoUser extends Daisho.Views.Dynamic
   cancelModals: ()->
     clearTimeout @messageTimeoutId
     @showResetModal = false
+    @showResetPasswordModal = false
     @showSaveModal = false
     @showMessageModal = false
     @scheduleUpdate()
@@ -217,12 +244,6 @@ class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
   display: 100
 
   name: 'Orders'
-
-  configs:
-    'filter': []
-
-  initialized: false
-  loading: false
 
   # count field name
   countField: 'orders.count'
@@ -267,16 +288,139 @@ class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
   init: ->
     super
 
+  _onheader: ->
+    return (e) -> return true
+
   doLoad: ->
     return !!@data.get('id')
 
   getFacetQuery: ->
-    return @data.get('id')
+    return ''
 
-  list: (opts) ->
-    return @client.order.list opts
+  list: ->
+    return @client.user.orders @data.get('id')
 
 HanzoUserOrders.register()
+
+class HanzoUserReferrers extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-user-referrers'
+  html: html4
+  css:  css
+
+  display: 100
+
+  name: 'Referrers'
+
+  configs:
+    'filter': []
+
+  # count field name
+  countField: 'referrals.count'
+
+  # results field name
+  resultsField: 'referrals.results'
+
+  # a map of all the range facets that should use currency instead of numeric
+  facetCurrency:
+    price: true
+    listPrice: true
+    inventoryCost: true
+
+  # table header configuration
+  headers: [
+    # {
+    #   name: 'Image'
+    #   field: 'Slug'
+    # },
+    {
+      name: 'Referral Token'
+      field: 'Id'
+    },
+    {
+      name: 'Created On'
+      field: 'CreatedAt'
+    },
+  ]
+
+  init: ->
+    super
+
+  _onheader: ->
+    return (e) -> return true
+
+  doLoad: ->
+    return !!@data.get('id')
+
+  getFacetQuery: ->
+    return ''
+
+  list: ->
+    return @client.user.referrers @data.get('id')
+
+HanzoUserReferrers.register()
+
+class HanzoUserReferrals extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-user-referrals'
+  html: html5
+  css:  css
+
+  display: 100
+
+  name: 'Referrals'
+
+  configs:
+    'filter': []
+
+  # count field name
+  countField: 'referrals.count'
+
+  # results field name
+  resultsField: 'referrals.results'
+
+  # a map of all the range facets that should use currency instead of numeric
+  facetCurrency:
+    price: true
+    listPrice: true
+    inventoryCost: true
+
+  # table header configuration
+  headers: [
+    # {
+    #   name: 'Image'
+    #   field: 'Slug'
+    # },
+    {
+      name: 'User Id'
+      field: 'UserId'
+    },
+    {
+      name: 'Referral Token'
+      field: 'Referrer.Id'
+    },
+    {
+      name: 'Referred On'
+      field: 'CreatedAt'
+    },
+  ]
+
+  init: ->
+    super
+
+  _onheader: ->
+    return (e) -> return true
+
+  doLoad: ->
+    return !!@data.get('id')
+
+  getFacetQuery: ->
+    return ''
+
+  list: ->
+    return @client.user.referrals @data.get('id')
+
+  show: ->
+
+HanzoUserReferrals.register()
 
 export default class Users
   constructor: (daisho, ps, ms, cs)->

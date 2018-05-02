@@ -18,9 +18,6 @@ class HanzoOrders extends Daisho.Views.HanzoDynamicTable
   configs:
     'filter': []
 
-  initialized: false
-  loading: false
-
   # a map of all the range facets that should use currency instead of numeric
   facetCurrency:
     price: true
