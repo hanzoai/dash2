@@ -38,6 +38,6 @@
     "moment-timezone": "0.5.16",
     "referential": "^0.5.23"
   },
-  "repository": "ssh://github.com/hanzo-io/dash2",
+  "repository": "ssh://github.com/hanzoai/dash2",
   "private": true
 }
