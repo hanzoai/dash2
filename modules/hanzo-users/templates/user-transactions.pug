@@ -1,0 +1,13 @@
+#{ 'yield' }(from='table-body')
+  p(if='{ !data.get(countField) }') No { name } Found
+  .tables(if='{ data.get(countField) }')
+    daisho-table.table(
+    table-columns='{ headers }'
+    table-field='{ resultsField }')
+      #{ 'yield' }
+        .table-cell { data.get('currency').toUpperCase() }
+        .table-cell { utils.currency.renderCurrency(data.get('currency'), data.get('amount')) }
+        .table-cell { data.get('type') }
+        .table-cell { data.get('notes') }
+        .table-cell { utils.date.renderDate(data.get('createdAt')) }
+

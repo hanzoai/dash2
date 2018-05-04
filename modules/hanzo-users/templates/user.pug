@@ -22,10 +22,33 @@
   .form-part.m-card-body
     .form-section
       .form-group.columns
-        copy.input(text='{ getResetPassword }', label='Password Appears Here')
+        copy.input(text='{ getResetPassword }')
   .form-part.m-card-body
     .form-section.columns
       button.submit(onclick='{ showResetPassword }') Reset Password
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Orders
+  hanzo-user-orders.m-card-body.no-padding
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Balances
+  hanzo-user-balances.m-card-body.no-padding
+
+hanzo-user-add-transaction.form-content.m-card
+  .form-title.m-card-header
+    h2 Adjust Balance
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        selection.input(bind='type', label='Type', select-options='{ typeOptions }')
+        selection.input(bind='currency', label='Currency', select-options='{ currencyOptions }')
+        currency.input(bind='amount',  label='Amount')
+  .form-part.m-card-body
+    .form-section.columns
+      button.submit(onclick='{ showSave }') Update Balance
 
 .form-content.m-card
   .form-title.m-card-header
@@ -42,11 +65,6 @@
     .form-section.columns
       button.submit(onclick='{ showSave }') Save
       button(onclick='{ showReset }') Reset
-
-.form-content.m-card
-  .form-title.m-card-header
-    h2 Orders
-  hanzo-user-orders.m-card-body.no-padding
 
 .form-content.m-card
   .form-title.m-card-header

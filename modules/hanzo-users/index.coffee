@@ -8,6 +8,8 @@ import html2 from './templates/user.pug'
 import html3 from './templates/user-orders.pug'
 import html4 from './templates/user-referrers.pug'
 import html5 from './templates/user-referrals.pug'
+import html6 from './templates/user-balances.pug'
+import html7 from './templates/user-add-transaction.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
 
@@ -76,7 +78,7 @@ class HanzoUser extends Daisho.Views.Dynamic
   showResetPasswordModal: false
   showSaveModal: false
   showMessageModal: false
-  password: null
+  password: 'New Password Appears Here'
 
   loading: false
 
@@ -239,7 +241,6 @@ HanzoUser.register()
 class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-user-orders'
   html: html3
-  css:  css
 
   display: 100
 
@@ -305,20 +306,16 @@ HanzoUserOrders.register()
 class HanzoUserReferrers extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-user-referrers'
   html: html4
-  css:  css
 
   display: 100
 
   name: 'Referrers'
 
-  configs:
-    'filter': []
-
   # count field name
-  countField: 'referrals.count'
+  countField: 'referrers.count'
 
   # results field name
-  resultsField: 'referrals.results'
+  resultsField: 'referrers.results'
 
   # a map of all the range facets that should use currency instead of numeric
   facetCurrency:
@@ -362,14 +359,10 @@ HanzoUserReferrers.register()
 class HanzoUserReferrals extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-user-referrals'
   html: html5
-  css:  css
 
   display: 100
 
   name: 'Referrals'
-
-  configs:
-    'filter': []
 
   # count field name
   countField: 'referrals.count'
@@ -421,6 +414,97 @@ class HanzoUserReferrals extends Daisho.Views.HanzoDynamicTable
   show: ->
 
 HanzoUserReferrals.register()
+
+class HanzoUserBalances extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-user-balances'
+  html: html6
+
+  display: 100
+
+  name: 'Balances'
+
+  # count field name
+  countField: 'balances.count'
+
+  # results field name
+  resultsField: 'balances.results'
+
+  # a map of all the range facets that should use currency instead of numeric
+  facetCurrency:
+    price: true
+    listPrice: true
+    inventoryCost: true
+
+  # table header configuration
+  headers: [
+    # {
+    #   name: 'Image'
+    #   field: 'Slug'
+    # },
+    {
+      name: 'Currency'
+      field: 'Currency'
+    },
+    {
+      name: 'Balance'
+      field: 'Balance'
+    },
+  ]
+
+  init: ->
+    super
+
+  _onheader: ->
+    return (e) -> return true
+
+  doLoad: ->
+    return !!@data.get('id')
+
+  getFacetQuery: ->
+    return ''
+
+  list: ->
+    return @client.user.transactions(@data.get('id')).then (res) =>
+      vs = []
+      for k, v of res.data
+        v.currency = k
+        vs.push v
+      return vs
+
+HanzoUserBalances.register()
+
+class HanzoUserAddTransaction extends Daisho.El.Form
+  tag: 'hanzo-user-add-transaction'
+  html: html7
+
+  configs:
+    type:     [ isRequired ]
+    amount:   [ isRequired ]
+    currency: [ isRequired ]
+
+  typeOptions:
+    deposit: 'Deposit'
+    withdraw: 'Withdraw'
+
+  currencyOptions: {}
+
+  init: ->
+    @data = @data.ref 'addTransaction'
+    @data.set 'type', 'deposit'
+
+    currenciesToSort = @currencies.keys()
+    currenciesToSort.sort()
+
+    @currencyOptions = {}
+
+    for currency of currenciesToSort
+      @currencyOptions[currency] = currency.toUpperCase()
+
+    super
+
+  _submit: ->
+
+HanzoUserAddTransaction.register()
 
 export default class Users
   constructor: (daisho, ps, ms, cs)->
