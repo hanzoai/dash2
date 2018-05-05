@@ -10,8 +10,11 @@ import html4 from './templates/user-referrers.pug'
 import html5 from './templates/user-referrals.pug'
 import html6 from './templates/user-balances.pug'
 import html7 from './templates/user-add-transaction.pug'
+import html8 from './templates/user-transactions.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
+
+UserUpdateBalanceEvent = 'user-update-balance'
 
 class HanzoUsers extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-users'
@@ -141,7 +144,7 @@ class HanzoUser extends Daisho.Views.Dynamic
 
   # load things but slightly differently
   reset: ()->
-    @_refresh().then ()=>
+    @_refresh(true).then ()=>
       @showMessage 'Reset!'
 
   resetPassword: ->
@@ -238,19 +241,18 @@ class HanzoUser extends Daisho.Views.Dynamic
 
 HanzoUser.register()
 
-class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
-  tag: 'hanzo-user-orders'
-  html: html3
+class HanzoUsers extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-users'
+  html: html1
+  css:  css
 
-  display: 100
+  name: 'Users'
 
-  name: 'Orders'
+  configs:
+    'filter': []
 
-  # count field name
-  countField: 'orders.count'
-
-  # results field name
-  resultsField: 'orders.results'
+  initialized: false
+  loading: false
 
   # a map of all the range facets that should use currency instead of numeric
   facetCurrency:
@@ -265,12 +267,57 @@ class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
     #   field: 'Slug'
     # },
     {
-      name: 'Number'
-      field: 'Number'
+      name: 'Email'
+      field: 'Email'
     },
     {
-      name: 'Total'
-      field: 'Total'
+      name: 'Name'
+      field: 'FirstName'
+    },
+    {
+      name: 'Registered On'
+      field: 'CreatedAt'
+    },
+    {
+      name: 'Last Updated'
+      field: 'UpdatedAt'
+    }
+  ]
+
+  openFilter: false
+
+  init: ->
+    super
+
+  create: ()->
+    @services.page.show 'user', ''
+
+  list: (opts) ->
+    return @client.user.list opts
+
+HanzoUsers.register()
+
+class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-user-orders'
+  html: html3
+
+  display: 100
+
+  name: 'Orders'
+
+  # table header configuration
+  headers: [
+    # {
+    #   name: 'Image'
+    #   field: 'Slug'
+    # },
+    {
+      name: 'Type'
+      field: 'Type'
+    },
+    {
+      name: 'Amount'
+      field: 'Amount'
     },
     {
       name: 'Status'
@@ -303,6 +350,56 @@ class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
 
 HanzoUserOrders.register()
 
+class HanzoUserTransactions extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-user-transactions'
+  html: html8
+
+  display: 100
+
+  name: 'Transactions'
+
+  # table header configuration
+  headers: [
+    {
+      name: 'Type'
+      field: 'Type'
+    },
+    {
+      name: 'Amount'
+      field: 'Amount'
+    },
+    {
+      name: 'Notes'
+      field: 'Notes'
+    },
+    {
+      name: 'Created On'
+      field: 'CreatedAt'
+    }
+  ]
+
+  init: ->
+    super
+
+  _onheader: ->
+    return (e) -> return true
+
+  getFacetQuery: ->
+    return ''
+
+  doLoad: ->
+    return !!@data.get('id')
+
+  getFacetQuery: ->
+    return ''
+
+  list: ->
+    return @client.user.transactions(@data.get('id')).then (res) =>
+      data = res.data[@data.get('currency')]?.transactions
+      return data ? []
+
+HanzoUserTransactions.register()
+
 class HanzoUserReferrers extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-user-referrers'
   html: html4
@@ -316,12 +413,6 @@ class HanzoUserReferrers extends Daisho.Views.HanzoDynamicTable
 
   # results field name
   resultsField: 'referrers.results'
-
-  # a map of all the range facets that should use currency instead of numeric
-  facetCurrency:
-    price: true
-    listPrice: true
-    inventoryCost: true
 
   # table header configuration
   headers: [
@@ -369,12 +460,6 @@ class HanzoUserReferrals extends Daisho.Views.HanzoDynamicTable
 
   # results field name
   resultsField: 'referrals.results'
-
-  # a map of all the range facets that should use currency instead of numeric
-  facetCurrency:
-    price: true
-    listPrice: true
-    inventoryCost: true
 
   # table header configuration
   headers: [
@@ -429,12 +514,6 @@ class HanzoUserBalances extends Daisho.Views.HanzoDynamicTable
   # results field name
   resultsField: 'balances.results'
 
-  # a map of all the range facets that should use currency instead of numeric
-  facetCurrency:
-    price: true
-    listPrice: true
-    inventoryCost: true
-
   # table header configuration
   headers: [
     # {
@@ -454,6 +533,12 @@ class HanzoUserBalances extends Daisho.Views.HanzoDynamicTable
   init: ->
     super
 
+    @on 'mount', =>
+      @mediator.on UserUpdateBalanceEvent, =>
+        @_refresh true
+    @on 'unmount', =>
+      @mediator.off UserUpdateBalanceEvent
+
   _onheader: ->
     return (e) -> return true
 
@@ -470,6 +555,13 @@ class HanzoUserBalances extends Daisho.Views.HanzoDynamicTable
         v.currency = k
         vs.push v
       return vs
+
+  showTransaction: (currency) ->
+    return () =>
+      @show('user-transactions',
+        id: @parent.data.get 'id'
+        currency: currency
+      )()
 
 HanzoUserBalances.register()
 
@@ -488,21 +580,62 @@ class HanzoUserAddTransaction extends Daisho.El.Form
 
   currencyOptions: {}
 
+  loading: false
+  errorMessage: ''
+
   init: ->
     @data = @data.ref 'addTransaction'
     @data.set 'type', 'deposit'
+    @data.set 'currency', 'usd'
+    @data.set 'amount', 0
 
-    currenciesToSort = @currencies.keys()
+    currenciesToSort = Object.keys @currencies.data
     currenciesToSort.sort()
 
     @currencyOptions = {}
 
-    for currency of currenciesToSort
+    for currency in currenciesToSort
       @currencyOptions[currency] = currency.toUpperCase()
 
     super
 
   _submit: ->
+    return if @loading
+
+    if @data.get('amount') <= 0
+      @errorMessage = 'Amount must greater than 0.'
+      @scheduleUpdate()
+      return
+
+    @loading = true
+    @errorMessage = ''
+    @scheduleUpdate()
+
+    type = @data.get 'type'
+    opts =
+      type:     type
+      amount:   @data.get 'amount'
+      currency: @data.get 'currency'
+
+    switch type
+      when 'deposit'
+        opts.destinationId =    @parent.data.get 'id'
+        opts.destinationKind =  'user'
+      when 'withdraw'
+        opts.sourceId =     @parent.data.get 'id'
+        opts.sourceKind =   'user'
+
+    @client.transaction.create(opts).then (res) =>
+      @loading = false
+      @mediator.trigger UserUpdateBalanceEvent
+
+      @parent.showMessage("A #{ type } of #{ @utils.currency.renderCurrency(@data.get('currency'), @data.get('amount')) } has been issued.") if @parent.showMessage
+      @data.set 'amount', 0
+      @scheduleUpdate()
+    .catch (err) =>
+      @loading = false
+      @errorMessage = err.message
+      @scheduleUpdate()
 
 HanzoUserAddTransaction.register()
 
@@ -533,6 +666,23 @@ export default class Users
       (ps, id)->
         opts.id = id if id?
         tag.data.set 'id', opts.id
+        tag.refresh()
+        return @el
+      ->
+
+    ps.register 'user-transactions',
+      (ps, options)->
+        opts = options if options?
+        @el = el = document.createElement 'hanzo-user-transactions'
+
+        tag = (daisho.mount el)[0]
+        tag.data.set 'id', opts.id
+        tag.data.set 'currency', opts.currency
+        return el
+      (ps, options)->
+        opts = options if options?
+        tag.data.set 'id', opts.id
+        tag.data.set 'currency', opts.currency
         tag.refresh()
         return @el
       ->

@@ -45,10 +45,12 @@ hanzo-user-add-transaction.form-content.m-card
       .form-group.columns
         selection.input(bind='type', label='Type', select-options='{ typeOptions }')
         selection.input(bind='currency', label='Currency', select-options='{ currencyOptions }')
-        currency.input(bind='amount',  label='Amount')
+        currency.input(bind='amount',  label='Amount', currency="{ () => { return data.get('currency') } }")
+    .form-section.error(if='{ errorMessage }')
+      | { errorMessage }
   .form-part.m-card-body
     .form-section.columns
-      button.submit(onclick='{ showSave }') Update Balance
+      button.submit(onclick='{ submit }', disabled='{ loading }') { loading ? 'Updating...' : 'Update Balance' }
 
 .form-content.m-card
   .form-title.m-card-header

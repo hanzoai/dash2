@@ -5,5 +5,5 @@
     table-columns='{ headers }'
     table-field='{ resultsField }')
       #{ 'yield' }
-        .table-cell { data.get('currency').toUpperCase() }
-        .table-cell { utils.currency.renderCurrency(data.get('currency'), data.get('balance')) }
+        .table-cell(onclick='{ showTransaction(data.get("currency")) }') { data.get('currency').toUpperCase() }
+        .table-cell(onclick='{ showTransaction(data.get("currency")) }') { utils.currency.renderCurrency(data.get('currency'), data.get('balance')) }
