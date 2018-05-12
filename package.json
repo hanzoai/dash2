@@ -36,7 +36,8 @@
     "moment": "2.22.1",
     "moment-timezone": "0.5.17",
     "numeral": "^2.0.6",
-    "referential": "^0.5.23"
+    "referential": "^0.5.23",
+    "shop.js": "2.2.41"
   },
   "repository": "https://github.com/hanzoai/dash2",
   "private": true

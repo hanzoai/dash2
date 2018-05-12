@@ -11,6 +11,7 @@ import html5 from './templates/user-referrals.pug'
 import html6 from './templates/user-balances.pug'
 import html7 from './templates/user-add-transaction.pug'
 import html8 from './templates/user-transactions.pug'
+import html9 from './templates/user-wallet.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
 
@@ -373,6 +374,14 @@ class HanzoUserTransactions extends Daisho.Views.HanzoDynamicTable
       field: 'Notes'
     },
     {
+      name: 'Source'
+      field: 'SourceId'
+    },
+    {
+      name: 'Destination'
+      field: 'DestinationId'
+    },
+    {
       name: 'Created On'
       field: 'CreatedAt'
     }
@@ -398,7 +407,70 @@ class HanzoUserTransactions extends Daisho.Views.HanzoDynamicTable
       data = res.data[@data.get('currency')]?.transactions
       return data ? []
 
+  renderKindId: (kind, id) ->
+    if kind
+      return kind + '/' + id
+    return 'None'
+
+  showTxKindId: (kind, id) ->
+    switch kind
+      when 'order'
+        return @show 'order', id
+      when 'user'
+        return @show 'user', id
+      else
+        return ->
+
 HanzoUserTransactions.register()
+
+# disabled for now
+class HanzoUserWallet extends Daisho.Views.HanzoDynamicTable
+  tag: 'hanzo-user-wallet'
+  html: html9
+
+  display: 100
+
+  name: 'Wallet'
+
+  # count field name
+  countField: 'wallet.count'
+
+  # results field name
+  resultsField: 'wallet.results'
+
+  # table header configuration
+  headers: [
+    {
+      name: 'QR Code'
+      field: 'Address'
+    },
+    {
+      name: 'Address'
+      field: 'Address'
+    }
+  ]
+
+  init: ->
+    super
+
+  _onheader: ->
+    return (e) -> return true
+
+  getFacetQuery: ->
+    return ''
+
+  doLoad: ->
+    return !!@data.get('id')
+
+  getFacetQuery: ->
+    return ''
+
+  list: ->
+    return @client.user.wallet(@data.get('id')).then (res) =>
+      data = res.data[@data.get('currency')]?.transactions
+      return data ? []
+
+HanzoUserWallet.register()
 
 class HanzoUserReferrers extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-user-referrers'

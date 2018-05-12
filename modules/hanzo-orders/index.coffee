@@ -8,6 +8,10 @@ import html2 from './templates/order.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
 
+# import to register
+import ShippingAddressState from 'shop.js/src/controls/checkout/shippingaddress-state'
+import ShippingAddressCountry from 'shop.js/src/controls/checkout/shippingaddress-country'
+
 class HanzoOrders extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-orders'
   html: html1
@@ -79,25 +83,10 @@ class HanzoOrder extends Daisho.Views.Dynamic
   # message modal's message
   message: ''
 
-  # spatial units
-  dimensionsUnits:
-    cm: 'cm'
-    m:  'm'
-    in: 'in'
-    ft: 'ft'
-
-  # mass units
-  weightUnits:
-    g:  'g'
-    kg: 'kg'
-    oz: 'oz'
-    lb: 'lb'
-
   configs:
-    slug:        [isRequired]
-    name:        [isRequired]
-    price:       [isRequired]
-    listPrice:   [isRequired]
+    'status':               [isRequired]
+    'paymentStatus':        [isRequired]
+    'fullfillmentStatus':   [isRequired]
 
   init: ->
     super
@@ -107,6 +96,13 @@ class HanzoOrder extends Daisho.Views.Dynamic
     #   beam.on 'dropped', (files) ->
     #     for filepath in files
     #       console.log 'Uploading...', filepath
+
+    # pull countries data
+    @data.set 'countries', @data.parent.get 'countries'
+
+    @data.parent.on 'set', (k, v) =>
+      if k == 'countries'
+        @data.set 'countries', @data.parent.get 'countries'
 
   default: ()->
     # pull the org information from localstorage
@@ -127,6 +123,16 @@ class HanzoOrder extends Daisho.Views.Dynamic
 
     @loading = true
     return @client.order.get(id).then (res)=>
+      if res.shippingAddress?.state
+        res.shippingAddress.state = res.shippingAddress.state.toUpperCase()
+      if res.shippingAddress?.country
+        res.shippingAddress.country = res.shippingAddress.country.toUpperCase()
+
+      if res.billingAddress?.state
+        res.billingAddress.state = res.billingAddress.state.toUpperCase()
+      if res.billingAddress?.country
+        res.billingAddress.country = res.billingAddress.country.toUpperCase()
+
       @cancelModals()
       @loading = false
       @data.set res

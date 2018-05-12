@@ -1,0 +1,20 @@
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Shipping Address Information
+  .form-part.m-card-body
+    .form-section.columns
+      .form-group.rows
+        text.input(bind='shippingAddress.name', label='Name')
+        text.input(bind='shippingAddress.line1', label='Street Address')
+        text.input(bind='shippingAddress.line2', label='Apt/Suite Number')
+        .flex-reset
+          .form-group.columns
+            text.input(bind='shippingAddress.city', label='City')
+            shippingaddress-state.input(country-field='shippingAddress.country', bind='shippingAddress.state', label='State')
+        shippingaddress-country.input(countries-field='countries', bind='shippingAddress.country', label='Country')
+      .form-group.rows
+  .form-part.m-card-body
+    .form-section.columns
+      button.submit(onclick='{ showSave }') Save
+      button(onclick='{ showReset }') Reset
+
