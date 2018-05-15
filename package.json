@@ -31,13 +31,13 @@
   "dependencies": {
     "akasha": "^0.1.10",
     "astley.js": "0.0.41",
-    "daisho": "1.2.59",
+    "daisho": "1.2.60",
     "el-controls": "^1.2.33",
     "moment": "2.22.1",
     "moment-timezone": "0.5.17",
     "numeral": "^2.0.6",
     "referential": "^0.5.23",
-    "shop.js": "2.2.41"
+    "shop.js": "2.2.42"
   },
   "repository": "https://github.com/hanzoai/dash2",
   "private": true
