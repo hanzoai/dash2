@@ -4,7 +4,7 @@
   "description": "Hanzo dashboard",
   "author": "Hanzo, Inc <hi@hanzo.io>",
   "devDependencies": {
-    "autoprefixer": "8.3.0",
+    "autoprefixer": "8.5.0",
     "bebop": "1.14.1",
     "clean-css": "4.1.11",
     "coffee-script": "1.12.7",
@@ -20,7 +20,7 @@
     "rollup-analyzer": "1.1.0",
     "rucksack-css": "1.0.2",
     "rupture": "0.7.1",
-    "sake-bundle": "0.6.7",
+    "sake-bundle": "0.6.11",
     "sake-cli": "^0.7.2",
     "sake-outdated": "^0.3.0",
     "sake-publish": "^0.1.17",
@@ -31,11 +31,11 @@
   "dependencies": {
     "akasha": "^0.1.10",
     "astley.js": "0.0.41",
-    "daisho": "1.2.58",
-    "el-controls": "1.2.24",
-    "handroll": "0.17.0",
+    "daisho": "1.2.59",
+    "el-controls": "1.2.29",
+    "handroll": "0.17.7",
     "moment": "2.22.1",
-    "moment-timezone": "0.5.16",
+    "moment-timezone": "0.5.17",
     "numeral": "^2.0.6",
     "referential": "^0.5.23"
   },
