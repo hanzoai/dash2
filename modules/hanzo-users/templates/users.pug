@@ -19,10 +19,10 @@
     table-columns='{ headers }'
     table-field='results')
       #{ 'yield' }
-        .table-cell(onclick='{ parent.show("user", data.get("id")) }') { data.get('email') }
-        .table-cell(onclick='{ parent.show("user", data.get("id")) }') { data.get('firstName') + ' ' + data.get('lastName') }
-        .table-cell(onclick='{ parent.show("user", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }
-        .table-cell(onclick='{ parent.show("user", data.get("id")) }') { utils.date.moment(data.get('updatedAt')).fromNow() }
+        .table-cell(onclick='{ show("user", data.get("id")) }') { data.get('email') }
+        .table-cell(onclick='{ show("user", data.get("id")) }') { data.get('firstName') + ' ' + data.get('lastName') }
+        .table-cell(onclick='{ show("user", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }
+        .table-cell(onclick='{ show("user", data.get("id")) }') { utils.date.moment(data.get('updatedAt')).fromNow() }
     div.m-card.table-load-more
       .button(
         class='{ loading: loading }'

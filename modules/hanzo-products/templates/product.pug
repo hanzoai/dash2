@@ -3,15 +3,16 @@
     h2 Product Information
   .form-part.m-card-body
     .form-section
-      .form-group.columns
-        text.input(bind='name', label='Name')
-    .form-section
+      readonly.input(bind='id', label='Id')
+      text.input(bind='name', label='Name')
       .form-group.columns
         text.input(bind='slug', label='Slug')
         text.input(bind='sku',  label='SKU')
+      textbox.input(bind='description', label='Description')
       .form-group.columns
-        textbox.input(bind='description', label='Description')
-  .form-part.m-card-body
+        readonly.input(text='{ utils.date.renderDate(data.get("createdAt")) }', label='Created On')
+        readonly.input(text='{ utils.date.moment(data.get("updatedAt")).fromNow() }', label='Updated On')
+  .form-part.m-card-footer
     .form-section.columns
       button.submit(onclick='{ showSave }') Save
       button(onclick='{ showReset }') Reset
@@ -38,7 +39,7 @@
       .form-group.columns
         currency.input(bind='price',     label='Price',         currency='{ data.get("currency")}')
         currency.input(bind='listPrice', label='Compare Price', currency='{ data.get("currency")}')
-  .form-part.m-card-body
+  .form-part.m-card-footer
     .form-section.columns
       button.submit(onclick='{ showSave }') Save
       button(onclick='{ showReset }') Reset
@@ -53,7 +54,7 @@
         switch.input(bind='preorder',  label='In Preorder')
         switch.input(bind='hidden',    label='Hidden')
           // text.input(bind='quantity', label='Quantity')
-  .form-part.m-card-body
+  .form-part.m-card-footer
     .form-section.columns
       button.submit(onclick='{ showSave }') Save
       button(onclick='{ showReset }') Reset
@@ -72,7 +73,7 @@
         numeric.input(bind='weight', label='Weight')
         selection.input(bind='weightUnit', label='Units', select-options='{ weightUnits }')
         text.input(bind='estimatedDelivery', label='Estimated Delivery')
-  .form-part.m-card-body
+  .form-part.m-card-footer
     .form-section.columns
       button.submit(onclick='{ showSave }') Save
       button(onclick='{ showReset }') Reset

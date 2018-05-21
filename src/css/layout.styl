@@ -30,6 +30,42 @@
       color: $textColor1
       background-color: $backgroundColor2
 
+.flex1.flex1.flex1
+  flex: 1
+
+.flex2.flex2.flex2
+  flex: 2
+
+.flex3.flex3.flex3
+  flex: 3
+
+.flex4.flex4.flex4
+  flex: 4
+
+.flex5.flex5.flex5
+  flex: 5
+
+.flex6.flex6.flex6
+  flex: 6
+
+.justify-flex-start.justify-flex-start.justify-flex-start
+  justify-content: flex-start
+
+.justify-flex-center.justify-flex-center.justify-flex-center
+  justify-content: center
+
+.justify-flex-end.justify-flex-end.justify-flex-end
+  justify-content: flex-end
+
+.align-flex-start.align-flex-start.align-flex-start
+  align-items: flex-start
+
+.align-flex-center.align-flex-center.align-flex-center
+  align-items: center
+
+.align-flex-end.align-flex-end.align-flex-end
+  align-items: flex-end
+
 .columns
   display: flex
   flex-direction: row
@@ -45,6 +81,15 @@
 
   & > *
     flex: 1
+
+  & > *
+    margin: 0 $spacing * 2
+
+    &:first-child
+      margin-left: 0
+
+    &:last-child
+      margin-right: 0
 
   +below($phoneWidth)
     flex-direction: column

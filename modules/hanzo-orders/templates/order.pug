@@ -1,9 +1,36 @@
 .form-content.m-card
   .form-title.m-card-header
-    h2 Shipping Address Information
+    h2 Order Information
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        readonly.input(bind='id', label='Id')
+        readonly.input(bind='number', label='Number')
+      .form-group.columns
+        readonly.input(text='{ utils.date.renderDate(data.get("createdAt")) }', label='Created On')
+        readonly.input(text='{ utils.date.moment(data.get("updatedAt")).fromNow() }', label='Updated On')
+      .form-group.columns
+        selection.input(bind='status', label='Order Status', select-options='{ statusOptions }')
+        selection.input(bind='paymentStatus', label='Payment Status', select-options='{ paymentStatusOptions }')
+        selection.input(bind='fulfillment.status', label='Shipping Status', select-options='{ fulfillmentStatusOptions }')
+  .form-part.m-card-footer
+    button.submit(onclick='{ showSave }') Save
+    button(onclick='{ showReset }') Reset
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Metadata
+  .form-part.m-card-body
+    .form-section
+      pre.metadata-pre
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Shipping Information
   .form-part.m-card-body
     .form-section.columns
       .form-group.rows
+        readonly.input.link(bind='userId', label='User Id', onclick='{ show("user", data.get("userId")) }')
         text.input(bind='shippingAddress.name', label='Name')
         text.input(bind='shippingAddress.line1', label='Street Address')
         text.input(bind='shippingAddress.line2', label='Apt/Suite Number')
@@ -11,10 +38,129 @@
           .form-group.columns
             text.input(bind='shippingAddress.city', label='City')
             shippingaddress-state.input(country-field='shippingAddress.country', bind='shippingAddress.state', label='State')
+            text.input(bind='shippingAddress.postalCode', label='Postal Code')
         shippingaddress-country.input(countries-field='countries', bind='shippingAddress.country', label='Country')
-      .form-group.rows
+      gmap(address='{ getShippingAddress }', map-type-id='roadmap')
+  .form-part.m-card-footer
+    button.submit(onclick='{ showSave }') Save
+    button(onclick='{ showReset }') Reset
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Billing Information
   .form-part.m-card-body
     .form-section.columns
-      button.submit(onclick='{ showSave }') Save
-      button(onclick='{ showReset }') Reset
+      .form-group.rows
+        readonly.input.link(bind='userId', label='User Id', onclick='{ show("user", data.get("userId")) }')
+        text.input(bind='billingAddress.name', label='Name')
+        text.input(bind='billingAddress.line1', label='Street Address')
+        text.input(bind='billingAddress.line2', label='Apt/Suite Number')
+        .flex-reset
+          .form-group.columns
+            text.input(bind='billingAddress.city', label='City')
+            shippingaddress-state.input(country-field='billingAddress.country', bind='billingAddress.state', label='State')
+            text.input(bind='billingAddress.postalCode', label='Postal Code')
+        shippingaddress-country.input(countries-field='countries', bind='billingAddress.country', label='Country')
+      gmap(address='{ getBillingAddress }', map-type-id='roadmap')
+  .form-part.m-card-footer
+    button.submit(onclick='{ showSave }') Save
+    button(onclick='{ showReset }') Reset
 
+.columns.align-flex-start
+  .form-content.m-card.flex2
+    .form-title.m-card-header
+      h2 Line Items
+    hanzo-order-items.m-card-body.no-padding
+      .table-cell(onclick='{ show("product", data.get("productId")) }') { data.get('productName') }
+      .table-cell(onclick='{ show("product", data.get("productId")) }') { data.get('quantity') }
+      .table-cell(onclick='{ show("product", data.get("productId")) }') { utils.currency.renderCurrency(parent.data.get('currency'), data.get('price')) } { parent.data.get('currency').toUpperCase() }
+
+  .form-content.m-card
+    .form-title.m-card-header
+      h2 Invoice
+    .form-part.m-card-body
+      .form-group.columns
+        .form-group.rows.align-flex-end
+          p Currency
+          p Line Total
+          p Discount
+          p Subtotal
+          p Shipping
+          p Tax
+          p Total
+          p(if='{ data.get("refunded") > 0 }') Refunded
+        .form-group.rows.align-flex-start
+          p { data.get('currency').toUpperCase() }
+          p { utils.currency.renderCurrency(data.get('currency'), data.get('lineTotal')) }
+          p { utils.currency.renderCurrency(data.get('currency'), data.get('discount')) }
+          p { utils.currency.renderCurrency(data.get('currency'), data.get('subtotal')) }
+          p { utils.currency.renderCurrency(data.get('currency'), data.get('shipping')) }
+          p { utils.currency.renderCurrency(data.get('currency'), data.get('tax')) }
+          p { utils.currency.renderCurrency(data.get('currency'), data.get('total')) }
+          p.negative(if='{ data.get("refunded") > 0 }') { utils.currency.renderCurrency(data.get('currency'), data.get('refunded')) }
+
+// Stripe/Amazon/Etc Payments
+.form-content.m-card(if='{ data.get("type") == "stripe" }')
+  .form-title.m-card-header
+    h2 Payments
+  hanzo-order-payments.m-card-body.no-padding
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { getExternalId(data.get()) }
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { data.get('type') }
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { data.get('description') }
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { utils.currency.renderCurrency(data.get('currency'), data.get('amount')) } { data.get('currency').toUpperCase() }
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { data.get('status') }
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { getMeta(data.get()) }
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Resend Emails
+  .form-part.m-card-footer
+    button.submit(onclick='{ showResendConfirmation }') Order Confirmation
+    button.submit(onclick='{ showFulfillmentConfirmation }', disabled='{ !isShipping() }') Shipping Confirmation
+    button.submit(onclick='{ showRefundConfirmation }', disabled='{ !isRefunded() }') Refund Confirmation
+
+daisho-modal.reset(class='{ show: showResetModal }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to reset?
+    h4(if='{ loading }') Resetting...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ reset }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.save(class='{ show: showSaveModal }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to save?
+    h4(if='{ loading }') Saving...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ save }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.resend(class='{ show: showResendConfirmation }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to resend the email confirmation?
+    h4(if='{ loading }') Resending...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ resendConfirmation }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.resend(class='{ show: showRefundConfirmation }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to resend the email confirmation?
+    h4(if='{ loading }') Resending...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ resendRefundConfirmation }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.resend(class='{ show: showFulfillmentConfirmation }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to resend the email confirmation?
+    h4(if='{ loading }') Resending...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ resendFulfillmentConfirmation }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.failed(class='{ show: showMessageModal }')
+  .modal-title
+    h4 { message }
+  .modal-section
+    button(onclick='{ cancelModals }') Ok

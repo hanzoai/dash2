@@ -20,6 +20,7 @@
     table-field='{ resultsField }')
       #{ 'yield' }
         .table-cell(onclick='{ parent.show("order", data.get("id")) }') { data.get('number') }
+        .table-cell(onclick='{ parent.show("order", data.get("id")) }') { data.get('shippingAddress.name') }
         .table-cell(onclick='{ parent.show("order", data.get("id")) }') { utils.currency.renderCurrency(data.get('currency'), data.get('total')) } { data.get('currency').toUpperCase() }
         .table-cell(onclick='{ parent.show("order", data.get("id")) }') { data.get('paymentStatus') }
         .table-cell(onclick='{ parent.show("order", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }

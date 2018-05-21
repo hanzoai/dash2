@@ -59,9 +59,9 @@ compileStylus = ->
       __dirname + '/node_modules'
     ]
     .set 'include css', true
-    .set 'sourcemap',
-      basePath:   ''
-      sourceRoot: '../'
+    # .set 'sourcemap',
+    #   basePath:   ''
+    #   sourceRoot: '../'
     .use lost()
     .use rupture()
     .use postcss [
@@ -81,10 +81,10 @@ compileStylus = ->
     #   minified = minifier.minify css
     #   writeFile dst, minified.styles
     # else
-    sourceMapURL = (path.basename dst) + '.map'
-    css = css + "/*# sourceMappingURL=#{sourceMapURL} */"
+    # sourceMapURL = (path.basename dst) + '.map'
+    # css = css + "/*# sourceMappingURL=#{sourceMapURL} */"
     writeFile dst, css
-    writeFile dst + '.map', JSON.stringify style.sourcemap
+    # writeFile dst + '.map', JSON.stringify style.sourcemap
   true
 
 module.exports =

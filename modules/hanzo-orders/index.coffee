@@ -39,6 +39,10 @@ class HanzoOrders extends Daisho.Views.HanzoDynamicTable
       field: 'Number'
     },
     {
+      name: 'Name'
+      field: 'ShippingAddressName'
+    },
+    {
       name: 'Total'
       field: 'Total'
     },
@@ -75,10 +79,33 @@ class HanzoOrder extends Daisho.Views.Dynamic
   css:  css
   _dataStaleField:  'id'
   showResetModal: false
+  showResendConfirmation: false
   showSaveModal: false
   showMessageModal: false
 
   loading: false
+
+  statusOptions:
+    cancelled: 'Cancelled'
+    completed: 'Completed'
+    locked: 'Locked'
+    open: 'Open'
+    'on-hold': 'On Hold'
+
+  paymentStatusOptions:
+    credit: 'Credit'
+    disputed: 'Disputed'
+    failed: 'Failed'
+    fraudulent: 'Fraud'
+    paid: 'Paid'
+    refunded: 'Refunded'
+    unpaid: 'Unpaid'
+
+  fulfillmentStatusOptions:
+    cancelled: 'Cancelled'
+    processing: 'Processing'
+    shipped: 'Shipped'
+    unfulfilled: 'Unfulfilled'
 
   # message modal's message
   message: ''
@@ -104,7 +131,12 @@ class HanzoOrder extends Daisho.Views.Dynamic
       if k == 'countries'
         @data.set 'countries', @data.parent.get 'countries'
 
-  default: ()->
+    @on 'updated', ->
+      els = @root.getElementsByClassName 'metadata-pre'
+      el = els[0]
+      el.innerHTML = JSON.stringify(@data.get('metadata'), null, 2) if el
+
+  default: ->
     # pull the org information from localstorage
     org = @daisho.akasha.get('orgs')[@daisho.akasha.get('activeOrg')]
     model =
@@ -112,8 +144,14 @@ class HanzoOrder extends Daisho.Views.Dynamic
 
     return model
 
+  isShipping: ->
+    return @data.get('fulfillment.status') != 'pending'
+
+  isRefunded: ->
+    return @data.get('refunded') > 0
+
   # load things
-  _refresh: ()->
+  _refresh: ->
     id = @data.get('id')
     if !id
       @data.clear()
@@ -122,7 +160,7 @@ class HanzoOrder extends Daisho.Views.Dynamic
       return true
 
     @loading = true
-    return @client.order.get(id).then (res)=>
+    return @client.order.get(id).then (res) =>
       if res.shippingAddress?.state
         res.shippingAddress.state = res.shippingAddress.state.toUpperCase()
       if res.shippingAddress?.country
@@ -141,14 +179,14 @@ class HanzoOrder extends Daisho.Views.Dynamic
       @loading = false
 
   # load things but slightly differently
-  reset: ()->
-    @_refresh().then ()=>
+  reset: ->
+    @_refresh().then =>
       @showMessage 'Reset!'
 
   # save by using submit to validate inputs
-  save: ()->
+  save: ->
     test = @submit()
-    test.then (val)=>
+    test.then (val) =>
       if !val?
         if $('.input .error')[0]?
           @cancelModals()
@@ -156,6 +194,18 @@ class HanzoOrder extends Daisho.Views.Dynamic
           @scheduleUpdate()
     .catch (err)=>
       @showMessage err
+
+  resendConfirmation: ->
+    @loading = true
+    @client.order.sendOrderConfirmation(@data.get('id')).then =>
+      @cancelModals()
+      @loading = false
+      @showMessage 'Success!'
+      @scheduleUpdate()
+    .catch (err) =>
+      @loading = false
+      @showMessage err
+
 
   # show the message modal
   showMessage: (msg)->
@@ -169,33 +219,40 @@ class HanzoOrder extends Daisho.Views.Dynamic
     @showMessageModal = true
     @scheduleUpdate()
 
-    @messageTimeoutId = setTimeout ()=>
+    @messageTimeoutId = setTimeout =>
       @cancelModals()
       @scheduleUpdate()
     , 5000
 
   # show the reset modal
-  showReset: ()->
+  showReset: ->
     @cancelModals()
     @showResetModal = true
     @scheduleUpdate()
 
   # show the save modal
-  showSave: ()->
+  showSave: ->
     @cancelModals()
     @showSaveModal = true
     @scheduleUpdate()
 
+  # show the save modal
+  showResendConfirmation: ->
+    @cancelModals()
+    @showResendConfirmation = true
+    @scheduleUpdate()
+
   # close all modals
-  cancelModals: ()->
+  cancelModals: ->
     clearTimeout @messageTimeoutId
     @showResetModal = false
+    @showResendConfirmation = false
     @showSaveModal = false
     @showMessageModal = false
     @scheduleUpdate()
 
   # submit the form
-  _submit: ()->
+  _submit: ->
     data = @data.get()
 
     # presence of id determines method used
@@ -204,17 +261,134 @@ class HanzoOrder extends Daisho.Views.Dynamic
       api = 'update'
 
     @loading = true
-    @client.order[api](data).then (res)=>
+    @client.order[api](data).then (res) =>
       @cancelModals()
       @loading = false
       @data.set res
       @showMessage 'Success!'
       @scheduleUpdate()
-    .catch (err)->
+    .catch (err) =>
       @loading = false
       @showMessage err
 
+  getShippingAddress: ->
+    return [
+      @data.get('shippingAddress.line1')
+      @data.get('shippingAddress.line2')
+      @data.get('shippingAddress.city')
+      @data.get('shippingAddress.state')
+      @data.get('shippingAddress.postalCode')
+      @data.get('shippingAddress.country')
+    ].join ' '
+
+  getBillingAddress: ->
+    return [
+      @data.get('billingAddress.line1')
+      @data.get('billingAddress.line2')
+      @data.get('billingAddress.city')
+      @data.get('billingAddress.state')
+      @data.get('billingAddress.postalCode')
+      @data.get('billingAddress.country')
+    ].join ' '
+
 HanzoOrder.register()
+
+class HanzoOrderItems extends Daisho.Views.HanzoStaticTable
+  tag: 'hanzo-order-items'
+
+  display: 100
+
+  name: 'Orders'
+
+  # table header configuration
+  headers: [
+    # {
+    #   name: 'Image'
+    #   field: 'Slug'
+    # },
+    {
+      name: 'Product Name'
+    },
+    {
+      name: 'Quantity'
+    },
+    {
+      name: 'Price'
+    },
+  ]
+
+  init: ->
+    super
+
+  doLoad: ->
+    return !!@data.get('id')
+
+  list: ->
+    return @data.get 'items'
+
+HanzoOrderItems.register()
+
+class HanzoOrderPayments extends Daisho.Views.HanzoStaticTable
+  tag: 'hanzo-order-payments'
+
+  display: 100
+
+  name: 'Payments'
+
+  # table header configuration
+  headers: [
+    # {
+    #   name: 'Image'
+    #   field: 'Slug'
+    # },
+    {
+      name: 'External Id'
+    },
+    {
+      name: 'Type'
+    },
+    {
+      name: 'Description'
+    },
+    {
+      name: 'Amount'
+    },
+    {
+      name: 'Status'
+    },
+    {
+      name: 'Meta'
+    },
+  ]
+
+  init: ->
+    super
+
+  doLoad: ->
+    return !!@data.get('id')
+
+  list: ->
+    return @client.order.payments @data.get('id')
+
+  getExternalId: (payment) ->
+    switch payment.type
+      when 'stripe'
+        return payment.account.chargeId
+
+  getExternalLink: (payment) ->
+    switch payment.type
+      when 'stripe'
+        return ->
+          url = '//dashboard.stripe.com/payments/' + payment.account.chargeId
+          win = window.open url, '_blank'
+          win.focus()
+
+  getMeta: (payment) ->
+    switch payment.type
+      when 'stripe'
+        return 'Last 4: ' + payment.account.lastFour
+
+HanzoOrderPayments.register()
 
 export default class Orders
   constructor: (daisho, ps, ms, cs)->

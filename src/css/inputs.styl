@@ -1,6 +1,15 @@
 .input .placeholder
   color: $placeholderColor1
 
+readonly.input.input.input
+  input
+    border-bottom: 0
+
+  &.link
+    input
+      cursor: pointer
+      color: $accentColor1
+
 .input.input.input
   &:last-child:first-child
     margin-bottom: 0
@@ -50,3 +59,17 @@ switch.input.input.input
     top: 0
     left: 0
     font-size: 1rem
+
+// copied this form some other theme
+pre
+  display: block;
+  padding: 9px;
+  margin: 0 0 9.5px;
+  font-size: 12px;
+  line-height: 1.49;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #333333;
+  background-color: #eaeef0;
+  border: 1px solid #cbd6d6;
+  border-radius: 2px;

@@ -5,10 +5,6 @@ import { isRequired } from 'daisho/src/views/middleware'
 
 import html1 from './templates/users.pug'
 import html2 from './templates/user.pug'
-import html3 from './templates/user-orders.pug'
-import html4 from './templates/user-referrers.pug'
-import html5 from './templates/user-referrals.pug'
-import html6 from './templates/user-balances.pug'
 import html7 from './templates/user-add-transaction.pug'
 import html8 from './templates/user-transactions.pug'
 import html9 from './templates/user-wallet.pug'
@@ -298,9 +294,8 @@ class HanzoUsers extends Daisho.Views.HanzoDynamicTable
 
 HanzoUsers.register()
 
-class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
+class HanzoUserOrders extends Daisho.Views.HanzoStaticTable
   tag: 'hanzo-user-orders'
-  html: html3
 
   display: 100
 
@@ -314,44 +309,33 @@ class HanzoUserOrders extends Daisho.Views.HanzoDynamicTable
     # },
     {
       name: 'Type'
-      field: 'Type'
     },
     {
       name: 'Amount'
-      field: 'Amount'
     },
     {
       name: 'Status'
-      field: 'PaymentStatus'
     },
     {
       name: 'Created On'
-      field: 'CreatedAt'
     },
     {
       name: 'Last Updated'
-      field: 'UpdatedAt'
     }
   ]
 
   init: ->
     super
 
-  _onheader: ->
-    return (e) -> return true
-
   doLoad: ->
     return !!@data.get('id')
-
-  getFacetQuery: ->
-    return ''
 
   list: ->
     return @client.user.orders @data.get('id')
 
 HanzoUserOrders.register()
 
-class HanzoUserTransactions extends Daisho.Views.HanzoDynamicTable
+class HanzoUserTransactions extends Daisho.Views.HanzoStaticTable
   tag: 'hanzo-user-transactions'
   html: html8
 
@@ -363,44 +347,29 @@ class HanzoUserTransactions extends Daisho.Views.HanzoDynamicTable
   headers: [
     {
       name: 'Type'
-      field: 'Type'
     },
     {
       name: 'Amount'
-      field: 'Amount'
     },
     {
       name: 'Notes'
-      field: 'Notes'
     },
     {
       name: 'Source'
-      field: 'SourceId'
     },
     {
       name: 'Destination'
-      field: 'DestinationId'
     },
     {
       name: 'Created On'
-      field: 'CreatedAt'
     }
   ]
 
   init: ->
     super
 
-  _onheader: ->
-    return (e) -> return true
-
-  getFacetQuery: ->
-    return ''
-
   doLoad: ->
     return !!@data.get('id')
-
-  getFacetQuery: ->
-    return ''
 
   list: ->
     return @client.user.transactions(@data.get('id')).then (res) =>
@@ -472,9 +441,8 @@ class HanzoUserWallet extends Daisho.Views.HanzoDynamicTable
 
 HanzoUserWallet.register()
 
-class HanzoUserReferrers extends Daisho.Views.HanzoDynamicTable
+class HanzoUserReferrers extends Daisho.Views.HanzoStaticTable
   tag: 'hanzo-user-referrers'
-  html: html4
 
   display: 100
 
@@ -494,34 +462,25 @@ class HanzoUserReferrers extends Daisho.Views.HanzoDynamicTable
     # },
     {
       name: 'Referral Token'
-      field: 'Id'
     },
     {
       name: 'Created On'
-      field: 'CreatedAt'
     },
   ]
 
   init: ->
     super
 
-  _onheader: ->
-    return (e) -> return true
-
   doLoad: ->
     return !!@data.get('id')
-
-  getFacetQuery: ->
-    return ''
 
   list: ->
     return @client.user.referrers @data.get('id')
 
 HanzoUserReferrers.register()
 
-class HanzoUserReferrals extends Daisho.Views.HanzoDynamicTable
+class HanzoUserReferrals extends Daisho.Views.HanzoStaticTable
   tag: 'hanzo-user-referrals'
-  html: html5
 
   display: 100
 
@@ -556,14 +515,8 @@ class HanzoUserReferrals extends Daisho.Views.HanzoDynamicTable
   init: ->
     super
 
-  _onheader: ->
-    return (e) -> return true
-
   doLoad: ->
     return !!@data.get('id')
-
-  getFacetQuery: ->
-    return ''
 
   list: ->
     return @client.user.referrals @data.get('id')
@@ -572,9 +525,8 @@ class HanzoUserReferrals extends Daisho.Views.HanzoDynamicTable
 
 HanzoUserReferrals.register()
 
-class HanzoUserBalances extends Daisho.Views.HanzoDynamicTable
+class HanzoUserBalances extends Daisho.Views.HanzoStaticTable
   tag: 'hanzo-user-balances'
-  html: html6
 
   display: 100
 
@@ -594,11 +546,9 @@ class HanzoUserBalances extends Daisho.Views.HanzoDynamicTable
     # },
     {
       name: 'Currency'
-      field: 'Currency'
     },
     {
       name: 'Balance'
-      field: 'Balance'
     },
   ]
 
@@ -611,14 +561,8 @@ class HanzoUserBalances extends Daisho.Views.HanzoDynamicTable
     @on 'unmount', =>
       @mediator.off UserUpdateBalanceEvent
 
-  _onheader: ->
-    return (e) -> return true
-
   doLoad: ->
     return !!@data.get('id')
-
-  getFacetQuery: ->
-    return ''
 
   list: ->
     return @client.user.transactions(@data.get('id')).then (res) =>
