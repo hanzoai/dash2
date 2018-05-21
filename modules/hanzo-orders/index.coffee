@@ -79,7 +79,9 @@ class HanzoOrder extends Daisho.Views.Dynamic
   css:  css
   _dataStaleField:  'id'
   showResetModal: false
-  showResendConfirmation: false
+  showResendConfirmationModal: false
+  showResendRefundConfirmationModal: false
+  showResendFulfillmentConfirmationModal: false
   showSaveModal: false
   showMessageModal: false
 
@@ -206,6 +208,27 @@ class HanzoOrder extends Daisho.Views.Dynamic
       @loading = false
       @showMessage err
 
+  resendRefundConfirmation: ->
+    @loading = true
+    @client.order.sendRefundConfirmation(@data.get('id')).then =>
+      @cancelModals()
+      @loading = false
+      @showMessage 'Success!'
+      @scheduleUpdate()
+    .catch (err) =>
+      @loading = false
+      @showMessage err
+
+  resendFulfillmentConfirmation: ->
+    @loading = true
+    @client.order.sendFulfillmentConfirmation(@data.get('id')).then =>
+      @cancelModals()
+      @loading = false
+      @showMessage 'Success!'
+      @scheduleUpdate()
+    .catch (err) =>
+      @loading = false
+      @showMessage err
 
   # show the message modal
   showMessage: (msg)->
@@ -239,14 +262,28 @@ class HanzoOrder extends Daisho.Views.Dynamic
   # show the save modal
   showResendConfirmation: ->
     @cancelModals()
-    @showResendConfirmation = true
+    @showResendConfirmationModal = true
+    @scheduleUpdate()
+
+  # show the save modal
+  showRefundConfirmation: ->
+    @cancelModals()
+    @showResendRefundConfirmationModal = true
+    @scheduleUpdate()
+
+  # show the save modal
+  showRefundConfirmation: ->
+    @cancelModals()
+    @showResendFulfillmentConfirmationModal = true
     @scheduleUpdate()
 
   # close all modals
   cancelModals: ->
     clearTimeout @messageTimeoutId
     @showResetModal = false
-    @showResendConfirmation = false
+    @showResendConfirmationModal = false
+    @showResendRefundConfirmationModal = false
+    @showResendFulfillmentConfirmationModal = false
     @showSaveModal = false
     @showMessageModal = false
     @scheduleUpdate()

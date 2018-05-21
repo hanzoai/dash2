@@ -135,7 +135,7 @@ daisho-modal.save(class='{ show: showSaveModal }')
     button(onclick='{ save }') Yes
     button(onclick='{ cancelModals }') No
 
-daisho-modal.resend(class='{ show: showResendConfirmation }')
+daisho-modal.resend(class='{ show: showResendConfirmationModal }')
   .modal-title
     h4(if='{ !loading }') Are you sure you want to resend the email confirmation?
     h4(if='{ loading }') Resending...
@@ -143,7 +143,7 @@ daisho-modal.resend(class='{ show: showResendConfirmation }')
     button(onclick='{ resendConfirmation }') Yes
     button(onclick='{ cancelModals }') No
 
-daisho-modal.resend(class='{ show: showRefundConfirmation }')
+daisho-modal.resend(class='{ show: showResendRefundConfirmationModal }')
   .modal-title
     h4(if='{ !loading }') Are you sure you want to resend the email confirmation?
     h4(if='{ loading }') Resending...
@@ -151,7 +151,7 @@ daisho-modal.resend(class='{ show: showRefundConfirmation }')
     button(onclick='{ resendRefundConfirmation }') Yes
     button(onclick='{ cancelModals }') No
 
-daisho-modal.resend(class='{ show: showFulfillmentConfirmation }')
+daisho-modal.resend(class='{ show: showResendFulfillmentConfirmationModal }')
   .modal-title
     h4(if='{ !loading }') Are you sure you want to resend the email confirmation?
     h4(if='{ loading }') Resending...
