@@ -298,7 +298,7 @@ class HanzoOrderItems extends Daisho.Views.HanzoStaticTable
 
   display: 100
 
-  name: 'Orders'
+  name: 'Order Items'
 
   # table header configuration
   headers: [
