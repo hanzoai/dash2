@@ -14,10 +14,10 @@
         onclick='{ toggleFilterMenu }') Filter
 
 #{ 'yield' }(from='table-body')
-  .tables(if='{ data.get("count") }')
+  .tables(if='{ data.get(countField) }')
     daisho-table.m-card.table(
     table-columns='{ headers }'
-    table-field='results')
+    table-field='{ resultsField }')
       #{ 'yield' }
         .table-cell(onclick='{ show("user", data.get("id")) }') { data.get('email') }
         .table-cell(onclick='{ show("user", data.get("id")) }') { data.get('firstName') + ' ' + data.get('lastName') }
