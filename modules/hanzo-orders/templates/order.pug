@@ -4,15 +4,18 @@
   .form-part.m-card-body
     .form-section
       .form-group.columns
-        readonly.input(bind='id', label='Id')
-        readonly.input(bind='number', label='Number')
-      .form-group.columns
-        readonly.input(text='{ utils.date.renderDate(data.get("createdAt")) }', label='Created On')
-        readonly.input(text='{ utils.date.moment(data.get("updatedAt")).fromNow() }', label='Updated On')
-      .form-group.columns
-        selection.input(bind='status', label='Order Status', select-options='{ statusOptions }')
-        selection.input(bind='paymentStatus', label='Payment Status', select-options='{ paymentStatusOptions }')
-        selection.input(bind='fulfillment.status', label='Shipping Status', select-options='{ fulfillmentStatusOptions }')
+        .form-group.rows
+          readonly.input(bind='id', label='Id')
+          readonly.input(bind='number', label='Number')
+          readonly.input(bind='type', label='Processor')
+          readonly.input(bind='mode', label='Mode', if='{ !isEcommerce() }')
+        .form-group.rows
+          readonly.input(text='{ utils.date.renderDate(data.get("createdAt")) }', label='Created On')
+          readonly.input(text='{ utils.date.moment(data.get("updatedAt")).fromNow() }', label='Updated On')
+        .form-group.rows
+          selection.input(bind='status', label='Order Status', select-options='{ statusOptions }')
+          selection.input(bind='paymentStatus', label='Payment Status', select-options='{ paymentStatusOptions }')
+          selection.input(bind='fulfillment.status', label='Shipping Status', select-options='{ fulfillmentStatusOptions }')
   .form-part.m-card-footer
     button.submit(onclick='{ showSave }') Save
     button(onclick='{ showReset }') Reset
@@ -24,7 +27,7 @@
     .form-section
       pre.metadata-pre
 
-.form-content.m-card
+.form-content.m-card(if='{ isEcommerce() }')
   .form-title.m-card-header
     h2 Shipping Information
   .form-part.m-card-body
@@ -45,7 +48,7 @@
     button.submit(onclick='{ showSave }') Save
     button(onclick='{ showReset }') Reset
 
-.form-content.m-card
+.form-content.m-card(if='{ isEcommerce() && isFiat() }')
   .form-title.m-card-header
     h2 Billing Information
   .form-part.m-card-body
@@ -100,7 +103,7 @@
           p.negative(if='{ data.get("refunded") > 0 }') { utils.currency.renderCurrency(data.get('currency'), data.get('refunded')) }
 
 // Stripe/Amazon/Etc Payments
-.form-content.m-card(if='{ data.get("type") == "stripe" }')
+.form-content.m-card(if='{ isFiat() }')
   .form-title.m-card-header
     h2 Payments
   hanzo-order-payments.m-card-body.no-padding
@@ -110,6 +113,16 @@
     .table-cell(onclick='{ getExternalLink(data.get()) }') { utils.currency.renderCurrency(data.get('currency'), data.get('amount')) } { data.get('currency').toUpperCase() }
     .table-cell(onclick='{ getExternalLink(data.get()) }') { data.get('status') }
     .table-cell(onclick='{ getExternalLink(data.get()) }') { getMeta(data.get()) }
+
+// BTC/ETH/Etc Payments
+.form-content.m-card(if='{ isCrypto() }')
+  .form-title.m-card-header
+    h2 Wallet
+  hanzo-order-wallet.m-card-body.no-padding
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { data.get('name') }
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { data.get('address') }
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { data.get('type') }
+    .table-cell(onclick='{ getExternalLink(data.get()) }') { utils.date.renderDate(data.get('createdAt')) }
 
 .form-content.m-card
   .form-title.m-card-header

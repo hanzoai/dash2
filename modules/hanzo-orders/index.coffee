@@ -175,6 +175,8 @@ class HanzoOrder extends Daisho.Views.Dynamic
 
       @cancelModals()
       @loading = false
+      # clear out metadata due to it being null sometimes
+      @data.set 'metadata', {}
       @data.set res
       @scheduleUpdate()
     .catch (err)->
@@ -184,6 +186,15 @@ class HanzoOrder extends Daisho.Views.Dynamic
   reset: ->
     @_refresh().then =>
       @showMessage 'Reset!'
+
+  isCrypto: ->
+    return ['ethereum', 'bitcoin'].indexOf(@data.get('type')) > -1
+
+  isFiat: ->
+    return @data.get('type') == 'stripe'
+
+  isEcommerce: ->
+    return @data.get('mode') == ''
 
   # save by using submit to validate inputs
   save: ->
@@ -301,6 +312,8 @@ class HanzoOrder extends Daisho.Views.Dynamic
     @client.order[api](data).then (res) =>
       @cancelModals()
       @loading = false
+      # clear out metadata due to it being null sometimes
+      @data.set 'metadata', {}
       @data.set res
       @showMessage 'Success!'
       @scheduleUpdate()
@@ -426,6 +439,64 @@ class HanzoOrderPayments extends Daisho.Views.HanzoStaticTable
         return 'Last 4: ' + payment.account.lastFour
 
 HanzoOrderPayments.register()
+
+class HanzoOrderWallet extends Daisho.Views.HanzoStaticTable
+  tag: 'hanzo-order-wallet'
+
+  display: 100
+
+  name: 'Wallet Addresses'
+
+  # table header configuration
+  headers: [
+    {
+      name: 'Name'
+    },
+    {
+      name: 'Address'
+    },
+    {
+      name: 'Type'
+    },
+    {
+      name: 'Created At'
+    }
+  ]
+
+  init: ->
+    super
+
+  doLoad: ->
+    return !!@data.get('id') && !!@data.get('walletId')
+
+  list: ->
+    return @client.wallet.get(@data.get('walletId')).then (res)->
+      return res.accounts
+
+  getExternalLink: (address) ->
+    switch address.type
+      when 'ethereum'
+        return ->
+          url = '//etherscan.io/address/' + address.address
+          win = window.open url, '_blank'
+          win.focus()
+      when 'ethereum-ropsten'
+        return ->
+          url = '//ropsten.etherscan.io/address/' + address.address
+          win = window.open url, '_blank'
+          win.focus()
+      when 'bitcoin'
+        return ->
+          url = '//blockchain.info/address/' + address.address
+          win = window.open url, '_blank'
+          win.focus()
+      when 'bitcoin-testnet'
+        return ->
+          url = '//testnet.blockchain.info/address/' + address.address
+          win = window.open url, '_blank'
+          win.focus()
+
+HanzoOrderWallet.register()
 
 export default class Orders
   constructor: (daisho, ps, ms, cs)->
