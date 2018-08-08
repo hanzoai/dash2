@@ -1,0 +1,129 @@
+.form-content.m-card
+  .form-title.m-card-header
+    h2 User Information
+  .form-part.m-card-body
+    .form-section
+      readonly.input(bind='id', label='Id')
+      text.input(bind='email', label='Email')
+      .form-group.columns
+        text.input(bind='firstName', label='First Name')
+        text.input(bind='lastName',  label='Last Name')
+      .form-group.columns
+        text.input(bind='phone', label='Phone')
+        switch.input(bind='enabled', label='Enabled')
+      .form-group.columns
+        readonly.input(text='{ utils.date.renderDate(data.get("createdAt")) }', label='Created On')
+        readonly.input(text='{ utils.date.moment(data.get("updatedAt")).fromNow() }', label='Updated On')
+  .form-part.m-card-body
+    .form-section.columns
+      button.submit(onclick='{ showSave }') Save
+      button(onclick='{ showReset }') Reset
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Reset Password
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        copy.input(text='{ getResetPassword }')
+  .form-part.m-card-body
+    .form-section.columns
+      button.submit(onclick='{ showResetPassword }') Reset Password
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Orders
+  hanzo-user-orders.m-card-body.no-padding
+    .table-cell(onclick='{ show("order", data.get("id")) }') { data.get('number') }
+    .table-cell(onclick='{ show("order", data.get("id")) }') { utils.currency.renderCurrency(data.get('currency'), data.get('total')) } { data.get('currency').toUpperCase() }
+    .table-cell(onclick='{ show("order", data.get("id")) }') { data.get('paymentStatus') }
+    .table-cell(onclick='{ show("order", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }
+    .table-cell(onclick='{ show("order", data.get("id")) }') { utils.date.moment(data.get('updatedAt')).fromNow() }
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Balances
+  hanzo-user-balances.m-card-body.no-padding
+    .table-cell(onclick='{ showTransaction(data.get("currency")) }') { data.get('currency').toUpperCase() }
+    .table-cell(onclick='{ showTransaction(data.get("currency")) }') { utils.currency.renderCurrency(data.get('currency'), data.get('balance')) }
+
+// .form-content.m-card
+//   .form-title.m-card-header
+//     h2 Wallet Addresses
+//   hanzo-user-wallet.m-card-body.no-padding
+
+hanzo-user-add-transaction.form-content.m-card
+  .form-title.m-card-header
+    h2 Adjust Balance
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        selection.input(bind='type', label='Type', select-options='{ typeOptions }')
+        selection.input(bind='currency', label='Currency', select-options='{ currencyOptions }')
+        currency.input(bind='amount',  label='Amount', currency="{ () => { return data.get('currency') } }")
+    .form-section.error(if='{ errorMessage }')
+      | { errorMessage }
+  .form-part.m-card-footer
+    .form-section.columns
+      button.submit(onclick='{ submit }', disabled='{ loading }') { loading ? 'Updating...' : 'Update Balance' }
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Affiliate Marketing
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        text.input(bind='commission.flat', label='Flat Fee')
+        text.input(bind='commission.percent',  label='Percent Fee')
+      .form-group.columns
+        text.input(bind='commission.couponId', label='Affiliate Coupon')
+        switch.input(bind='commission.enabled', label='Enabled')
+  .form-part.m-card-footer
+    .form-section.columns
+      button.submit(onclick='{ showSave }') Save
+      button(onclick='{ showReset }') Reset
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Referral Programs
+  hanzo-user-referrers.m-card-body.no-padding
+    .table-cell(onclick='{ show("referrer", data.get("id")) }') { data.get('id') }
+    .table-cell(onclick='{ show("referrer", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Referrals
+  hanzo-user-referrals.m-card-body.no-padding
+    .table-cell(onclick='{ show("referral", data.get("userId")) }') { data.get('userId') }
+    .table-cell(onclick='{ show("referrer", data.get("userId")) }') { data.get('referrer.id') }
+    .table-cell(onclick='{ show("referral", data.get("userId")) }') { utils.date.renderDate(data.get('createdAt')) }
+
+daisho-modal.reset(class='{ show: showResetModal }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to reset?
+    h4(if='{ loading }') Resetting...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ reset }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.save(class='{ show: showSaveModal }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to save?
+    h4(if='{ loading }') Saving...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ save }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.failed(class='{ show: showMessageModal }')
+  .modal-title
+    h4 { message }
+  .modal-section
+    button(onclick='{ cancelModals }') Ok
+
+daisho-modal.failed(class='{ show: showResetPasswordModal }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to reset this user's password?
+    h4(if='{ loading }') Resetting Password...
+  .modal-section
+    button(onclick='{ resetPassword }') Yes
+    button(onclick='{ cancelModals }') Ok

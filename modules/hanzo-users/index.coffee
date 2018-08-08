@@ -136,7 +136,7 @@ class HanzoUser extends Daisho.Views.Dynamic
       @loading = false
       @data.set res
       @scheduleUpdate()
-    .catch (err)->
+    .catch (err)=>
       @loading = false
 
   # load things but slightly differently
@@ -218,7 +218,10 @@ class HanzoUser extends Daisho.Views.Dynamic
 
   # submit the form
   _submit: ()->
-    data = @data.get()
+    data = Object.assign {},  @data.get()
+    delete data.balances
+    delete data.referrers
+    delete data.referrals
 
     # presence of id determines method used
     api = 'create'
@@ -232,7 +235,7 @@ class HanzoUser extends Daisho.Views.Dynamic
       @data.set res
       @showMessage 'Success!'
       @scheduleUpdate()
-    .catch (err)->
+    .catch (err)=>
       @loading = false
       @showMessage err
 
@@ -240,7 +243,7 @@ HanzoUser.register()
 
 class HanzoUsers extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-users'
-  html: userHtml
+  html: usersHtml
   css:  css
 
   name: 'Users'

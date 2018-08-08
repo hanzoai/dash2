@@ -2,6 +2,7 @@ import Daisho       from 'daisho/src'
 import Home         from '../../modules/hanzo-home'
 import Orders       from '../../modules/hanzo-orders'
 import Products     from '../../modules/hanzo-products'
+import Subscribers  from '../../modules/hanzo-subscribers'
 import Users        from '../../modules/hanzo-users'
 import Integrations from '../../modules/hanzo-integrations'
 # import Marketing from 'hanzo-marketing'
@@ -12,27 +13,28 @@ export default modules =
   Users: Users
   Orders: Orders
   Products: Products
+  Subscribers: Subscribers
   Integrations: Integrations
   # Marketing: Marketing
 
-  VideoChat: class VideoChat
-    constructor: (daisho, ps, ms, cs)->
-      el = null
+  # VideoChat: class VideoChat
+  #   constructor: (daisho, ps, ms, cs)->
+  #     el = null
 
-      ps.register 'video-chat',
-        ->
-          activeOrg = akasha.get 'activeOrg'
+  #     ps.register 'video-chat',
+  #       ->
+  #         activeOrg = akasha.get 'activeOrg'
 
-          el = document.createElement 'iframe'
-          el.setAttribute 'src', 'https://talky.io/' + activeOrg
-          return el
-        ->
-          return el
-        ->
+  #         el = document.createElement 'iframe'
+  #         el.setAttribute 'src', 'https://talky.io/' + activeOrg
+  #         return el
+  #       ->
+  #         return el
+  #       ->
 
-      ms.register 'Chat',
-        icon:   'icon-chat'
-        action: -> ps.show 'video-chat'
+  #     ms.register 'Chat',
+  #       icon:   'icon-chat'
+  #       action: -> ps.show 'video-chat'
 
   Note: class Note
     constructor: (daisho, ps, ms, cs)->

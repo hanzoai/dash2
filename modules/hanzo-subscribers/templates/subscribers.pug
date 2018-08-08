@@ -1,0 +1,32 @@
+#{ 'yield' }(from='table-header')
+  .header.content.m-card
+    div
+      h2 { data.get(countField) || 'No' } { name } { data.get(countField) ? '' : 'Found'  }
+      div.filter
+        daisho-filter-facets(
+          data='{ data.ref("facets") }'
+          facet-currency='{ facetCurrency }'
+          class='{ open: openFilter }'
+          onsearch='{ onsearch }')
+      button.submit(onclick='{ create }') Create
+      button(
+        class='{ open: openFilter }'
+        onclick='{ toggleFilterMenu }') Filter
+
+#{ 'yield' }(from='table-body')
+  .tables(if='{ data.get(countField) }')
+    daisho-table.m-card.table(
+    table-columns='{ headers }'
+    table-field='{ resultsField }')
+      #{ 'yield' }
+        .table-cell(onclick='{ show("user", data.get("id")) }') { data.get('email') }
+        .table-cell(onclick='{ show("user", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }
+        .table-cell(onclick='{ show("user", data.get("id")) }') { utils.date.moment(data.get('updatedAt')).fromNow() }
+    div.m-card.table-load-more
+      .button(
+        class='{ loading: loading }'
+        onclick='{ loadMore }'
+        if='{ hasMore }'
+        disabled='{ loading }'
+      )
+        | { loading ? 'Loading...' : hasMore() ? ('Next ' + moreCount() + ' Results') : 'No More Results' }
