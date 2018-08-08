@@ -5,13 +5,18 @@
     .form-section
       .form-group.columns
         .form-group.rows
-          readonly.input(bind='id', label='Id')
-          readonly.input(bind='number', label='Number')
-          readonly.input(bind='type', label='Processor')
-          readonly.input(bind='mode', label='Mode', if='{ !isEcommerce() }')
-        .form-group.rows
-          readonly.input(text='{ utils.date.renderDate(data.get("createdAt")) }', label='Created On')
-          readonly.input(text='{ utils.date.moment(data.get("updatedAt")).fromNow() }', label='Updated On')
+          .flex-reset
+            .form-group.columns
+              readonly.input(bind='id', label='Id')
+              readonly.input(bind='number', label='Number')
+          .flex-reset
+            .form-group.columns
+              readonly.input(bind='type', label='Processor')
+              readonly.input(bind='mode', label='Mode', if='{ !isEcommerce() }')
+          .flex-reset
+            .form-group.columns
+              readonly.input(text='{ utils.date.renderDate(data.get("createdAt")) }', label='Created On')
+              readonly.input(text='{ utils.date.moment(data.get("updatedAt")).fromNow() }', label='Updated On')
         .form-group.rows
           selection.input(bind='status', label='Order Status', select-options='{ statusOptions }')
           selection.input(bind='paymentStatus', label='Payment Status', select-options='{ paymentStatusOptions }')
@@ -70,14 +75,6 @@
     button(onclick='{ showReset }') Reset
 
 .columns.align-flex-start
-  .form-content.m-card.flex2
-    .form-title.m-card-header
-      h2 Line Items
-    hanzo-order-items.m-card-body.no-padding
-      .table-cell(onclick='{ show("product", data.get("productId")) }') { data.get('productName') }
-      .table-cell(onclick='{ show("product", data.get("productId")) }') { data.get('quantity') }
-      .table-cell(onclick='{ show("product", data.get("productId")) }') { utils.currency.renderCurrency(parent.data.get('currency'), data.get('price')) } { parent.data.get('currency').toUpperCase() }
-
   .form-content.m-card
     .form-title.m-card-header
       h2 Invoice
@@ -101,6 +98,14 @@
           p { utils.currency.renderCurrency(data.get('currency'), data.get('tax')) }
           p { utils.currency.renderCurrency(data.get('currency'), data.get('total')) }
           p.negative(if='{ data.get("refunded") > 0 }') { utils.currency.renderCurrency(data.get('currency'), data.get('refunded')) }
+
+  .form-content.m-card.flex2
+    .form-title.m-card-header
+      h2 Line Items
+    hanzo-order-items.m-card-body.no-padding
+      .table-cell(onclick='{ show("product", data.get("productId")) }') { data.get('productName') }
+      .table-cell(onclick='{ show("product", data.get("productId")) }') { data.get('quantity') }
+      .table-cell(onclick='{ show("product", data.get("productId")) }') { utils.currency.renderCurrency(parent.data.get('currency'), data.get('price')) } { parent.data.get('currency').toUpperCase() }
 
 // Stripe/Amazon/Etc Payments
 .form-content.m-card(if='{ isFiat() }')

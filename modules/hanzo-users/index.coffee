@@ -3,11 +3,11 @@ import Promise from 'broken'
 import numeral from 'numeral'
 import { isRequired } from 'daisho/src/views/middleware'
 
-import html1 from './templates/users.pug'
-import html2 from './templates/user.pug'
-import html7 from './templates/user-add-transaction.pug'
-import html8 from './templates/user-transactions.pug'
-import html9 from './templates/user-wallet.pug'
+import usersHtml from './templates/users.pug'
+import userHtml from './templates/user.pug'
+import userAddTransactionHtml from './templates/user-add-transaction.pug'
+import userTransactionsHtml from './templates/user-transactions.pug'
+import userWalletHtml from './templates/user-wallet.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
 
@@ -15,7 +15,7 @@ UserUpdateBalanceEvent = 'user-update-balance'
 
 class HanzoUsers extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-users'
-  html: html1
+  html: usersHtml
   css:  css
 
   name: 'Users'
@@ -71,7 +71,7 @@ HanzoUsers.register()
 
 class HanzoUser extends Daisho.Views.Dynamic
   tag: 'hanzo-user'
-  html: html2
+  html: userHtml
   css:  css
   _dataStaleField:  'id'
   showResetModal: false
@@ -240,7 +240,7 @@ HanzoUser.register()
 
 class HanzoUsers extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-users'
-  html: html1
+  html: userHtml
   css:  css
 
   name: 'Users'
@@ -337,7 +337,7 @@ HanzoUserOrders.register()
 
 class HanzoUserTransactions extends Daisho.Views.HanzoStaticTable
   tag: 'hanzo-user-transactions'
-  html: html8
+  html: userTransactionsHtml
 
   display: 100
 
@@ -395,7 +395,7 @@ HanzoUserTransactions.register()
 # disabled for now
 class HanzoUserWallet extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-user-wallet'
-  html: html9
+  html: userWalletHtml
 
   display: 100
 
@@ -583,7 +583,7 @@ HanzoUserBalances.register()
 
 class HanzoUserAddTransaction extends Daisho.El.Form
   tag: 'hanzo-user-add-transaction'
-  html: html7
+  html: userAddTransactionHtml
 
   configs:
     type:     [ isRequired ]

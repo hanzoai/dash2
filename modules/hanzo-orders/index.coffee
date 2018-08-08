@@ -3,8 +3,8 @@ import Promise from 'broken'
 import numeral from 'numeral'
 import { isRequired } from 'daisho/src/views/middleware'
 
-import html1 from './templates/orders.pug'
-import html2 from './templates/order.pug'
+import ordersHtml from './templates/orders.pug'
+import orderHtml from './templates/order.pug'
 import css  from './css/app.styl'
 # import TractorBeam from 'tractor-beam'
 
@@ -14,7 +14,7 @@ import ShippingAddressCountry from 'shop.js/src/controls/checkout/shippingaddres
 
 class HanzoOrders extends Daisho.Views.HanzoDynamicTable
   tag: 'hanzo-orders'
-  html: html1
+  html: ordersHtml
   css:  css
 
   name: 'Orders'
@@ -75,7 +75,7 @@ HanzoOrders.register()
 
 class HanzoOrder extends Daisho.Views.Dynamic
   tag: 'hanzo-order'
-  html: html2
+  html: orderHtml
   css:  css
   _dataStaleField:  'id'
   showResetModal: false
@@ -176,6 +176,7 @@ class HanzoOrder extends Daisho.Views.Dynamic
       @cancelModals()
       @loading = false
       # clear out metadata due to it being null sometimes
+      @data.set 'mode', ''
       @data.set 'metadata', {}
       @data.set res
       @scheduleUpdate()
@@ -313,6 +314,7 @@ class HanzoOrder extends Daisho.Views.Dynamic
       @cancelModals()
       @loading = false
       # clear out metadata due to it being null sometimes
+      @data.set 'mode', ''
       @data.set 'metadata', {}
       @data.set res
       @showMessage 'Success!'

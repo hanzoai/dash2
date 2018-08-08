@@ -1,16 +1,18 @@
-import Daisho    from 'daisho/src'
-import Home      from '../../modules/hanzo-home'
-import Orders    from '../../modules/hanzo-orders'
-import Products  from '../../modules/hanzo-products'
-import Users     from '../../modules/hanzo-users'
+import Daisho       from 'daisho/src'
+import Home         from '../../modules/hanzo-home'
+import Orders       from '../../modules/hanzo-orders'
+import Products     from '../../modules/hanzo-products'
+import Users        from '../../modules/hanzo-users'
+import Integrations from '../../modules/hanzo-integrations'
 # import Marketing from 'hanzo-marketing'
-import akasha    from 'akasha'
+import akasha       from 'akasha'
 
 export default modules =
   Home: Home
   Users: Users
   Orders: Orders
   Products: Products
+  Integrations: Integrations
   # Marketing: Marketing
 
   VideoChat: class VideoChat
