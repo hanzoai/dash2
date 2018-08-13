@@ -19,27 +19,31 @@ class HanzoProducts extends Daisho.Views.HanzoDynamicTable
     # {
     #   name: 'Image'
     #   field: 'Slug'
-    # },
+    # }
     {
       name: 'Name'
       field: 'Name'
-    },
+    }
     {
       name: 'Slug'
       field: 'Slug'
-    },
+    }
     {
       name: 'SKU'
       field: 'SKU'
-    },
+    }
+    {
+      name: 'Subscription'
+      field: 'IsSubscribeable'
+    }
     {
       name: 'Price'
       field: 'Price'
-    },
+    }
     {
       name: 'Created On'
       field: 'CreatedAt'
-    },
+    }
     {
       name: 'Last Updated'
       field: 'UpdatedAt'
@@ -54,6 +58,10 @@ class HanzoProducts extends Daisho.Views.HanzoDynamicTable
 
   list: (opts) ->
     return @client.product.list opts
+
+  getCurrency: ->
+    @parentData = @data.parent
+    @parentData.get 'orgs.' + @parentData.get('activeOrg') + '.currency'
 
 HanzoProducts.register()
 
@@ -77,6 +85,11 @@ class HanzoProduct extends Daisho.Views.Dynamic
     m:  'm'
     in: 'in'
     ft: 'ft'
+
+  # spatial units
+  intervalUnits:
+    monthly: 'Monthly'
+    yearly:  'Yearly'
 
   # mass units
   weightUnits:
@@ -199,6 +212,10 @@ class HanzoProduct extends Daisho.Views.Dynamic
     .catch (err)->
       @loading = false
       @showMessage err
+
+  getCurrency: ->
+    @parentData = @data.parent
+    @parentData.get 'orgs.' + @parentData.get('activeOrg') + '.currency'
 
 HanzoProduct.register()
 

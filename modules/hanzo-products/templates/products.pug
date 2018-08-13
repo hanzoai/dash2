@@ -22,7 +22,8 @@
         .table-cell(onclick='{ show("product", data.get("id")) }') { data.get('name') }
         .table-cell(onclick='{ show("product", data.get("id")) }') { data.get('slug') }
         .table-cell(onclick='{ show("product", data.get("id")) }') { data.get('sku') }
-        .table-cell(onclick='{ show("product", data.get("id")) }') { utils.currency.renderCurrency(data.get('currency'), data.get('price')) } { data.get('currency').toUpperCase() }
+        .table-cell(onclick='{ show("product", data.get("id")) }') { (!!data.get('isSubscribeable')) ? 'Yes' : 'No' }
+        .table-cell(onclick='{ show("product", data.get("id")) }') { utils.currency.renderCurrency(getCurrency(), data.get('price')) } { data.get('currency').toUpperCase() } { data.get('currency').toUpperCase() }
         .table-cell(onclick='{ show("product", data.get("id")) }') { utils.date.renderDate(data.get('createdAt')) }
         .table-cell(onclick='{ show("product", data.get("id")) }') { utils.date.moment(data.get('updatedAt')).fromNow() }
     div.m-card.table-load-more

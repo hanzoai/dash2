@@ -37,8 +37,13 @@
   .form-part.m-card-body
     .form-section
       .form-group.columns
-        currency.input(bind='price',     label='Price',         currency='{ data.get("currency")}')
-        currency.input(bind='listPrice', label='Compare Price', currency='{ data.get("currency")}')
+        currency.input(bind='price',     label='Price',         currency='{ getCurrency() }')
+        currency.input(bind='listPrice', label='MSRP Price (For Comparison)', currency='{ getCurrency() }')
+        switch.input(bind='isSubscribeable', label='Subscription')
+      .form-group.columns(if='{ data.get("isSubscribeable") }')
+        numeric.input(bind='intervalCount', label='Number of Periods', value='1')
+        selection.input(bind='interval', label='Renewal Period', select-options='{ intervalUnits }', value='month')
+
   .form-part.m-card-footer
     .form-section.columns
       button.submit(onclick='{ showSave }') Save
