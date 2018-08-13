@@ -343,6 +343,42 @@ class HanzoOrder extends Daisho.Views.Dynamic
       @data.get('billingAddress.country')
     ].join ' '
 
+  showInvoice: ->
+    lineitems = @data.get 'lineitems'
+    return @data.get('total') != 0 || lineitems && lineitems.length == 0
+
+  showRecurring: ->
+    subscriptions = @data.get 'subscriptions'
+    return subscriptions && subscriptions.length > 0
+
+  recurringSubtotal: ->
+    subscriptions = @data.get 'subscriptions'
+    subtotal = 0
+    for s in subscriptions
+      subtotal += s.subtotal
+    return subtotal
+
+  recurringShipping: ->
+    subscriptions = @data.get 'subscriptions'
+    shipping = 0
+    for s in subscriptions
+      shipping += s.shipping
+    return shipping
+
+  recurringTax: ->
+    subscriptions = @data.get 'subscriptions'
+    tax = 0
+    for s in subscriptions
+      tax += s.tax
+    return tax
+
+  recurringTotal: ->
+    subscriptions = @data.get 'subscriptions'
+    total = 0
+    for s in subscriptions
+      total += s.total
+    return total
+
 HanzoOrder.register()
 
 class HanzoOrderItems extends Daisho.Views.HanzoStaticTable

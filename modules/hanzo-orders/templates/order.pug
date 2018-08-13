@@ -76,9 +76,9 @@
 
 .columns.align-flex-start
   .form-content.m-card
-    .form-title.m-card-header
+    .form-title.m-card-header(if='{ showInvoice() }')
       h2 Invoice
-    .form-part.m-card-body
+    .form-part.m-card-body(if='{ showInvoice() }')
       .form-group.columns
         .form-group.rows.align-flex-end
           p Currency
@@ -97,6 +97,25 @@
           p { utils.currency.renderCurrency(data.get('currency'), data.get('shipping')) }
           p { utils.currency.renderCurrency(data.get('currency'), data.get('tax')) }
           p { utils.currency.renderCurrency(data.get('currency'), data.get('total')) }
+          p.negative(if='{ data.get("refunded") > 0 }') { utils.currency.renderCurrency(data.get('currency'), data.get('refunded')) }
+
+    .form-title.m-card-header(if='{ showRecurring() }')
+      h2 Recurring Invoice
+    .form-part.m-card-body(if='{ showRecurring() }')
+      .form-group.columns
+        .form-group.rows.align-flex-end
+          p Currency
+          p Subtotal
+          p Shipping
+          p Tax
+          p Total
+          p(if='{ data.get("refunded") > 0 }') Refunded
+        .form-group.rows.align-flex-start
+          p { data.get('currency').toUpperCase() }
+          p { utils.currency.renderCurrency(data.get('currency'), recurringSubtotal()) }
+          p { utils.currency.renderCurrency(data.get('currency'), recurringShipping()) }
+          p { utils.currency.renderCurrency(data.get('currency'), recurringTax()) }
+          p { utils.currency.renderCurrency(data.get('currency'), recurringTotal()) }
           p.negative(if='{ data.get("refunded") > 0 }') { utils.currency.renderCurrency(data.get('currency'), data.get('refunded')) }
 
   .form-content.m-card.flex2
