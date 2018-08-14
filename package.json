@@ -31,7 +31,7 @@
   "dependencies": {
     "akasha": "^0.1.10",
     "astley.js": "0.0.52",
-    "daisho": "1.2.64",
+    "daisho": "1.2.65",
     "el-controls": "1.2.38",
     "moment": "2.22.2",
     "moment-timezone": "0.5.21",

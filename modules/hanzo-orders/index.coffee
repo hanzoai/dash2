@@ -176,6 +176,7 @@ class HanzoOrder extends Daisho.Views.Dynamic
       @cancelModals()
       @loading = false
       # clear out metadata due to it being null sometimes
+      @data.set 'subscriptions', []
       @data.set 'mode', ''
       @data.set 'metadata', {}
       @data.set res
@@ -344,8 +345,8 @@ class HanzoOrder extends Daisho.Views.Dynamic
     ].join ' '
 
   showInvoice: ->
-    lineitems = @data.get 'lineitems'
-    return @data.get('total') != 0 || lineitems && lineitems.length == 0
+    items = @data.get 'items'
+    return @data.get('total') != 0 || items && items.length == 0
 
   showRecurring: ->
     subscriptions = @data.get 'subscriptions'
@@ -408,6 +409,10 @@ class HanzoOrderItems extends Daisho.Views.HanzoStaticTable
   init: ->
     super
 
+    @data.on 'set', (k)=>
+      if k == 'items'
+        @_refresh true
+
   doLoad: ->
     return !!@data.get('id')
 
@@ -451,6 +456,10 @@ class HanzoOrderPayments extends Daisho.Views.HanzoStaticTable
 
   init: ->
     super
+
+    @data.on 'set', (k)=>
+      if k == 'items'
+        @_refresh true
 
   doLoad: ->
     return !!@data.get('id')
@@ -538,34 +547,33 @@ HanzoOrderWallet.register()
 
 export default class Orders
   constructor: (daisho, ps, ms, cs)->
-    tag = null
-    opts = {}
-
     ps.register 'orders',
       ->
         @el = el = document.createElement 'hanzo-orders'
 
-        tag = (daisho.mount el)[0]
+        @tag = (daisho.mount el)[0]
         return el
       ->
-        tag.refresh()
+        @tag.refresh()
         return @el
       ->
+        return @el
 
     ps.register 'order',
       (ps, id)->
-        opts.id = id if id?
+        @id = id if id?
         @el = el = document.createElement 'hanzo-order'
 
-        tag = (daisho.mount el)[0]
-        tag.data.set 'id', opts.id
+        @tag = (daisho.mount el)[0]
+        @tag.data.set 'id', @id
         return el
       (ps, id)->
-        opts.id = id if id?
-        tag.data.set 'id', opts.id
-        tag.refresh()
+        @id = id if id?
+        @tag.data.set 'id', @id
+        @tag.refresh()
         return @el
       ->
+        return @el
 
     ms.register 'Orders', ->
       ps.show 'orders'
