@@ -32,6 +32,36 @@
     button.submit(onclick='{ showSave }') Save
     button(onclick='{ showReset }') Reset
 
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Social Media
+  .form-part.m-card-body
+    .form-section
+      .form-group.rows
+        text.input(bind='socialMedia.facebook', label='Facebook ID')
+        text.input(bind='socialMedia.twitter', label='Twitter ID')
+        text.input(bind='socialMedia.instagram', label='Instagram ID')
+        text.input(bind='socialMedia.gplus', label='Google Plus ID')
+
+  .form-part.m-card-footer
+    button.submit(onclick='{ showSave }') Save
+    button(onclick='{ showReset }') Reset
+
+// .form-content.m-card
+//   .form-title.m-card-header
+//     h2 Website
+//   .form-part.m-card-body
+//     .form-section
+//       .form-group.rows
+//         text.input(bind='socialMedia.facebook', label='Facebook ID')
+//         text.input(bind='socialMedia.twitter', label='Twitter ID')
+//         text.input(bind='socialMedia.instagram', label='Instagram ID')
+//         text.input(bind='socialMedia.gplus', label='Google Plus ID')
+
+//   .form-part.m-card-footer
+//     button.submit(onclick='{ showSave }') Save
+//     button(onclick='{ showReset }') Reset
+
 daisho-modal.reset(class='{ show: showResetModal }')
   .modal-title
     h4(if='{ !loading }') Are you sure you want to reset?
