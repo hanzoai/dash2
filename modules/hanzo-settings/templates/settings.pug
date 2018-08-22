@@ -1,0 +1,55 @@
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Organization Settings
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        readonly.input(bind='name', label='Name')
+        text.input(bind='fullName', label='Full Name')
+        text.input(bind='logoUrl', label='Logo Url')
+
+  .form-part.m-card-footer
+    button.submit(onclick='{ showSave }') Save
+    button(onclick='{ showReset }') Reset
+
+.form-content.m-card
+  .form-title.m-card-header
+    h2 Account Creation Options
+  .form-part.m-card-body
+    .form-section
+      .form-group.columns
+        .form-group.rows
+          switch.input(bind='signUpOptions.accountsEnabledByDefault', label='Enable accounts by default')
+          switch.input(bind='signUpOptions.allowAffiliateSignup', label='Allow affiliate sign up')
+          switch.input(bind='signUpOptions.immediateLogin', label='Immediate login on account creation')
+          switch.input(bind='signUpOptions.twoStageEnabled', label='Two stage signup')
+        .form-group.rows
+          switch.input(bind='signUpOptions.noNameRequired', label='No name required')
+          switch.input(bind='signUpOptions.noPasswordRequired', label='No password required')
+          switch.input(bind='signUpOptions.usernameRequired', label='Require username')
+
+  .form-part.m-card-footer
+    button.submit(onclick='{ showSave }') Save
+    button(onclick='{ showReset }') Reset
+
+daisho-modal.reset(class='{ show: showResetModal }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to reset?
+    h4(if='{ loading }') Resetting...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ reset }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.save(class='{ show: showSaveModal }')
+  .modal-title
+    h4(if='{ !loading }') Are you sure you want to save?
+    h4(if='{ loading }') Saving...
+  .modal-section(if='{ !loading }')
+    button(onclick='{ save }') Yes
+    button(onclick='{ cancelModals }') No
+
+daisho-modal.failed(class='{ show: showMessageModal }')
+  .modal-title
+    h4 { message }
+  .modal-section
+    button(onclick='{ cancelModals }') Ok

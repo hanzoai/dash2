@@ -104,6 +104,7 @@
     .form-part.m-card-body(if='{ showRecurring() }')
       .form-group.columns
         .form-group.rows.align-flex-end
+          p Interval
           p Currency
           p Subtotal
           p Shipping
@@ -111,6 +112,7 @@
           p Total
           p(if='{ data.get("refunded") > 0 }') Refunded
         .form-group.rows.align-flex-start
+          p { data.get('subscriptions.0.intervalCount') } { data.get('subscriptions.0.interval').toUpperCase() }s
           p { data.get('currency').toUpperCase() }
           p { utils.currency.renderCurrency(data.get('currency'), recurringSubtotal()) }
           p { utils.currency.renderCurrency(data.get('currency'), recurringShipping()) }

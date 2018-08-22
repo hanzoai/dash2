@@ -5,6 +5,7 @@ import Products     from '../../modules/hanzo-products'
 import Subscribers  from '../../modules/hanzo-subscribers'
 import Users        from '../../modules/hanzo-users'
 import Integrations from '../../modules/hanzo-integrations'
+import Settings     from '../../modules/hanzo-settings'
 # import Marketing from 'hanzo-marketing'
 import akasha       from 'akasha'
 
@@ -14,7 +15,8 @@ export default modules =
   Orders: Orders
   Products: Products
   Subscribers: Subscribers
-  Integrations: Integrations
+  # Integrations: Integrations
+  Settings: Settings
   # Marketing: Marketing
 
   # VideoChat: class VideoChat
