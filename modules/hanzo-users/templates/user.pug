@@ -77,7 +77,7 @@ hanzo-user-add-transaction.form-content.m-card
         text.input(bind='commission.percent',  label='Percent Fee')
       .form-group.columns
         text.input(bind='commission.couponId', label='Affiliate Coupon')
-        switch.input(bind='commission.enabled', label='Enabled')
+        switch.input(bind='isAffiliate', label='Enabled')
   .form-part.m-card-footer
     .form-section.columns
       button.submit(onclick='{ showSave }') Save
