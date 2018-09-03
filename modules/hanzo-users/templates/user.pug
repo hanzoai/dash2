@@ -73,8 +73,8 @@ hanzo-user-add-transaction.form-content.m-card
   .form-part.m-card-body
     .form-section
       .form-group.columns
-        text.input(bind='commission.flat', label='Flat Fee')
-        text.input(bind='commission.percent',  label='Percent Fee')
+        numeric.input(bind='commission.flat', label='Flat Fee')
+        numeric.input(bind='commission.percent',  label='Percent Fee')
       .form-group.columns
         text.input(bind='commission.couponId', label='Affiliate Coupon')
         switch.input(bind='isAffiliate', label='Enabled')
