@@ -88,8 +88,8 @@ class HanzoProduct extends Daisho.Views.Dynamic
 
   # spatial units
   intervalUnits:
-    monthly: 'Monthly'
-    yearly:  'Yearly'
+    month: 'Monthly'
+    year:  'Yearly'
 
   # mass units
   weightUnits:
@@ -102,7 +102,6 @@ class HanzoProduct extends Daisho.Views.Dynamic
     slug:        [isRequired]
     name:        [isRequired]
     price:       [isRequired]
-    listPrice:   [isRequired]
 
   init: ->
     super
